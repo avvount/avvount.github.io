@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="控制系统的数学描述 传递函数是线性定常系统的一种输入、输出关系描述，它取决于系统（或元件）的结构和参数，与输入函数无关（与外作用和初始条件无关）。   反馈控制的系统，适当地匹配结构参数，有可能获得较高的工作精度和很强的抑制干扰的能力，同时又具备理想的复现、跟随指令输入的性能，这是反馈控制优于开环控制之处。  控制系统的时域分析法经典控制理论方法包括时域分析法、根轨迹分析法和频域分析法   一阶系">
+<meta name="keywords" content="自动控制原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="自动控制原理2、3章">
+<meta property="og:url" content="https://avvount.github.io/2018/01/06/自动控制原理2、3章/index.html">
+<meta property="og:site_name" content="Avvount&#39;s Blog">
+<meta property="og:description" content="控制系统的数学描述 传递函数是线性定常系统的一种输入、输出关系描述，它取决于系统（或元件）的结构和参数，与输入函数无关（与外作用和初始条件无关）。   反馈控制的系统，适当地匹配结构参数，有可能获得较高的工作精度和很强的抑制干扰的能力，同时又具备理想的复现、跟随指令输入的性能，这是反馈控制优于开环控制之处。  控制系统的时域分析法经典控制理论方法包括时域分析法、根轨迹分析法和频域分析法   一阶系">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B.png">
+<meta property="og:image" content="http://bivori.com/images/proms/digital-ocean-cupon-code.png">
+<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
+<meta property="og:updated_time" content="2018-05-01T00:54:22.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="自动控制原理2、3章">
+<meta name="twitter:description" content="控制系统的数学描述 传递函数是线性定常系统的一种输入、输出关系描述，它取决于系统（或元件）的结构和参数，与输入函数无关（与外作用和初始条件无关）。   反馈控制的系统，适当地匹配结构参数，有可能获得较高的工作精度和很强的抑制干扰的能力，同时又具备理想的复现、跟随指令输入的性能，这是反馈控制优于开环控制之处。  控制系统的时域分析法经典控制理论方法包括时域分析法、根轨迹分析法和频域分析法   一阶系">
+<meta name="twitter:image" content="http://ohe854y38.bkt.clouddn.com/%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://avvount.github.io/2018/01/06/自动控制原理2、3章/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>自动控制原理2、3章 | Avvount's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Avvount's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/01/06/自动控制原理2、3章/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Avvount">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/pic/donkey.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Avvount's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">自动控制原理2、3章</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-06T19:36:13+08:00">2018-01-06</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="控制系统的数学描述"><a href="#控制系统的数学描述" class="headerlink" title="控制系统的数学描述"></a>控制系统的数学描述</h1><ul>
+<li>传递函数是线性定常系统的一种输入、输出关系描述，它取决于系统（或元件）的<strong>结构和参数</strong>，与输入函数无关（与外作用和初始条件无关）。  </li>
+<li>反馈控制的系统，适当地匹配结构参数，有可能获得较高的工作精度和很强的抑制干扰的能力，同时又具备理想的复现、跟随指令输入的性能，这是反馈控制优于开环控制之处。</li>
+</ul>
+<h1 id="控制系统的时域分析法"><a href="#控制系统的时域分析法" class="headerlink" title="控制系统的时域分析法"></a>控制系统的时域分析法</h1><p>经典控制理论方法包括时域分析法、根轨迹分析法和频域分析法  </p>
+<h2 id="一阶系统时域分析"><a href="#一阶系统时域分析" class="headerlink" title="一阶系统时域分析"></a>一阶系统时域分析</h2><p>对于$G(s)=\frac 1 {Ts+1}$的一阶系统  </p>
+<ul>
+<li>单位阶跃响应 ： 系统的稳态误差不可能为零</li>
+<li>单位脉冲响应 ： 时间常数T越大，响应曲线下降得越慢，表明系统受脉冲输入信号作用后，恢复到初始状态的时间越长。反之，曲线下降得越快，恢复到初始状态的时间越短。不论T取何值，单位脉冲响应的终值均为零  </li>
+<li>单位斜坡响应 ： 一阶系统在跟踪单位斜坡信号时，存在位置误差，并且位置误差的大小随时间增大，最后趋于时间常数T。因此，减小时间常数T，不仅可以提高系统的响应速度，还可以减小系统对斜坡输入的稳态误差。</li>
+</ul>
+<h2 id="二阶系统时域分析"><a href="#二阶系统时域分析" class="headerlink" title="二阶系统时域分析"></a>二阶系统时域分析</h2><p>典型二阶系统<strong>闭环传递函数</strong>$$G_B(s)=\frac {ω_n^2}{s^2+2ζω_ns+ω_n^2}$$<br>$ω<em>n$称为无阻尼自然振荡频率，ζ称为阻尼比<br>系统的两个特征根 $$s</em>{1,2}=-ζω_n\pmω_n\sqrt {ζ^2-1}$$</p>
+<ul>
+<li>过阻尼情况，$\zeta$&gt;1  </li>
+<li>临界阻尼情况，$\zeta$=1  </li>
+<li>欠阻尼情况，0&lt;$\zeta$&lt;1  </li>
+<li>无阻尼情况，$\zeta$=0  </li>
+<li>负阻尼情况，$\zeta$&lt;0  </li>
+</ul>
+<p>在一定ζ值下，欠阻尼系统比临界阻尼系统更快地达到稳态值，过阻尼系统反应迟钝，动作很缓慢，所以一般系统大多设计成欠阻尼系统  </p>
+<h3 id="欠阻尼二阶系统在单位阶越输入作用下的瞬态响应指标"><a href="#欠阻尼二阶系统在单位阶越输入作用下的瞬态响应指标" class="headerlink" title="欠阻尼二阶系统在单位阶越输入作用下的瞬态响应指标"></a>欠阻尼二阶系统在单位阶越输入作用下的瞬态响应指标</h3><ul>
+<li>上升时间$t_r$ $$ t_r=\frac {π-φ}{ω_d} \text{ 式中,}φ=arctan\frac{\sqrt {1-ζ^2}}{ζ} $$  </li>
+<li>峰值时间$t_p$ $$ t_p=\frac{π}{ω_d}=\frac {π}{ω_n\sqrt {1-ζ^2}}$$  </li>
+<li>最大百分比超调量σ%  $$ σ\%=e^{-ζπ/\sqrt {1-ζ^2}}*100\%$$  </li>
+<li>调节时间$t_s$<br>$$ t_s=\frac4{ζω_n}=4T,\Delta=2\%$$ $$ t_s=\frac3{ζω_n}=3T,\Delta=5\%$$  </li>
+<li>提高增益可以使响应初始段加快，但振荡强烈，平稳性下降</li>
+</ul>
+<h2 id="改善二阶系统性能的措施"><a href="#改善二阶系统性能的措施" class="headerlink" title="改善二阶系统性能的措施"></a>改善二阶系统性能的措施</h2><h3 id="误差的比例-微分控制"><a href="#误差的比例-微分控制" class="headerlink" title="误差的比例-微分控制"></a>误差的比例-微分控制</h3><ul>
+<li>引入误差微分控制$1+T_ds$,$T_d$称为微分时间常数  </li>
+<li>等效阻尼比$$\zeta_d=\zeta+\frac{T_d\omega_n}2$$</li>
+<li>增大了系统的阻尼比（$\zeta_d&gt;\zeta$），使系统动态过程的超调量下降，平稳性提高，同时系统的无阻尼振荡频率$\omega_n$不发生改变，调节时间缩短，提高系统响应的快速性。  </li>
+</ul>
+<h3 id="输出量的速度反馈控制"><a href="#输出量的速度反馈控制" class="headerlink" title="输出量的速度反馈控制"></a>输出量的速度反馈控制</h3><ul>
+<li>输出信号的导数可以用来改善系统的性能，为了获得输出位置信号的导数，需要采用测速发电机，以代替对输出信号的直接微分。</li>
+<li>在系统中加入速度反馈，$K_t$称为速度反馈系数</li>
+<li>等效阻尼比$$\zeta_t=\zeta+\frac{K_t\omega_n}2$$</li>
+</ul>
+<h3 id="两种措施分析"><a href="#两种措施分析" class="headerlink" title="两种措施分析"></a>两种措施分析</h3><ul>
+<li>在相同条件下，比例-微分控制的超调量要大一些  </li>
+<li>从现实的角度来看，比例-微分控制可以采用模拟电路来实现，因此，结构比较简单，易于实现，且成本低；而速度反馈控制所用的部件，例如测速发电机或其他速度传感器价格较高。  </li>
+<li>从抗干扰的能力来看，微分器对输入信号中的噪声，特别是高频噪声有放大的作用。而速度反馈信号是引自经过具有较大惯量的电机滤波之后的输出，噪声成分很弱，所以速度反馈抗干扰能力强。  </li>
+</ul>
+<h2 id="线性定常系统的重要特性"><a href="#线性定常系统的重要特性" class="headerlink" title="线性定常系统的重要特性"></a>线性定常系统的重要特性</h2><ul>
+<li><p>初始条件为零的线性定常系统 </p>
+<ol>
+<li>当系统输入信号为原来输入信号的导数时，系统的输出为原来输出的导数   </li>
+<li>当系统输入信号为原来输入信号对时间的积分时，系统的输出则为原来输出对时间的积分  </li>
+</ol>
+</li>
+<li><p>单位脉冲响应是单位阶跃响应对时间的一阶导数。单位阶跃响应可以由单位斜坡响应t和单位抛物线响应对时间的一阶导数和二阶导数求得</p>
+</li>
+<li>单位斜坡响应和单位抛物线响应是单位阶跃响应对时间的一重和二重积分</li>
+</ul>
+<h2 id="高阶系统的时域分析"><a href="#高阶系统的时域分析" class="headerlink" title="高阶系统的时域分析"></a>高阶系统的时域分析</h2><h3 id="主导极点"><a href="#主导极点" class="headerlink" title="主导极点"></a>主导极点</h3><p>假如高阶系统中距离虚轴最近的极点，其实数部分为其它极点的1／5或更小，并且附近又没有零点，则可认为系统的响应主要由该极点(或共轭复数极点)决定，这一分量衰减最慢。这种对系统瞬态响应起主要作用的极点，称为系统的主导极点 </p>
+<ul>
+<li><p>如果二阶系统包含有<strong>零点</strong>，且该零点位于主导极点附近，则会对系统的瞬态响应产生影响</p>
+<h3 id="不能忽略零极点的影响"><a href="#不能忽略零极点的影响" class="headerlink" title="不能忽略零极点的影响"></a>不能忽略零极点的影响</h3></li>
+<li><p>一个不能忽略的零点对系统的影响是使超调量加大，响应速度加快  </p>
+</li>
+<li>一个不能忽略的极点对系统的影响是使超调量减小，调节时间增加</li>
+</ul>
+<h2 id="线性系统的稳定性分析"><a href="#线性系统的稳定性分析" class="headerlink" title="线性系统的稳定性分析"></a>线性系统的稳定性分析</h2><ul>
+<li>劳斯－赫尔维茨(Routh－Hurwitz)判据，代数判据方法  （第三章）  </li>
+<li>根轨迹法，图解求特征根的方法（第四章）  </li>
+<li>奈魁斯特(Nyquist)判据，基于复变函数理论的方法（第五章）  </li>
+<li>李雅普诺夫方法，适用于线性系统和非线性系统 </li>
+</ul>
+<h3 id="稳定性概念"><a href="#稳定性概念" class="headerlink" title="稳定性概念"></a>稳定性概念</h3><p>系统在受到外作用力后，偏离了正常工作点，而当外作用力消失后，系统能够返回到原来的工作点，则称系统是稳定的  </p>
+<p>在有界输入的作用下，其输出响应也是有界的。这叫做有界输入有界输出稳定，又简称为BIBO (Bounded-Input Bounded-Output)稳定  </p>
+<h3 id="线性系统稳定的充分必要条件"><a href="#线性系统稳定的充分必要条件" class="headerlink" title="线性系统稳定的充分必要条件"></a>线性系统稳定的充分必要条件</h3><p>所有特征根均为负实数，或具有负的实数部分 </p>
+<h3 id="劳斯判据-Routh-Criterion"><a href="#劳斯判据-Routh-Criterion" class="headerlink" title="劳斯判据(Routh Criterion)"></a>劳斯判据(Routh Criterion)</h3><h4 id="应用劳斯判据的优点"><a href="#应用劳斯判据的优点" class="headerlink" title="应用劳斯判据的优点"></a>应用劳斯判据的优点</h4><p>应用劳斯判据不仅可以判别系统稳定不稳定，即系统的绝对稳定性，还可以检验系统是否具有一定的<strong>稳定裕量</strong>，即相对稳定性。<br>同时可以用来求解系统稳定的临界参数，分析系统参数对稳定性的影响</p>
+<p><img src="http://ohe854y38.bkt.clouddn.com/%E7%89%B9%E5%BE%81%E6%96%B9%E7%A8%8B.png" alt="特征方程式"><br>根据特征方程式构造劳斯阵列表</p>
+<ol>
+<li>第一列系数均为正数，系统稳定  </li>
+<li>第一列系数有负数，则第一列系数符号的改变次数等于在右半平面上根的个数 </li>
+</ol>
+<ul>
+<li><p>特殊情况1<br>劳斯阵列表中某一行的第一个系数为零，其余各系数不全为零(或没有其余项) </p>
+</li>
+<li><p>特殊情况2<br>劳斯阵列表中某一行(设为第k行)的所有系数均为零，则说明在根平面内存在一些大小相等、关于原点对称的根 </p>
+</li>
+</ul>
+<h4 id="劳斯判据应用"><a href="#劳斯判据应用" class="headerlink" title="劳斯判据应用"></a>劳斯判据应用</h4><ul>
+<li>稳定裕量(Stability margin)的检验  </li>
+<li>分析系统参数对稳定性的影响  </li>
+</ul>
+<h2 id="线性系统的稳态误差"><a href="#线性系统的稳态误差" class="headerlink" title="线性系统的稳态误差"></a>线性系统的稳态误差</h2><p>稳态误差与<strong>输入信号</strong>和系统的结构、参数有关<br>增加型号数，可使系统精度提高，但对稳定性不利</p>
+<h3 id="扰动输入引起的稳态误差"><a href="#扰动输入引起的稳态误差" class="headerlink" title="扰动输入引起的稳态误差"></a>扰动输入引起的稳态误差</h3><p>为了降低或消除扰动引起的稳态误差，可以增大扰动作用点之前的前向通道的放大系数或通过在扰动作用点之前引入积分环节的办法来实现。但往往会给系统带来结构不稳定现象</p>
+<h3 id="关于降低稳态误差问题"><a href="#关于降低稳态误差问题" class="headerlink" title="关于降低稳态误差问题"></a>关于降低稳态误差问题</h3><p>增大系统开环放大系数可以增强系统对参考输入的跟随能力；增大扰动作用点以前的前向通道放大系数可以降低扰动引起的稳态误差。  </p>
+<p>增加前向通道中积分环节数，使系统型号提高，可以消除不同输入信号时的稳态误差。  </p>
+<p>保证元件有一定的精度和稳定的性能，尤其是反馈通道元件如果作用于系统的主要干扰可以测量时，采用复合控制来降低系统误差，消除扰动影响。  </p>
+
+<a href="https://m.do.co/c/4a945365cc4d" target="_blank" rel="noopener"><img src="http://bivori.com/images/proms/digital-ocean-cupon-code.png" width="728" height="90"></a>
+<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
+
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/自动控制原理/" rel="tag"># 自动控制原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/05/串行通信/" rel="next" title="串行通信">
+                <i class="fa fa-chevron-left"></i> 串行通信
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/06/自动控制原理4/" rel="prev" title="自动控制原理第四章">
+                自动控制原理第四章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/pic/donkey.jpg" alt="Avvount">
+            
+              <p class="site-author-name" itemprop="name">Avvount</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/avvount" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:church357159@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#控制系统的数学描述"><span class="nav-number">1.</span> <span class="nav-text">控制系统的数学描述</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#控制系统的时域分析法"><span class="nav-number">2.</span> <span class="nav-text">控制系统的时域分析法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一阶系统时域分析"><span class="nav-number">2.1.</span> <span class="nav-text">一阶系统时域分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二阶系统时域分析"><span class="nav-number">2.2.</span> <span class="nav-text">二阶系统时域分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#欠阻尼二阶系统在单位阶越输入作用下的瞬态响应指标"><span class="nav-number">2.2.1.</span> <span class="nav-text">欠阻尼二阶系统在单位阶越输入作用下的瞬态响应指标</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#改善二阶系统性能的措施"><span class="nav-number">2.3.</span> <span class="nav-text">改善二阶系统性能的措施</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#误差的比例-微分控制"><span class="nav-number">2.3.1.</span> <span class="nav-text">误差的比例-微分控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#输出量的速度反馈控制"><span class="nav-number">2.3.2.</span> <span class="nav-text">输出量的速度反馈控制</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#两种措施分析"><span class="nav-number">2.3.3.</span> <span class="nav-text">两种措施分析</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性定常系统的重要特性"><span class="nav-number">2.4.</span> <span class="nav-text">线性定常系统的重要特性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#高阶系统的时域分析"><span class="nav-number">2.5.</span> <span class="nav-text">高阶系统的时域分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#主导极点"><span class="nav-number">2.5.1.</span> <span class="nav-text">主导极点</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#不能忽略零极点的影响"><span class="nav-number">2.5.2.</span> <span class="nav-text">不能忽略零极点的影响</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性系统的稳定性分析"><span class="nav-number">2.6.</span> <span class="nav-text">线性系统的稳定性分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#稳定性概念"><span class="nav-number">2.6.1.</span> <span class="nav-text">稳定性概念</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线性系统稳定的充分必要条件"><span class="nav-number">2.6.2.</span> <span class="nav-text">线性系统稳定的充分必要条件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#劳斯判据-Routh-Criterion"><span class="nav-number">2.6.3.</span> <span class="nav-text">劳斯判据(Routh Criterion)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#应用劳斯判据的优点"><span class="nav-number">2.6.3.1.</span> <span class="nav-text">应用劳斯判据的优点</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#劳斯判据应用"><span class="nav-number">2.6.3.2.</span> <span class="nav-text">劳斯判据应用</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性系统的稳态误差"><span class="nav-number">2.7.</span> <span class="nav-text">线性系统的稳态误差</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#扰动输入引起的稳态误差"><span class="nav-number">2.7.1.</span> <span class="nav-text">扰动输入引起的稳态误差</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#关于降低稳态误差问题"><span class="nav-number">2.7.2.</span> <span class="nav-text">关于降低稳态误差问题</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Avvount</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

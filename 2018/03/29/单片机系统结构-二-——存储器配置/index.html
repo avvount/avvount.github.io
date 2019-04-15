@@ -1,0 +1,1504 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="物理上有四个存储空间逻辑上有三个存储空间     片内数据存储器 片内程序存储器片内数据存储器 片外数据存储器      64K       片外数据存储器 片外程序存储器片内外统一的程序存储器     64K            51子系列 52子系列      片内数据存储器 128B 256B     专用寄存器区 128B 128B     片内程序存储器 4K 8K">
+<meta name="keywords" content="单片机原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="单片机系统结构(二)——存储器配置">
+<meta property="og:url" content="https://avvount.github.io/2018/03/29/单片机系统结构-二-——存储器配置/index.html">
+<meta property="og:site_name" content="Avvount&#39;s Blog">
+<meta property="og:description" content="物理上有四个存储空间逻辑上有三个存储空间     片内数据存储器 片内程序存储器片内数据存储器 片外数据存储器      64K       片外数据存储器 片外程序存储器片内外统一的程序存储器     64K            51子系列 52子系列      片内数据存储器 128B 256B     专用寄存器区 128B 128B     片内程序存储器 4K 8K">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E5%A4%96%E9%83%A8%E7%A8%8B%E5%BA%8F%E5%AD%98%E5%82%A8%E5%8C%BA.png">
+<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/51%E7%89%87%E5%86%85%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%8C%BA.png">
+<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/52%E7%89%87%E5%86%85%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%8C%BA.png">
+<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E4%BD%8E128%E5%AD%97%E8%8A%82RAM%E7%9A%84%E9%85%8D%E7%BD%AE.png">
+<meta property="og:image" content="http://bivori.com/images/proms/digital-ocean-cupon-code.png">
+<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
+<meta property="og:updated_time" content="2018-05-01T00:52:11.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="单片机系统结构(二)——存储器配置">
+<meta name="twitter:description" content="物理上有四个存储空间逻辑上有三个存储空间     片内数据存储器 片内程序存储器片内数据存储器 片外数据存储器      64K       片外数据存储器 片外程序存储器片内外统一的程序存储器     64K            51子系列 52子系列      片内数据存储器 128B 256B     专用寄存器区 128B 128B     片内程序存储器 4K 8K">
+<meta name="twitter:image" content="http://ohe854y38.bkt.clouddn.com/%E5%A4%96%E9%83%A8%E7%A8%8B%E5%BA%8F%E5%AD%98%E5%82%A8%E5%8C%BA.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://avvount.github.io/2018/03/29/单片机系统结构-二-——存储器配置/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>单片机系统结构(二)——存储器配置 | Avvount's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Avvount's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/03/29/单片机系统结构-二-——存储器配置/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Avvount">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/pic/donkey.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Avvount's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">单片机系统结构(二)——存储器配置</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-29T20:45:37+08:00">2018-03-29</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+<table>
+    <tr><td colspan="2"> 物理上有四个存储空间</td><td colspan="2">逻辑上有三个存储空间</td></tr>
+    <tr><td>片内数据存储器</td> <td>片内程序存储器</td><td>片内数据存储器</td> <td>片外数据存储器      64K</td></tr>  
+    <tr><td>片外数据存储器</td> <td>片外程序存储器</td><td colspan="2">片内外统一的程序存储器     64K </td></tr>  
+</table>
+
+
+<table>
+<thead>
+<tr>
+<th></th>
+<th></th>
+<th>51子系列</th>
+<th>52子系列</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>片内数据存储器</td>
+<td>128B</td>
+<td>256B</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>专用寄存器区</td>
+<td>128B</td>
+<td>128B</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>片内程序存储器</td>
+<td>4K</td>
+<td>8K</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h1 id="程序存储区"><a href="#程序存储区" class="headerlink" title="程序存储区"></a>程序存储区</h1><p>存放编制好的程序或表格数据，只能读取  </p>
+<ol>
+<li>内外程序存储器的地址空间是统一的，共64K<br><img src="http://ohe854y38.bkt.clouddn.com/%E5%A4%96%E9%83%A8%E7%A8%8B%E5%BA%8F%E5%AD%98%E5%82%A8%E5%8C%BA.png" alt>  </li>
+</ol>
+<ul>
+<li>若EA=1，则从内部ROM开始执行，超出内部ROM的容量时，再从外部ROM的1000H单元接着执行。（51子系列）  </li>
+<li>若EA=0，则直接从外部ROM取指执行  </li>
+</ul>
+<ol start="2">
+<li>对程序存储器访问的寻址方式  </li>
+</ol>
+<ul>
+<li>立即数寻址  </li>
+<li>基址+变址寻址  </li>
+</ul>
+<ol start="3">
+<li>程序存储器中的特殊单元  </li>
+</ol>
+
+
+<table>
+<tr><td> 0000H </td><td>取指执行程序的起始单元，一般在该单元放一条绝对跳转指令，用户设计的主程序从跳转地址开始安放</td></tr>
+<tr><td> 0003H </td><td>外部中断0中断服务程序的入口地址  </td></tr>
+<tr><td> 000BH </td><td>定时器0溢出中断中断服务程序的入口地址 </td></tr> 
+<tr><td> 0013H </td><td>外部中断1中断服务程序的入口地址  </td></tr>
+<tr><td> 001BH </td><td>定时器1溢出中断中断服务程序的入口地址</td></tr>  
+<tr><td> 0023H </td><td>串行口中断服务程序的入口地址  </td></tr>
+<tr><td> 002BH </td><td>定时器2溢出中断中断服务程序的入口地址  </td></tr>
+</table>
+
+
+<h1 id="片内数据存储器"><a href="#片内数据存储器" class="headerlink" title="片内数据存储器"></a>片内数据存储器</h1><ol>
+<li>片内数据存储区的编址  </li>
+</ol>
+<ul>
+<li><p>51子系列:低128字节RAM与SFR块相连<br><img src="http://ohe854y38.bkt.clouddn.com/51%E7%89%87%E5%86%85%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%8C%BA.png" alt>  </p>
+</li>
+<li><p>52子系列:高128字节RAM与SFR块逻辑地址重合<br><img src="http://ohe854y38.bkt.clouddn.com/52%E7%89%87%E5%86%85%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%8C%BA.png" alt>  </p>
+<ul>
+<li>高128RAM：寄存器间接寻址  </li>
+<li>SFR：直接寻址  </li>
+</ul>
+</li>
+</ul>
+<ol start="2">
+<li>低128字节RAM的配置  </li>
+</ol>
+<p><img src="http://ohe854y38.bkt.clouddn.com/%E4%BD%8E128%E5%AD%97%E8%8A%82RAM%E7%9A%84%E9%85%8D%E7%BD%AE.png" alt>  </p>
+<ul>
+<li><p>通用寄存器区<br>4组8个8位寄存器R0~R7<br>由PSW中的RS1,RS0选择当前工作区</p>
+</li>
+<li><p>位寻址空间<br>20H~2FH字节可以位寻址  </p>
+</li>
+<li><p>字节寻址空间<br>30H~7FH字节(80B)  </p>
+</li>
+<li><p>堆栈<br>堆栈设置在内部数据存储区<br>堆栈的位置不固定，可以通过一个专用寄存器SP（栈指针）来设定栈顶的位置<br>数据入栈时，栈指针递增<br>堆栈深度最大为128B  </p>
+</li>
+</ul>
+<h1 id="专用寄存器"><a href="#专用寄存器" class="headerlink" title="专用寄存器"></a>专用寄存器</h1><table>
+<thead>
+<tr>
+<th></th>
+<th>标识符</th>
+<th>名    称</th>
+<th>地址</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td>*ACC</td>
+<td>累加器</td>
+<td>E0H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>*B</td>
+<td>B寄存器</td>
+<td>F0H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>*PSW</td>
+<td>程序状态字</td>
+<td>D0H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>SP</td>
+<td>堆栈指针</td>
+<td>81H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>DPTR</td>
+<td>数据指针(DPH和DPL)</td>
+<td>82H,83H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>*P0</td>
+<td>口0</td>
+<td>80H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>*P1</td>
+<td>口1</td>
+<td>90H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>*P2</td>
+<td>口2</td>
+<td>A0H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>*P3</td>
+<td>口3</td>
+<td>B0H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>*IP</td>
+<td>中断优先级寄存器</td>
+<td>B8H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>*IE</td>
+<td>中断控制寄存器</td>
+<td>A8H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>TMOD</td>
+<td>定时器方式寄存器</td>
+<td>89H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>*TCON</td>
+<td>定时器控制寄存器</td>
+<td>88H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>TH0</td>
+<td>计数器0高位</td>
+<td>8CH</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>TL0</td>
+<td>计数器0低位</td>
+<td>8AH</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>TH1</td>
+<td>计数器1高位</td>
+<td>8DH</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>TL1</td>
+<td>计数器1低位</td>
+<td>8BH</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>*SCON</td>
+<td>串行口控制</td>
+<td>98H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>SBUF</td>
+<td>串行数据缓冲器</td>
+<td>99H</td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td>PCON</td>
+<td>电源控制</td>
+<td>97H</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>51子系列有19个专用寄存器</li>
+<li>52子系列有22个专用寄存器</li>
+<li>双字节寄存器6个，其中PC在物理上独立，所以专用寄存器在SFR区占26字节</li>
+<li>*表示 可以位寻址的寄存器   （其地址可被8整除）</li>
+</ul>
+<ol>
+<li><p>程序计数器PC<br>用于存放下一条要执行指令的地址<br>是一个16位专用寄存器，寻址范围为0~65535  （64K）<br>PC在物理上是独立的，不属于内部数据存储器的SFR</p>
+</li>
+<li><p>累加器A（Acc）<br>最常用的一个专用寄存器<br>大部分单操作数指令的操作数取自累加器<br>很多双操作数指令的一个操作数取自累加器<br>加、减、乘、除运算指令的结果都存放在A或AB中  </p>
+</li>
+<li><p>B寄存器<br>在乘、除法指令中用到B寄存器<br>乘法：两个操作数分别取自A和B，结果存放于AB中<br>除法：被除数在A中、除数在B中，商在A、余数在B中<br>其它指令中，B可作为RAM的一个单元用</p>
+</li>
+<li><p>程序状态字寄存器PSW  —  <strong>保存指令执行状态</strong>  </p>
+</li>
+</ol>
+<table>
+<thead>
+<tr>
+<th>D7</th>
+<th>D6</th>
+<th>D5</th>
+<th>D4</th>
+<th>D3</th>
+<th>D2</th>
+<th>D1</th>
+<th>D0</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Cy</td>
+<td>AC</td>
+<td>F0</td>
+<td>RS1</td>
+<td>RS0</td>
+<td>OV</td>
+<td>-</td>
+<td>P</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Cy：进位标志<br>保存算术运算的进或借位<br>位操作的累加器  </li>
+<li>AC：辅助进位标志<br>加法或减法运算产生从D3向D4进位或借位时，AC=1<br>常用于十进制调整指令  </li>
+<li>F0：标志0，用户定义的一个状态标记  </li>
+<li>RS1, RS0：通用寄存器组选择<br>  0      0       寄存器组0(00H~07H）<br>  0      1       寄存器组1(08H~0FH）<br>  1      0       寄存器组2(10H~17H）<br>  1      1       寄存器组3(18H~1FH）  </li>
+<li>OV：溢出标志位<br>  当执行算术指令时，由硬件置位或清除，以指示溢出状态。  <ul>
+<li>执行加法操作时，以$C’_i$表示第i位向第i+1位有进位，则 $$OV=C’_6 ⊕ C’_7 $$<br>溢出标志可以判断带符号数相加时，和数是否溢出，即大于127或小于-128   </li>
+<li>对于减法操作，以$C’_i$表示第i位向第i+1位有借位，则$$OV= C’_6 ⊕ C’_7$$</li>
+<li>对于乘法操作，若两数乘积大于255时，则OV=1  </li>
+<li>对于除法，当除数为0时，OV=1  </li>
+</ul>
+</li>
+<li>P：奇偶标志位<br> 每个机器周期根据累加器A中的内容的奇偶性由硬件置/复位<br> A中1的个数为奇P=1，否则为P=0<br> 该位对串行通讯的数据传输有重要意义，可以借助该位进行奇偶校验  </li>
+<li><p>栈指针SP<br>  SP为8位寄存器，指示栈顶位置<br>  系统复位后，SP初始值为07H，最好将其设为1FH或更大  </p>
+<ul>
+<li>进栈：SP+1，再压栈  </li>
+<li>出栈：先出栈，再SP-1<br>改变SP的途径  <ul>
+<li>软件直接改变  </li>
+<li>执行PUSH或POP指令  </li>
+<li>子程序调用、返回  </li>
+<li>中断响应与返回  </li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>数据指针DPTR<br>  DPTR是16位寄存器，也可作为两个独立的8位寄存器DPL、DPH使用<br>  主要用于保存16位地址，可以寻址64K地址空间<br>  当访问外部数据存储器时，可作为<strong>间址寄存器</strong><br>  <code>MOVX     A ,      @DPTR</code><br>  <code>MOVX     @DPTR ,      A</code><br>  当访问程序存储器时，可作为<strong>基址寄存器</strong><br>  <code>MOVC   A ,     @A+DPTR</code>  </p>
+</li>
+<li>串行口数据缓冲器SBUF<br>  用于存放欲发送或已接受的数据<br>  包含两个独立的寄存器：发送缓冲器、接收缓冲器  </li>
+<li>定时器/计数器<br>  T0、T1、T2为三个16位寄存器，各由2个8位寄存器组成：TH0、TL0、TH1、TL1、TH2、TL2<br>  系统可以对TH0、TL0、TH1、TL1、TH2、TL2进行寻址<br>  不能把T0、T1、T2作为16位寄存器使用  </li>
+<li>端口P0~P3<br>  由端口硬件结构，P0~P3都有相应的锁存器，因而P0~P3可作为专用寄存器使用<br>  由于可以把P0~P3当作寄存器使用，因而不再设口操作指令，都用MOV</li>
+<li>其它常用寄存器<br>  IP：中断优先级寄存器<br>  IE：允许中断寄存器<br>  TMOD：定时器模式选择寄存器<br>  TCON：定时器控制寄存器<br>  SCON：串行口控制寄存器<br>  PCON：电源控制寄存器  </li>
+</ul>
+<h1 id="外部数据存储器"><a href="#外部数据存储器" class="headerlink" title="外部数据存储器"></a>外部数据存储器</h1><p>寻址空间：64K<br>采用间接寻址方式访问，间址寄存器为R0、R1和DPTR  </p>
+<h1 id="布尔处理机"><a href="#布尔处理机" class="headerlink" title="布尔处理机"></a>布尔处理机</h1>
+<a href="https://m.do.co/c/4a945365cc4d" target="_blank" rel="noopener"><img src="http://bivori.com/images/proms/digital-ocean-cupon-code.png" width="728" height="90"></a>
+<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
+
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/单片机原理/" rel="tag"># 单片机原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/29/单片机系统结构-一-——引脚描述/" rel="next" title="单片机系统结构(一)——引脚描述">
+                <i class="fa fa-chevron-left"></i> 单片机系统结构(一)——引脚描述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/03/29/Linux查看CPU温度/" rel="prev" title="Linux查看CPU温度">
+                Linux查看CPU温度 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/pic/donkey.jpg" alt="Avvount">
+            
+              <p class="site-author-name" itemprop="name">Avvount</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/avvount" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:church357159@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序存储区"><span class="nav-number">1.</span> <span class="nav-text">程序存储区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#片内数据存储器"><span class="nav-number">2.</span> <span class="nav-text">片内数据存储器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#专用寄存器"><span class="nav-number">3.</span> <span class="nav-text">专用寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外部数据存储器"><span class="nav-number">4.</span> <span class="nav-text">外部数据存储器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布尔处理机"><span class="nav-number">5.</span> <span class="nav-text">布尔处理机</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Avvount</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+</script>
+
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Queue(function() {
+      var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+    });
+</script>
+<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+    
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

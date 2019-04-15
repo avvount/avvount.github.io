@@ -1,0 +1,1161 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="现代控制理论特点 描述对象的方法  状态空间模型，适用于多输入多输出、时变、非线性系统。(MIMO system;Time-varying system; Nonlinear system) 处理方法  应用现代数学方法，以计算机作为工具，系统化的分析和综合方法。 实现多目标控制   预测控制、鲁棒控制、模糊控制等先进控制    课程主要内容 状态空间模型 (State space model)">
+<meta name="keywords" content="现代控制理论">
+<meta property="og:type" content="article">
+<meta property="og:title" content="现代控制理论概述">
+<meta property="og:url" content="https://avvount.github.io/2018/03/31/现代控制理论概述/index.html">
+<meta property="og:site_name" content="Avvount&#39;s Blog">
+<meta property="og:description" content="现代控制理论特点 描述对象的方法  状态空间模型，适用于多输入多输出、时变、非线性系统。(MIMO system;Time-varying system; Nonlinear system) 处理方法  应用现代数学方法，以计算机作为工具，系统化的分析和综合方法。 实现多目标控制   预测控制、鲁棒控制、模糊控制等先进控制    课程主要内容 状态空间模型 (State space model)">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://bivori.com/images/proms/digital-ocean-cupon-code.png">
+<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
+<meta property="og:updated_time" content="2018-05-08T06:28:49.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="现代控制理论概述">
+<meta name="twitter:description" content="现代控制理论特点 描述对象的方法  状态空间模型，适用于多输入多输出、时变、非线性系统。(MIMO system;Time-varying system; Nonlinear system) 处理方法  应用现代数学方法，以计算机作为工具，系统化的分析和综合方法。 实现多目标控制   预测控制、鲁棒控制、模糊控制等先进控制    课程主要内容 状态空间模型 (State space model)">
+<meta name="twitter:image" content="http://bivori.com/images/proms/digital-ocean-cupon-code.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://avvount.github.io/2018/03/31/现代控制理论概述/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>现代控制理论概述 | Avvount's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Avvount's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/03/31/现代控制理论概述/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Avvount">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/pic/donkey.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Avvount's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">现代控制理论概述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-31T15:09:04+08:00">2018-03-31</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="现代控制理论特点"><a href="#现代控制理论特点" class="headerlink" title="现代控制理论特点"></a>现代控制理论特点</h1><ul>
+<li>描述对象的方法<br>  状态空间模型，适用于多输入多输出、时变、非线性系统。(MIMO system;Time-varying system; Nonlinear system)</li>
+<li>处理方法<br>  应用现代数学方法，以计算机作为工具，系统化的分析和综合方法。</li>
+<li>实现多目标控制  </li>
+<li>预测控制、鲁棒控制、模糊控制等先进控制  </li>
+</ul>
+<h1 id="课程主要内容"><a href="#课程主要内容" class="headerlink" title="课程主要内容"></a>课程主要内容</h1><ul>
+<li>状态空间模型 (State space model)  </li>
+<li>基于状态空间模型的系统分析(Analysis)<br>  运动分析、能控性、能观性、稳定性 (Motion analysis   Controllability   Observability   Stability)  </li>
+<li>基于状态空间模型的系统综合(Synthesis)<br>  状态反馈、输出反馈、极点配置、观测器设计 (State feedback   Output feedback   Pole placement   Observer design)</li>
+</ul>
+<h1 id="控制系统的状态空间描述"><a href="#控制系统的状态空间描述" class="headerlink" title="控制系统的状态空间描述"></a>控制系统的状态空间描述</h1><h2 id="引言"><a href="#引言" class="headerlink" title="引言"></a>引言</h2><h2 id="状态空间描述"><a href="#状态空间描述" class="headerlink" title="状态空间描述"></a>状态空间描述</h2><h2 id="状态空间描述的状态变量图"><a href="#状态空间描述的状态变量图" class="headerlink" title="状态空间描述的状态变量图"></a>状态空间描述的状态变量图</h2><h2 id="状态空间描述的建立"><a href="#状态空间描述的建立" class="headerlink" title="状态空间描述的建立"></a>状态空间描述的建立</h2><h2 id="化输入-输出描述为状态空间描述"><a href="#化输入-输出描述为状态空间描述" class="headerlink" title="化输入-输出描述为状态空间描述"></a>化输入-输出描述为状态空间描述</h2><h2 id="离散系统状态空间描述的建立"><a href="#离散系统状态空间描述的建立" class="headerlink" title="离散系统状态空间描述的建立"></a>离散系统状态空间描述的建立</h2><h2 id="线性变换"><a href="#线性变换" class="headerlink" title="线性变换"></a>线性变换</h2><h2 id="由状态空间描述求传递函数阵"><a href="#由状态空间描述求传递函数阵" class="headerlink" title="由状态空间描述求传递函数阵"></a>由状态空间描述求传递函数阵</h2><h1 id="线性系统的状态空间运动分析"><a href="#线性系统的状态空间运动分析" class="headerlink" title="线性系统的状态空间运动分析"></a>线性系统的状态空间运动分析</h1><h2 id="线性定常系统的齐次解"><a href="#线性定常系统的齐次解" class="headerlink" title="线性定常系统的齐次解"></a>线性定常系统的齐次解</h2><h2 id="矩阵指数函数"><a href="#矩阵指数函数" class="headerlink" title="矩阵指数函数"></a>矩阵指数函数</h2><h2 id="线性定常系统的非齐次解"><a href="#线性定常系统的非齐次解" class="headerlink" title="线性定常系统的非齐次解"></a>线性定常系统的非齐次解</h2><h2 id="线性定常系统的状态转移矩阵"><a href="#线性定常系统的状态转移矩阵" class="headerlink" title="线性定常系统的状态转移矩阵"></a>线性定常系统的状态转移矩阵</h2><h2 id="线性时变系统的运动"><a href="#线性时变系统的运动" class="headerlink" title="线性时变系统的运动"></a>线性时变系统的运动</h2><h2 id="线性连续系统的时间离散化"><a href="#线性连续系统的时间离散化" class="headerlink" title="线性连续系统的时间离散化"></a>线性连续系统的时间离散化</h2><h2 id="线性离散系统的运动分析"><a href="#线性离散系统的运动分析" class="headerlink" title="线性离散系统的运动分析"></a>线性离散系统的运动分析</h2><h1 id="线性控制系统的能控性和能观测性"><a href="#线性控制系统的能控性和能观测性" class="headerlink" title="线性控制系统的能控性和能观测性"></a>线性控制系统的能控性和能观测性</h1><h2 id="能控性和能观测性的概念"><a href="#能控性和能观测性的概念" class="headerlink" title="能控性和能观测性的概念"></a>能控性和能观测性的概念</h2><h2 id="连续时间线性定常系统的能控性"><a href="#连续时间线性定常系统的能控性" class="headerlink" title="连续时间线性定常系统的能控性"></a>连续时间线性定常系统的能控性</h2><h2 id="连续时间线性定常系统的能观测性"><a href="#连续时间线性定常系统的能观测性" class="headerlink" title="连续时间线性定常系统的能观测性"></a>连续时间线性定常系统的能观测性</h2><h2 id="离散时间线性定常系统的能控性和能观测性"><a href="#离散时间线性定常系统的能控性和能观测性" class="headerlink" title="离散时间线性定常系统的能控性和能观测性"></a>离散时间线性定常系统的能控性和能观测性</h2><h2 id="连续时间线性时变系统的能控性与能观测性"><a href="#连续时间线性时变系统的能控性与能观测性" class="headerlink" title="连续时间线性时变系统的能控性与能观测性"></a>连续时间线性时变系统的能控性与能观测性</h2><h2 id="线性系统能控性与能观测性的对偶关系"><a href="#线性系统能控性与能观测性的对偶关系" class="headerlink" title="线性系统能控性与能观测性的对偶关系"></a>线性系统能控性与能观测性的对偶关系</h2><h2 id="能控标准形和能观测标准形"><a href="#能控标准形和能观测标准形" class="headerlink" title="能控标准形和能观测标准形"></a>能控标准形和能观测标准形</h2><h2 id="传递函数中零极点对消与状态能控和能观测之间的关系"><a href="#传递函数中零极点对消与状态能控和能观测之间的关系" class="headerlink" title="传递函数中零极点对消与状态能控和能观测之间的关系"></a>传递函数中零极点对消与状态能控和能观测之间的关系</h2><h2 id="线性系统结构按能控性、能观测性的分解"><a href="#线性系统结构按能控性、能观测性的分解" class="headerlink" title="线性系统结构按能控性、能观测性的分解"></a>线性系统结构按能控性、能观测性的分解</h2><h1 id="控制系统的稳定性—Lyapunov第二方法"><a href="#控制系统的稳定性—Lyapunov第二方法" class="headerlink" title="控制系统的稳定性—Lyapunov第二方法"></a>控制系统的稳定性—Lyapunov第二方法</h1><h2 id="关于稳定性的几个定义"><a href="#关于稳定性的几个定义" class="headerlink" title="关于稳定性的几个定义"></a>关于稳定性的几个定义</h2><h2 id="李亚普诺夫第一方法"><a href="#李亚普诺夫第一方法" class="headerlink" title="李亚普诺夫第一方法"></a>李亚普诺夫第一方法</h2><h2 id="李亚普诺夫第二方法"><a href="#李亚普诺夫第二方法" class="headerlink" title="李亚普诺夫第二方法"></a>李亚普诺夫第二方法</h2><h2 id="非线性系统的Lyapunov稳定性分析"><a href="#非线性系统的Lyapunov稳定性分析" class="headerlink" title="非线性系统的Lyapunov稳定性分析"></a>非线性系统的Lyapunov稳定性分析</h2><h2 id="线性定常系统的Lyapunov稳定性分析"><a href="#线性定常系统的Lyapunov稳定性分析" class="headerlink" title="线性定常系统的Lyapunov稳定性分析"></a>线性定常系统的Lyapunov稳定性分析</h2><h2 id="Lyapunov第二方法在线性系统设计中的应用"><a href="#Lyapunov第二方法在线性系统设计中的应用" class="headerlink" title="Lyapunov第二方法在线性系统设计中的应用"></a>Lyapunov第二方法在线性系统设计中的应用</h2><h1 id="线性定常系统的综合"><a href="#线性定常系统的综合" class="headerlink" title="线性定常系统的综合"></a>线性定常系统的综合</h1><h2 id="状态反馈与极点配置"><a href="#状态反馈与极点配置" class="headerlink" title="状态反馈与极点配置"></a>状态反馈与极点配置</h2><h2 id="输出反馈与极点配置"><a href="#输出反馈与极点配置" class="headerlink" title="输出反馈与极点配置"></a>输出反馈与极点配置</h2><h2 id="控制系统的镇定问题"><a href="#控制系统的镇定问题" class="headerlink" title="控制系统的镇定问题"></a>控制系统的镇定问题</h2><h2 id="状态重构与状态观测器的设计"><a href="#状态重构与状态观测器的设计" class="headerlink" title="状态重构与状态观测器的设计"></a>状态重构与状态观测器的设计</h2><h2 id="多变量系统的解耦控制"><a href="#多变量系统的解耦控制" class="headerlink" title="多变量系统的解耦控制"></a>多变量系统的解耦控制</h2>
+<a href="https://m.do.co/c/4a945365cc4d" target="_blank" rel="noopener"><img src="http://bivori.com/images/proms/digital-ocean-cupon-code.png" width="728" height="90"></a><a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
+
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/现代控制理论/" rel="tag"># 现代控制理论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/03/29/Linux查看CPU温度/" rel="next" title="Linux查看CPU温度">
+                <i class="fa fa-chevron-left"></i> Linux查看CPU温度
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/04/05/Notepad-与gcc搭建简易C-C-开发环境/" rel="prev" title="Notepad++与gcc搭建简易C&C++开发环境">
+                Notepad++与gcc搭建简易C&C++开发环境 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/pic/donkey.jpg" alt="Avvount">
+            
+              <p class="site-author-name" itemprop="name">Avvount</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/avvount" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:church357159@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#现代控制理论特点"><span class="nav-number">1.</span> <span class="nav-text">现代控制理论特点</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#课程主要内容"><span class="nav-number">2.</span> <span class="nav-text">课程主要内容</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#控制系统的状态空间描述"><span class="nav-number">3.</span> <span class="nav-text">控制系统的状态空间描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#引言"><span class="nav-number">3.1.</span> <span class="nav-text">引言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态空间描述"><span class="nav-number">3.2.</span> <span class="nav-text">状态空间描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态空间描述的状态变量图"><span class="nav-number">3.3.</span> <span class="nav-text">状态空间描述的状态变量图</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态空间描述的建立"><span class="nav-number">3.4.</span> <span class="nav-text">状态空间描述的建立</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#化输入-输出描述为状态空间描述"><span class="nav-number">3.5.</span> <span class="nav-text">化输入-输出描述为状态空间描述</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散系统状态空间描述的建立"><span class="nav-number">3.6.</span> <span class="nav-text">离散系统状态空间描述的建立</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性变换"><span class="nav-number">3.7.</span> <span class="nav-text">线性变换</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#由状态空间描述求传递函数阵"><span class="nav-number">3.8.</span> <span class="nav-text">由状态空间描述求传递函数阵</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性系统的状态空间运动分析"><span class="nav-number">4.</span> <span class="nav-text">线性系统的状态空间运动分析</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#线性定常系统的齐次解"><span class="nav-number">4.1.</span> <span class="nav-text">线性定常系统的齐次解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#矩阵指数函数"><span class="nav-number">4.2.</span> <span class="nav-text">矩阵指数函数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性定常系统的非齐次解"><span class="nav-number">4.3.</span> <span class="nav-text">线性定常系统的非齐次解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性定常系统的状态转移矩阵"><span class="nav-number">4.4.</span> <span class="nav-text">线性定常系统的状态转移矩阵</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性时变系统的运动"><span class="nav-number">4.5.</span> <span class="nav-text">线性时变系统的运动</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性连续系统的时间离散化"><span class="nav-number">4.6.</span> <span class="nav-text">线性连续系统的时间离散化</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性离散系统的运动分析"><span class="nav-number">4.7.</span> <span class="nav-text">线性离散系统的运动分析</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性控制系统的能控性和能观测性"><span class="nav-number">5.</span> <span class="nav-text">线性控制系统的能控性和能观测性</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#能控性和能观测性的概念"><span class="nav-number">5.1.</span> <span class="nav-text">能控性和能观测性的概念</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连续时间线性定常系统的能控性"><span class="nav-number">5.2.</span> <span class="nav-text">连续时间线性定常系统的能控性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连续时间线性定常系统的能观测性"><span class="nav-number">5.3.</span> <span class="nav-text">连续时间线性定常系统的能观测性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#离散时间线性定常系统的能控性和能观测性"><span class="nav-number">5.4.</span> <span class="nav-text">离散时间线性定常系统的能控性和能观测性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#连续时间线性时变系统的能控性与能观测性"><span class="nav-number">5.5.</span> <span class="nav-text">连续时间线性时变系统的能控性与能观测性</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性系统能控性与能观测性的对偶关系"><span class="nav-number">5.6.</span> <span class="nav-text">线性系统能控性与能观测性的对偶关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#能控标准形和能观测标准形"><span class="nav-number">5.7.</span> <span class="nav-text">能控标准形和能观测标准形</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#传递函数中零极点对消与状态能控和能观测之间的关系"><span class="nav-number">5.8.</span> <span class="nav-text">传递函数中零极点对消与状态能控和能观测之间的关系</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性系统结构按能控性、能观测性的分解"><span class="nav-number">5.9.</span> <span class="nav-text">线性系统结构按能控性、能观测性的分解</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#控制系统的稳定性—Lyapunov第二方法"><span class="nav-number">6.</span> <span class="nav-text">控制系统的稳定性—Lyapunov第二方法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#关于稳定性的几个定义"><span class="nav-number">6.1.</span> <span class="nav-text">关于稳定性的几个定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#李亚普诺夫第一方法"><span class="nav-number">6.2.</span> <span class="nav-text">李亚普诺夫第一方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#李亚普诺夫第二方法"><span class="nav-number">6.3.</span> <span class="nav-text">李亚普诺夫第二方法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#非线性系统的Lyapunov稳定性分析"><span class="nav-number">6.4.</span> <span class="nav-text">非线性系统的Lyapunov稳定性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性定常系统的Lyapunov稳定性分析"><span class="nav-number">6.5.</span> <span class="nav-text">线性定常系统的Lyapunov稳定性分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Lyapunov第二方法在线性系统设计中的应用"><span class="nav-number">6.6.</span> <span class="nav-text">Lyapunov第二方法在线性系统设计中的应用</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#线性定常系统的综合"><span class="nav-number">7.</span> <span class="nav-text">线性定常系统的综合</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#状态反馈与极点配置"><span class="nav-number">7.1.</span> <span class="nav-text">状态反馈与极点配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#输出反馈与极点配置"><span class="nav-number">7.2.</span> <span class="nav-text">输出反馈与极点配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制系统的镇定问题"><span class="nav-number">7.3.</span> <span class="nav-text">控制系统的镇定问题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态重构与状态观测器的设计"><span class="nav-number">7.4.</span> <span class="nav-text">状态重构与状态观测器的设计</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#多变量系统的解耦控制"><span class="nav-number">7.5.</span> <span class="nav-text">多变量系统的解耦控制</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Avvount</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

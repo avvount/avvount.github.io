@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-CN">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=6.1.0" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.1.0">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.1.0">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.1.0" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '6.1.0',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="计算机与外部交换信息称为通信，包括  并行通信 — 计算机数据各位同时传送   串行通信 — 数据逐位传送    串行通信的特点 串行通信只要一根数据线   传输速度较慢   接口电路复杂    串行通信的应用 只能接收串行信号的设备或只能串行输出设备 长距离传送  串行通信类型串行通信有同步和异步两种通信类型   异步串行通信在异步通信中，信息“1”称为传号（MARK），信息“0”称为空号（SP">
+<meta name="keywords" content="计算机原理">
+<meta property="og:type" content="article">
+<meta property="og:title" content="串行通信">
+<meta property="og:url" content="https://avvount.github.io/2018/01/05/串行通信/index.html">
+<meta property="og:site_name" content="Avvount&#39;s Blog">
+<meta property="og:description" content="计算机与外部交换信息称为通信，包括  并行通信 — 计算机数据各位同时传送   串行通信 — 数据逐位传送    串行通信的特点 串行通信只要一根数据线   传输速度较慢   接口电路复杂    串行通信的应用 只能接收串行信号的设备或只能串行输出设备 长距离传送  串行通信类型串行通信有同步和异步两种通信类型   异步串行通信在异步通信中，信息“1”称为传号（MARK），信息“0”称为空号（SP">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E4%B8%B2%E8%A1%8C%E9%80%9A%E4%BF%A1.png">
+<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1%E6%A0%BC%E5%BC%8F.png">
+<meta property="og:image" content="http://bivori.com/images/proms/digital-ocean-cupon-code.png">
+<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
+<meta property="og:updated_time" content="2018-05-01T00:51:30.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="串行通信">
+<meta name="twitter:description" content="计算机与外部交换信息称为通信，包括  并行通信 — 计算机数据各位同时传送   串行通信 — 数据逐位传送    串行通信的特点 串行通信只要一根数据线   传输速度较慢   接口电路复杂    串行通信的应用 只能接收串行信号的设备或只能串行输出设备 长距离传送  串行通信类型串行通信有同步和异步两种通信类型   异步串行通信在异步通信中，信息“1”称为传号（MARK），信息“0”称为空号（SP">
+<meta name="twitter:image" content="http://ohe854y38.bkt.clouddn.com/%E4%B8%B2%E8%A1%8C%E9%80%9A%E4%BF%A1.png">
+
+
+
+
+
+
+  <link rel="canonical" href="https://avvount.github.io/2018/01/05/串行通信/">
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>串行通信 | Avvount's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"> 
+
+<div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Avvount's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+          
+  <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签</a>
+</li>
+
+      
+        
+        
+          
+  <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档</a>
+</li>
+
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+    
+
+    
+    
+      
+      
+    
+      
+      
+    
+      
+      
+    
+    
+
+  
+
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+  
+
+
+
+ </div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/01/05/串行通信/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Avvount">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/pic/donkey.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Avvount's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">串行通信</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T16:19:40+08:00">2018-01-05</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>计算机与外部交换信息称为通信，包括</p>
+<ul>
+<li>并行通信 — 计算机数据各位同时传送  </li>
+<li>串行通信 — 数据逐位传送  </li>
+</ul>
+<h2 id="串行通信的特点"><a href="#串行通信的特点" class="headerlink" title="串行通信的特点"></a>串行通信的特点</h2><ul>
+<li>串行通信只要一根数据线  </li>
+<li>传输速度较慢  </li>
+<li>接口电路复杂  </li>
+</ul>
+<h2 id="串行通信的应用"><a href="#串行通信的应用" class="headerlink" title="串行通信的应用"></a>串行通信的应用</h2><ul>
+<li>只能接收串行信号的设备或只能串行输出设备</li>
+<li>长距离传送</li>
+</ul>
+<h2 id="串行通信类型"><a href="#串行通信类型" class="headerlink" title="串行通信类型"></a>串行通信类型</h2><p>串行通信有同步和异步两种通信类型  </p>
+<h3 id="异步串行通信"><a href="#异步串行通信" class="headerlink" title="异步串行通信"></a>异步串行通信</h3><p><img src="http://ohe854y38.bkt.clouddn.com/%E4%B8%B2%E8%A1%8C%E9%80%9A%E4%BF%A1.png" alt="异步串行通信格式"><br>在异步通信中，信息“1”称为传号（MARK），信息“0”称为空号（SPACE）。</p>
+<h4 id="异步通信格式说明"><a href="#异步通信格式说明" class="headerlink" title="异步通信格式说明"></a>异步通信格式说明</h4><ul>
+<li>无传输：发送方连续发送传号  </li>
+<li>起始传输：发送方第一次将传号变成空号并持续一位（起始位），接收方以此下降沿与发送方同步</li>
+<li>数据传输：起始位之后的5~8位为数据位，低位在前。传输位数由双方约定</li>
+<li>奇偶传输：有的系统将最后一位数据位作为奇偶校验以增加系统的可靠性</li>
+<li>停止传输：最后发送停止位，停止位状态恒为“1”，长度1，1.5，2位，可以选择。</li>
+</ul>
+<h4 id="异步串行通信的数据校验错"><a href="#异步串行通信的数据校验错" class="headerlink" title="异步串行通信的数据校验错"></a>异步串行通信的数据校验错</h4><ul>
+<li>奇偶错：由奇偶校验查出的错误</li>
+<li>超越错：接收端收到一个字符未处理，又收到第二个字符  </li>
+<li>帧格式错：未收到有效停止位。</li>
+</ul>
+<h4 id="异步串行通信的特点"><a href="#异步串行通信的特点" class="headerlink" title="异步串行通信的特点"></a>异步串行通信的特点</h4><ul>
+<li>以字符为单位发送，字符之间的间隔不受限制</li>
+<li>由起始位和停止位使收发双方同步</li>
+<li>通信的精确格式可以由收发双方选择。</li>
+</ul>
+<h3 id="同步通信"><a href="#同步通信" class="headerlink" title="同步通信"></a>同步通信</h3><p>同步通信是由一个起始同步符和若干个数据位以及一个检验字段组成，传输的数据可以以字符为单位，也可以以二进制位为单位，因此同步传输也称为<strong>数据流传输</strong><br><img src="http://ohe854y38.bkt.clouddn.com/%E5%90%8C%E6%AD%A5%E9%80%9A%E4%BF%A1%E6%A0%BC%E5%BC%8F.png" alt="同步通信格式">  </p>
+<h4 id="同步通信的特点"><a href="#同步通信的特点" class="headerlink" title="同步通信的特点"></a>同步通信的特点</h4><p>同步通信以同步符作为一帧数据的起始标志，因此在传输的数据中不能包含有同步符。在实际应用中采用自动加“0”技术避免数据中出现同步符。<br>同步通信中一般数据位可达上千位，因此传输效率较高，传输速度较快。<br>同步通信中传输位数较多，因此要求收发时钟严格同步。传输中采用“曼彻斯特”编码，数据中隐含时钟信息  </p>
+<h2 id="串行通信的传输方式"><a href="#串行通信的传输方式" class="headerlink" title="串行通信的传输方式"></a>串行通信的传输方式</h2><h3 id="信号传输速率—波特率（Baud-Rate）"><a href="#信号传输速率—波特率（Baud-Rate）" class="headerlink" title="信号传输速率—波特率（Baud Rate）"></a>信号传输速率—波特率（Baud Rate）</h3><p>波特率是每秒传输的<strong>二进制位数</strong><br>常用的波特率有：110,300，600，900，1200，2400，4800，9600，19200，2400，4800，9600，19200，38400，57600，115200</p>
+<h3 id="线路传输方式"><a href="#线路传输方式" class="headerlink" title="线路传输方式"></a>线路传输方式</h3><ul>
+<li>单工方式：数据只能按一个固定方向传输。如：寻呼系统</li>
+<li>半双工方式：可以2个方向传送，但不能同时传送。如：电话</li>
+<li>全双工方式：双方可以同时传送</li>
+</ul>
+<h3 id="信号传输方式"><a href="#信号传输方式" class="headerlink" title="信号传输方式"></a>信号传输方式</h3><ol>
+<li><p>基波传输方式<br>基波传输又称基带传输，按信号原样进行直流传输。这种方式适合于近距离慢速传输。  </p>
+</li>
+<li><p>模拟载波传输方式<br>使用调制解调器将数字信号转换成模拟信号进行传输。<br>调制方式：  </p>
+<ul>
+<li>移幅键控（ASK）由两种幅度正弦波表示“0”和“1”</li>
+<li>移频键控（FSK）由两种频率正弦波表示“0”和“1”</li>
+<li>移相键控（PSK）由正弦波两种相位表示“0”和“1”</li>
+</ul>
+</li>
+</ol>
+<h2 id="串行通信的校验方法"><a href="#串行通信的校验方法" class="headerlink" title="串行通信的校验方法"></a>串行通信的校验方法</h2><h3 id="奇偶校验（Parity-Check）"><a href="#奇偶校验（Parity-Check）" class="headerlink" title="奇偶校验（Parity Check）"></a>奇偶校验（Parity Check）</h3><p>发送时每个字符的最高位之后附加一个奇偶校验位，以保证整个字符（包括奇偶校验位）为“1”的位数为奇数（奇校验）或为偶数（偶校验）<br>接收时按照发送方所确定的同样的奇偶性对收到的字符进行校验  </p>
+<h3 id="循环冗余校验CRC（Cyclic-Redundancy-Check）"><a href="#循环冗余校验CRC（Cyclic-Redundancy-Check）" class="headerlink" title="循环冗余校验CRC（Cyclic Redundancy Check）"></a>循环冗余校验CRC（Cyclic Redundancy Check）</h3><p>CRC校验是用一个固定数去除信息码得出余数，将此余数附加在原信息之后，成为CRC字符<br>接收方用同样的数去除含有CRC字符的信息，若接收无错误，则结果为0。</p>
+<h2 id="串行接口RS-232C标准"><a href="#串行接口RS-232C标准" class="headerlink" title="串行接口RS-232C标准"></a>串行接口RS-232C标准</h2><p>EIA RS-232C是美国电子工业协会（Electronic Industry Association）推荐标准（Recommanded Standard）<br>RS-232C是目前最常用的一种异步串行通信接口</p>
+
+<a href="https://m.do.co/c/4a945365cc4d" target="_blank" rel="noopener"><img src="http://bivori.com/images/proms/digital-ocean-cupon-code.png" width="728" height="90"></a>
+<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
+
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/计算机原理/" rel="tag"># 计算机原理</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/01/05/模数-数模转换/" rel="next" title="模数/数模 转换">
+                <i class="fa fa-chevron-left"></i> 模数/数模 转换
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/01/06/自动控制原理2、3章/" rel="prev" title="自动控制原理2、3章">
+                自动控制原理2、3章 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image" src="/pic/donkey.jpg" alt="Avvount">
+            
+              <p class="site-author-name" itemprop="name">Avvount</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">44</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">17</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/avvount" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:church357159@gmail.com" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#串行通信的特点"><span class="nav-number">1.</span> <span class="nav-text">串行通信的特点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#串行通信的应用"><span class="nav-number">2.</span> <span class="nav-text">串行通信的应用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#串行通信类型"><span class="nav-number">3.</span> <span class="nav-text">串行通信类型</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#异步串行通信"><span class="nav-number">3.1.</span> <span class="nav-text">异步串行通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#异步通信格式说明"><span class="nav-number">3.1.1.</span> <span class="nav-text">异步通信格式说明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步串行通信的数据校验错"><span class="nav-number">3.1.2.</span> <span class="nav-text">异步串行通信的数据校验错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#异步串行通信的特点"><span class="nav-number">3.1.3.</span> <span class="nav-text">异步串行通信的特点</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#同步通信"><span class="nav-number">3.2.</span> <span class="nav-text">同步通信</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#同步通信的特点"><span class="nav-number">3.2.1.</span> <span class="nav-text">同步通信的特点</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#串行通信的传输方式"><span class="nav-number">4.</span> <span class="nav-text">串行通信的传输方式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#信号传输速率—波特率（Baud-Rate）"><span class="nav-number">4.1.</span> <span class="nav-text">信号传输速率—波特率（Baud Rate）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#线路传输方式"><span class="nav-number">4.2.</span> <span class="nav-text">线路传输方式</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#信号传输方式"><span class="nav-number">4.3.</span> <span class="nav-text">信号传输方式</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#串行通信的校验方法"><span class="nav-number">5.</span> <span class="nav-text">串行通信的校验方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#奇偶校验（Parity-Check）"><span class="nav-number">5.1.</span> <span class="nav-text">奇偶校验（Parity Check）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#循环冗余校验CRC（Cyclic-Redundancy-Check）"><span class="nav-number">5.2.</span> <span class="nav-text">循环冗余校验CRC（Cyclic Redundancy Check）</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#串行接口RS-232C标准"><span class="nav-number">6.</span> <span class="nav-text">串行接口RS-232C标准</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love" id="animate"> 
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Avvount</span>
+
+  
+
+  
+</div>
+
+
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/theme-next/hexo-theme-next">NexT.Muse</a> v6.1.0</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.1.0"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.1.0"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.1.0"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.1.0"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.1.0"></script>
+
+
+
+  
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
