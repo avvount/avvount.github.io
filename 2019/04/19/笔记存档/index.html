@@ -99,17 +99,17 @@
 
 
 
-  <meta name="description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2); CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer(); 事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:123456789101112131415#d">
+  <meta name="description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2); CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer(); 事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:1#define WM_RECVDATA WM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="笔记存档">
 <meta property="og:url" content="https://avvount.github.io/2019/04/19/笔记存档/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2); CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer(); 事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:123456789101112131415#d">
+<meta property="og:description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2); CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer(); 事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:1#define WM_RECVDATA WM">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-04-19T06:30:23.380Z">
+<meta property="og:updated_time" content="2019-04-19T06:42:07.046Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔记存档">
-<meta name="twitter:description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2); CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer(); 事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:123456789101112131415#d">
+<meta name="twitter:description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2); CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer(); 事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:1#define WM_RECVDATA WM">
 
 
 
@@ -400,7 +400,15 @@
 <h2 id="事件对象与互斥对象都属于内核对象"><a href="#事件对象与互斥对象都属于内核对象" class="headerlink" title="事件对象与互斥对象都属于内核对象"></a>事件对象与互斥对象都属于内核对象</h2><h2 id="添加自定义消息"><a href="#添加自定义消息" class="headerlink" title="添加自定义消息"></a>添加自定义消息</h2><ol>
 <li>定义消息宏  </li>
 </ol>
-<p>Eg:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WM_RECVDATA WM_USER+1</span></span><br><span class="line">```  </span><br><span class="line"></span><br><span class="line"><span class="number">2.</span> 在头文件中添加消息响应函数原型声明  </span><br><span class="line"></span><br><span class="line">Eg:</span><br><span class="line">```cpp</span><br><span class="line"><span class="function">afx_msg LRESULT <span class="title">OnrecvData</span><span class="params">(WPARAM wParam,LPARAM lParam)</span></span>;</span><br><span class="line">```    </span><br><span class="line"></span><br><span class="line"><span class="number">3.</span> 在源文件中`BEGIN_MESSAGE_MAP( )`和`END_MESSAGE_MAP()`之间添加消息映射，不要写在` <span class="comment">//&#125;&#125;AFX_MSG_MAP`宏之间    </span></span><br><span class="line"></span><br><span class="line">Eg:</span><br><span class="line">```cpp</span><br><span class="line">ON_MESSAGE(WM_RECVDATA,OnRecvData)</span><br></pre></td></tr></table></figure></p>
+<p>Eg:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WM_RECVDATA WM_USER+1</span></span><br></pre></td></tr></table></figure></p>
+<ol start="2">
+<li>在头文件中添加消息响应函数原型声明  </li>
+</ol>
+<p>Eg:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">afx_msg LRESULT <span class="title">OnrecvData</span><span class="params">(WPARAM wParam,LPARAM lParam)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<ol start="3">
+<li>在源文件中<code>BEGIN_MESSAGE_MAP( )</code>和<code>END_MESSAGE_MAP()</code>之间添加消息映射，不要写在<code>//}}AFX_MSG_MAP</code>宏之间    </li>
+</ol>
+<p>Eg:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ON_MESSAGE(WM_RECVDATA,OnRecvData)</span><br></pre></td></tr></table></figure></p>
 <ol start="4">
 <li><p>编写消息响应函数的实现 </p>
 </li>
