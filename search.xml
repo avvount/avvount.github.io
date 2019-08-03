@@ -1,6 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[TODO]]></title>
+    <url>%2F2019%2F08%2F03%2FTODO%2F</url>
+    <content type="text"><![CDATA[supervisor pm2]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[笔记存档]]></title>
     <url>%2F2019%2F04%2F19%2F%E7%AC%94%E8%AE%B0%E5%AD%98%E6%A1%A3%2F</url>
     <content type="text"><![CDATA[统计宽字节的字符串长度12wchar_t *p="aaa"; int len=wcslen(p2); CString 转 char *1234CString str("aaa");CSringA tmp; tmp=str; char *p=tmp.GetBuffer(); 事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏 Eg:1#define WM_RECVDATA WM_USER+1 在头文件中添加消息响应函数原型声明 Eg:1afx_msg LRESULT OnrecvData(WPARAM wParam,LPARAM lParam); 在源文件中BEGIN_MESSAGE_MAP( )和END_MESSAGE_MAP()之间添加消息映射，不要写在//}}AFX_MSG_MAP宏之间 Eg:1ON_MESSAGE(WM_RECVDATA,OnRecvData) 编写消息响应函数的实现 在引发或发出消息的地方使用SendMessage或PostMessage发送消息 类的动态创建在头文件中添加DECLARE_DYNCREATE(class_name)宏，源文件中添加IMPLEMENT_DYNCREATE(class_name , base_class_name)宏。 Sublime快捷键设置 Ctrl + hjkl快速移动光标,在首选项-&gt;快捷键设置中添加以下代码 12345678[ &#123; "keys": ["ctrl+h"], "command": "move", "args": &#123;"by": "characters", "forward": false&#125; &#125;, &#123; "keys": ["ctrl+l"], "command": "move", "args": &#123;"by": "characters", "forward": true&#125; &#125;, &#123; "keys": ["ctrl+k"], "command": "move", "args": &#123;"by": "lines", "forward": false&#125; &#125;, &#123; "keys": ["ctrl+j"], "command": "move", "args": &#123;"by": "lines", "forward": true&#125; &#125;, &#123; "keys": ["ctrl+shift+h"], "command": "move", "args": &#123;"by": "words", "forward": false&#125; &#125;, &#123; "keys": ["ctrl+shift+l"], "command": "move", "args": &#123;"by": "word_ends", "forward": true&#125; &#125;,] 开启vim模式 在用户设置中将Vintage从ignored_packages中删除 SQL 同时count多个表的数据12345678910111213SELECT SUM(Info),SUM(K),SUM(Raw) FROM ( SELECT COUNT(*) Info,0 K,0 Raw FROM information UNION ALL SELECT 0 Info,COUNT(*) K,0 Raw FROM kline UNION ALL SELECT 0 Info,0 K,COUNT(*) Raw FROM update1)t;]]></content>
@@ -357,8 +362,8 @@
     <url>%2F2017%2F09%2F20%2FASCII%E7%A0%81%E8%A1%A8%2F</url>
     <content type="text"><![CDATA[ASCII控制字符 二进制 十进制 十六进制 缩写 名称/意义 0000 0000 0 00 NUL 空字符（Null） 0000 0001 1 01 SOH 标题开始 0000 0010 2 02 STX 本文开始 0000 0011 3 03 ETX 本文结束 0000 0100 4 04 EOT 传输结束 0000 0101 5 05 ENQ 请求 0000 0110 6 06 ACK 确认回应 0000 0111 7 07 BEL 响铃 0000 1000 8 08 BS 退格 0000 1001 9 09 HT 水平定位符号 0000 1010 10 0A LF 换行键 0000 1011 11 0B VT 垂直定位符号 0000 1100 12 0C FF 换页键 0000 1101 13 0D CR 归位键 0000 1110 14 0E SO 取消变换（Shift out） 0000 1111 15 0F SI 启用变换（Shift in） 0001 0000 16 10 DLE 跳出数据通讯 0001 0001 17 11 DC1 设备控制一（XON 启用软件速度控制） 0001 0010 18 12 DC2 设备控制二 0001 0011 19 13 DC3 设备控制三（XOFF 停用软件速度控制） 0001 0100 20 14 DC4 设备控制四 0001 0101 21 15 NAK 确认失败回应 0001 0110 22 16 SYN 同步用暂停 0001 0111 23 17 ETB 区块传输结束 0001 1000 24 18 CAN 取消 0001 1001 25 19 EM 连接介质中断 0001 1010 26 1A SUB 替换 0001 1011 27 1B ESC 跳出 0001 1100 28 1C FS 文件分割符 0001 1101 29 1D GS 组群分隔符 0001 1110 30 1E RS 记录分隔符 0001 1111 31 1F US 单元分隔符 0111 1111 127 7F DEL 删除]]></content>
       <tags>
-        <tag>编程</tag>
         <tag>ASCII</tag>
+        <tag>编程</tag>
         <tag>汇编</tag>
       </tags>
   </entry>
