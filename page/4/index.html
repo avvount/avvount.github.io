@@ -396,17 +396,20 @@
       
         
           
-          D/A转换器——DAC0832  
+          D/A转换器——DAC0832
 
-控制信号  
 
-$ILE \cdot \overline{CS}\cdot\overline{WR1}$有效使数据进入输入寄存器  
+
+控制信号
+
+$ILE \cdot \overline{CS}\cdot\overline{WR1}$有效使数据进入输入寄存器
 $\overline{WR2}\cdot\overline{XFER}$有效，数据到DAC。
 
 
-输出信号  
 
-IOUT1：D
+输出信号
+
+IOUT1：DAC电流输
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -536,16 +539,20 @@ IOUT1：D
       
         
           
-          8086系统常用可编程接口芯片并行接口芯片
+          8086系统常用可编程接口芯片
+并行接口芯片
+
 INTEL8255，有三个8位端口A、B、C
 INTEL8155，有三个端口，内带256字节RAM，两个定时器
 
 串行接口芯片
+
 INTEL8251，同步异步串行接口
 INTEL8250，异步串行接口芯片
 
 计数定时器
-INTEL8253/8254，三个通道
+
+INTEL8253/8254，
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -679,6 +686,7 @@ INTEL8253/8254，三个通道
 
 
 
+
 SC1
 SC0
 计数器选择
@@ -724,7 +732,6 @@ RW0
 1
 1
 先低8位，再高8位
-
 
 
 
@@ -860,12 +867,21 @@ RW0
       
         
           
-          内部结构  
+          内部结构
+
+
 
 IRR — 中断请求寄存器，保存 8个输入端IR0~IR7的中断申请状态，输入可高电平有效，也可上升沿有效
+
+
 ISR — 中断服务寄存器，保存CPU正在处理的中断请求
+
+
 IMR — 中断屏蔽寄存器，对中断申请进行屏蔽控制
-中断优先级分析器决定中断申请的优先级把初始化命令字和操作命令字结合
+
+
+中断优先级分析器决定中断申请的优先级
+把初始化命令字和
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -995,14 +1011,19 @@ IMR — 中断屏蔽寄存器，对中断申请进行屏蔽控制
       
         
           
-          存储系统  
-中断系统硬件中断
-可屏蔽中断 — 输入为INTR引脚，高电平有效，受IF标志控制  
-非屏蔽中断— 输入为NMI引脚，上升沿有效，不受IF控制  
+          存储系统
+
+中断系统
+硬件中断
+
+可屏蔽中断 — 输入为INTR引脚，高电平有效，受IF标志控制
+非屏蔽中断— 输入为NMI引脚，上升沿有效，不受IF控制
 
 软件中断
-除法溢出中断（DIV和IDIV）（INT 0） 若除数为0或商超过寄存器所能表达的范围，则产生类型为0的软件中断
-单步中断 （
+
+除法溢出中断（DIV和IDIV）（INT 0）
+若除数为0或商超过寄存器所能表达的范围，则产生类型为0的软件中断
+单步中断 （IN
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1133,8 +1154,10 @@ IMR — 中断屏蔽寄存器，对中断申请进行屏蔽控制
         
           
           安装
-Install the GPG key  
- curl -O https://download.sublimetext.com/sublimehq-pub.gpg &amp;&amp; sudo pacman-key --add sublimehq-pub.gpg &amp;&amp; sud
+
+
+Install the GPG key
+curl -O https://download.sublimetext.com/sublimehq-pub.gpg &amp;&amp; sudo pacman-key --add sublimehq-pub.gpg &amp;&amp; sudo
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1264,9 +1287,13 @@ Install the GPG key
       
         
           
-          arch系统备份与还原备份
-安装pigzsudo pacman -S pigz  
-执行以下命令sudo tar --use-compress-program=pigz -cvpf /home/beta/Documents/arch-backup.tgz --exclude=/boot --excl
+          arch系统备份与还原
+备份
+
+安装pigz
+sudo pacman -S pigz
+执行以下命令
+sudo tar --use-compress-program=pigz -cvpf /home/beta/Documents/arch-backup.tgz --exclude=/boot --ex
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1527,8 +1554,14 @@ shellzsh
       
         
           
-          有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi更新系统时间 timedatectl set-ntp true分区格式化根分区 mkfs.ext4 /dev/sda挂载分区
-mount /dev/sda7 /mntmkdir /mnt/bootmoun
+          有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi
+更新系统时间 timedatectl set-ntp true
+分区
+格式化根分区 mkfs.ext4 /dev/sda#
+挂载分区
+
+mount /dev/sda7 /mnt
+mkdir /mnt/b
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1658,8 +1691,12 @@ mount /dev/sda7 /mntmkdir /mnt/bootmoun
       
         
           
-          指令是使计算机执行某种特定操作的二进制编码。8086 CPU指令系统有133条指令，通常分为数据寻址方式和程序寻址方式8086指令不定长，一般为1～6个字节。
-数据寻址方式隐含寻址指令已经默认对CPU中的某个寄存器进行操作，不用在指令中指明所使用的寄存器，即隐含了规定的操作数，这样的寻址方式称为隐含
+          指令是使计算机执行某种特定操作的二进制编码。
+8086 CPU指令系统有133条指令，通常分为数据寻址方式和程序寻址方式
+8086指令不定长，一般为1～6个字节。
+数据寻址方式
+隐含寻址
+指令已经默认对CPU中的某个寄存器进行操作，不用在指令中指明所使用的寄存器，即隐含了规定的操作数，这样的寻址方式
           ...
           <!--noindex-->
           <div class="post-button text-center">

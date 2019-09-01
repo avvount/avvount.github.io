@@ -99,20 +99,19 @@
 
 
 
-  <meta name="description" content="硬件时钟使用 UTC推荐使用这种方法，参考archwiki页面#Windows_.E7.B3.BB.E7.BB.9F.E4.BD.BF.E7.94.A8_UTC)    代码:timedatectl set-local-rtc 0  timedatectl set-ntp 1  修改 Windows 注册表：代码:Reg add HKLM\SYSTEM\CurrentControlSet\Cont">
+  <meta name="description" content="硬件时钟使用 UTC 推荐使用这种方法，参考archwiki页面    代码: timedatectl set-local-rtc 0 timedatectl set-ntp 1   修改 Windows 注册表： 代码: Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux和windows双系统时间不一致问题">
 <meta property="og:url" content="https://avvount.github.io/2018/04/05/linux和windows双系统时间不一致问题/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="硬件时钟使用 UTC推荐使用这种方法，参考archwiki页面#Windows_.E7.B3.BB.E7.BB.9F.E4.BD.BF.E7.94.A8_UTC)    代码:timedatectl set-local-rtc 0  timedatectl set-ntp 1  修改 Windows 注册表：代码:Reg add HKLM\SYSTEM\CurrentControlSet\Cont">
+<meta property="og:description" content="硬件时钟使用 UTC 推荐使用这种方法，参考archwiki页面    代码: timedatectl set-local-rtc 0 timedatectl set-ntp 1   修改 Windows 注册表： 代码: Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:image" content="http://bivori.com/images/proms/digital-ocean-cupon-code.png">
-<meta property="og:updated_time" content="2018-05-01T00:49:59.000Z">
+<meta property="og:updated_time" content="2019-09-01T03:30:46.938Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux和windows双系统时间不一致问题">
-<meta name="twitter:description" content="硬件时钟使用 UTC推荐使用这种方法，参考archwiki页面#Windows_.E7.B3.BB.E7.BB.9F.E4.BD.BF.E7.94.A8_UTC)    代码:timedatectl set-local-rtc 0  timedatectl set-ntp 1  修改 Windows 注册表：代码:Reg add HKLM\SYSTEM\CurrentControlSet\Cont">
+<meta name="twitter:description" content="硬件时钟使用 UTC 推荐使用这种方法，参考archwiki页面    代码: timedatectl set-local-rtc 0 timedatectl set-ntp 1   修改 Windows 注册表： 代码: Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal">
 <meta name="twitter:image" content="https://www.vultr.com/media/banner_1.png">
 
 
@@ -399,26 +398,38 @@
       
 
       
-        <h1 id="硬件时钟使用-UTC"><a href="#硬件时钟使用-UTC" class="headerlink" title="硬件时钟使用 UTC"></a>硬件时钟使用 UTC</h1><p>推荐使用这种方法，参考<a href="https://wiki.archlinux.org/index.php/Time_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">archwiki页面</a>#Windows_.E7.B3.BB.E7.BB.9F.E4.BD.BF.E7.94.A8_UTC)  </p>
+        <h1>硬件时钟使用 UTC</h1>
+<p>推荐使用这种方法，参考<a href="https://wiki.archlinux.org/index.php/Time_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#Windows_.E7.B3.BB.E7.BB.9F.E4.BD.BF.E7.94.A8_UTC" target="_blank" rel="noopener">archwiki页面</a></p>
 <ol>
-<li><p>代码:<br><code>timedatectl set-local-rtc 0 
-timedatectl set-ntp 1</code></p>
+<li></li>
+</ol>
+<p>代码:
+<code>timedatectl set-local-rtc 0 timedatectl set-ntp 1</code></p>
+<ol start="2">
+<li>
+<p>修改 Windows 注册表：
+代码:
+<code>Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1</code></p>
 </li>
-<li><p>修改 Windows 注册表：<br>代码:<br><code>Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1</code></p>
-</li>
-<li><p>关闭 Windows 网络对时时</p>
+<li>
+<p>关闭 Windows 网络对时时</p>
 </li>
 </ol>
-<h1 id="硬件时钟使用本地时间"><a href="#硬件时钟使用本地时间" class="headerlink" title="硬件时钟使用本地时间"></a>硬件时钟使用本地时间</h1><ol>
-<li><p>设置linux使用本地时间<br>代码:<br><code>timedatectl set-local-rtc 1</code><br><code>timedatectl set-ntp 0</code></p>
+<h1>硬件时钟使用本地时间</h1>
+<ol>
+<li>
+<p>设置linux使用本地时间
+代码:
+<code>timedatectl set-local-rtc 1</code>
+<code>timedatectl set-ntp 0</code></p>
 </li>
-<li><p>打开 Windows 网络对时</p>
+<li>
+<p>打开 Windows 网络对时</p>
 </li>
 </ol>
-
+<p>
 <a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-<a href="https://m.do.co/c/4a945365cc4d" target="_blank" rel="noopener"><img src="http://bivori.com/images/proms/digital-ocean-cupon-code.png" width="728" height="90"></a>
-
+</p>
 
       
     </div>
@@ -639,7 +650,7 @@ timedatectl set-ntp 1</code></p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#硬件时钟使用-UTC"><span class="nav-number">1.</span> <span class="nav-text">硬件时钟使用 UTC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#硬件时钟使用本地时间"><span class="nav-number">2.</span> <span class="nav-text">硬件时钟使用本地时间</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">硬件时钟使用 UTC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">硬件时钟使用本地时间</span></a></li></ol></div>
             
 
           </div>

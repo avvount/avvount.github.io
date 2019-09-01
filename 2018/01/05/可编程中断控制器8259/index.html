@@ -99,13 +99,13 @@
 
 
 
-  <meta name="description" content="内部结构    IRR — 中断请求寄存器，保存 8个输入端IR0~IR7的中断申请状态，输入可高电平有效，也可上升沿有效 ISR — 中断服务寄存器，保存CPU正在处理的中断请求 IMR — 中断屏蔽寄存器，对中断申请进行屏蔽控制 中断优先级分析器决定中断申请的优先级把初始化命令字和操作命令字结合进行设置，可以有四种优先级管理方式    全嵌套方式(中断请求按优先级0-7进行处理，0级中断的优先">
+  <meta name="description" content="内部结构    IRR — 中断请求寄存器，保存 8个输入端IR0~IR7的中断申请状态，输入可高电平有效，也可上升沿有效   ISR — 中断服务寄存器，保存CPU正在处理的中断请求   IMR — 中断屏蔽寄存器，对中断申请进行屏蔽控制   中断优先级分析器决定中断申请的优先级 把初始化命令字和操作命令字结合进行设置，可以有四种优先级管理方式  全嵌套方式(中断请求按优先级0-7进行处理，0级">
 <meta name="keywords" content="计算机原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="可编程中断控制器8259">
 <meta property="og:url" content="https://avvount.github.io/2018/01/05/可编程中断控制器8259/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="内部结构    IRR — 中断请求寄存器，保存 8个输入端IR0~IR7的中断申请状态，输入可高电平有效，也可上升沿有效 ISR — 中断服务寄存器，保存CPU正在处理的中断请求 IMR — 中断屏蔽寄存器，对中断申请进行屏蔽控制 中断优先级分析器决定中断申请的优先级把初始化命令字和操作命令字结合进行设置，可以有四种优先级管理方式    全嵌套方式(中断请求按优先级0-7进行处理，0级中断的优先">
+<meta property="og:description" content="内部结构    IRR — 中断请求寄存器，保存 8个输入端IR0~IR7的中断申请状态，输入可高电平有效，也可上升沿有效   ISR — 中断服务寄存器，保存CPU正在处理的中断请求   IMR — 中断屏蔽寄存器，对中断申请进行屏蔽控制   中断优先级分析器决定中断申请的优先级 把初始化命令字和操作命令字结合进行设置，可以有四种优先级管理方式  全嵌套方式(中断请求按优先级0-7进行处理，0级">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/8259%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84.png">
 <meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/icw1.png">
@@ -117,12 +117,11 @@
 <meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/R-SL-EOI.png">
 <meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/ocw3.png">
 <meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E6%9F%A5%E8%AF%A2.png">
-<meta property="og:image" content="http://bivori.com/images/proms/digital-ocean-cupon-code.png">
 <meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:updated_time" content="2018-05-01T00:47:16.000Z">
+<meta property="og:updated_time" content="2019-09-01T03:32:51.950Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="可编程中断控制器8259">
-<meta name="twitter:description" content="内部结构    IRR — 中断请求寄存器，保存 8个输入端IR0~IR7的中断申请状态，输入可高电平有效，也可上升沿有效 ISR — 中断服务寄存器，保存CPU正在处理的中断请求 IMR — 中断屏蔽寄存器，对中断申请进行屏蔽控制 中断优先级分析器决定中断申请的优先级把初始化命令字和操作命令字结合进行设置，可以有四种优先级管理方式    全嵌套方式(中断请求按优先级0-7进行处理，0级中断的优先">
+<meta name="twitter:description" content="内部结构    IRR — 中断请求寄存器，保存 8个输入端IR0~IR7的中断申请状态，输入可高电平有效，也可上升沿有效   ISR — 中断服务寄存器，保存CPU正在处理的中断请求   IMR — 中断屏蔽寄存器，对中断申请进行屏蔽控制   中断优先级分析器决定中断申请的优先级 把初始化命令字和操作命令字结合进行设置，可以有四种优先级管理方式  全嵌套方式(中断请求按优先级0-7进行处理，0级">
 <meta name="twitter:image" content="http://ohe854y38.bkt.clouddn.com/8259%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84.png">
 
 
@@ -409,24 +408,34 @@
       
 
       
-        <h2 id="内部结构"><a href="#内部结构" class="headerlink" title="内部结构"></a>内部结构</h2><p><img src="http://ohe854y38.bkt.clouddn.com/8259%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84.png" alt="8059内部结构">  </p>
+        <h2>内部结构</h2>
+<p><img src="http://ohe854y38.bkt.clouddn.com/8259%E5%86%85%E9%83%A8%E7%BB%93%E6%9E%84.png" alt="8059内部结构"></p>
 <ol>
-<li>IRR — 中断请求寄存器，保存 8个输入端IR0~IR7的中断申请状态，输入可高电平有效，也可上升沿有效</li>
-<li>ISR — 中断服务寄存器，保存CPU正在处理的中断请求</li>
-<li>IMR — 中断屏蔽寄存器，对中断申请进行屏蔽控制</li>
-<li><p>中断优先级分析器决定中断申请的优先级<br>把初始化命令字和操作命令字结合进行设置，可以有四种优先级管理方式  </p>
+<li>
+<p>IRR — 中断请求寄存器，保存 8个输入端IR0~IR7的中断申请状态，输入可高电平有效，也可上升沿有效</p>
+</li>
+<li>
+<p>ISR — 中断服务寄存器，保存CPU正在处理的中断请求</p>
+</li>
+<li>
+<p>IMR — 中断屏蔽寄存器，对中断申请进行屏蔽控制</p>
+</li>
+<li>
+<p>中断优先级分析器决定中断申请的优先级<br>
+把初始化命令字和操作命令字结合进行设置，可以有四种优先级管理方式</p>
 <ul>
 <li>全嵌套方式(中断请求按优先级0-7进行处理，0级中断的优先级最高)</li>
 <li>自动循环方式（优先级相等。这种方式下，优先级队列是在变化的，一个设备受到中断服务后，它的优先级自动降为最低）</li>
 <li>特殊循环方式（设置最低优先级）</li>
-<li>特殊的全嵌套方式（可在级联时使用,与全嵌套方式基本相同，不过允许同级中断）  </li>
+<li>特殊的全嵌套方式（可在级联时使用,与全嵌套方式基本相同，不过允许同级中断）</li>
 </ul>
 </li>
-<li><p>控制逻辑</p>
+<li>
+<p>控制逻辑</p>
 <ul>
-<li>初始化命令寄存器组：ICW1~ICW4  </li>
-<li>操作命令寄存器组： OCW1~OCW3  </li>
-<li>INT  中断申请输出，高电平有效，可连接8086 INTR引脚  </li>
+<li>初始化命令寄存器组：ICW1~ICW4</li>
+<li>操作命令寄存器组： OCW1~OCW3</li>
+<li>INT  中断申请输出，高电平有效，可连接8086 INTR引脚</li>
 <li>$\overline{INTA}$  中断响应输入，接收8086发出的中断响应信号，有效时8259应输出中断类型码</li>
 <li>D7~D0   双向三态数据线，传送数据</li>
 <li>$\overline{RD}$  读信号，低电平有效</li>
@@ -434,13 +443,15 @@
 <li>$\overline{CS}$  片选信号，低有效，给8259分配地址</li>
 <li>A0   用于选择8259内部不同的寄存器。</li>
 <li>CAS2~CAS0   级联信号线，当8259为主片时为输出，从片时为输入</li>
-<li>$\overline{SP}/\overline{EN}$  在非缓冲工作方式时，用作输入，决定8259A为主片还是从片,主片接+5V，从片接地；在缓冲工作方式时，用作输出，由它打开总线缓冲器  </li>
+<li>$\overline{SP}/\overline{EN}$  在非缓冲工作方式时，用作输入，决定8259A为主片还是从片,主片接+5V，从片接地；在缓冲工作方式时，用作输出，由它打开总线缓冲器</li>
 </ul>
 </li>
 </ol>
-<h2 id="初始化命令字"><a href="#初始化命令字" class="headerlink" title="初始化命令字"></a>初始化命令字</h2><p>初始化命令字一般在初始化8259时才写入，而且写入有严格的顺序，先写ICW1，最后写ICW4  </p>
+<h2>初始化命令字</h2>
+<p>初始化命令字一般在初始化8259时才写入，而且写入有严格的顺序，先写ICW1，最后写ICW4</p>
 <ol>
-<li>ICW1(芯片控制)<br><img src="http://ohe854y38.bkt.clouddn.com/icw1.png" alt="ICW1">  </li>
+<li>ICW1(芯片控制)<br>
+<img src="http://ohe854y38.bkt.clouddn.com/icw1.png" alt="ICW1"></li>
 </ol>
 <table>
 <thead>
@@ -472,16 +483,27 @@
 </tr>
 </tbody>
 </table>
-<p>A0=0，D4=1 表示对ICW1编程  </p>
+<p>A0=0，D4=1 表示对ICW1编程</p>
 <ul>
-<li>D0（IC4）<br>  D0=1 需要ICW4<br>  D0=0 不需要ICW4  </li>
-<li>D1（SNGL）<br>  D1=1 为单片8259工作方式<br>  D1=0 为级联工作方式，此时要用ICW3指明级联端    </li>
-<li>D2（ADI）<br>  <del>指明8080/8085系统中地址间距,</del><br>  8086系统不用  </li>
-<li>D3（LTIM）<br>  D3=1 中断请求是电平触发方式<br>  D3=0 上升沿触发方式  </li>
-<li>D5~D7（A5~A7）<br>  <del>8080/8085系统中断服务程序页面地址，</del><br>  8086系统不用</li>
+<li>D0（IC4）<br>
+D0=1 需要ICW4<br>
+D0=0 不需要ICW4</li>
+<li>D1（SNGL）<br>
+D1=1 为单片8259工作方式<br>
+D1=0 为级联工作方式，此时要用ICW3指明级联端</li>
+<li>D2（ADI）<br>
+<s>指明8080/8085系统中地址间距,</s>
+8086系统不用</li>
+<li>D3（LTIM）<br>
+D3=1 中断请求是电平触发方式<br>
+D3=0 上升沿触发方式</li>
+<li>D5~D7（A5~A7）<br>
+<s>8080/8085系统中断服务程序页面地址，</s>
+8086系统不用</li>
 </ul>
 <ol start="2">
-<li>ICW2(类型)<br><img src="http://ohe854y38.bkt.clouddn.com/icw2.png" alt="ICW2">  </li>
+<li>ICW2(类型)<br>
+<img src="http://ohe854y38.bkt.clouddn.com/icw2.png" alt="ICW2"></li>
 </ol>
 <table>
 <thead>
@@ -513,13 +535,14 @@
 </tr>
 </tbody>
 </table>
-<p>A0=1，跟在ICW1后表示对ICW2编程  </p>
+<p>A0=1，跟在ICW1后表示对ICW2编程</p>
 <ul>
-<li><del>A15~A8 为8080/8085系统中页面地址高8位</del>  </li>
+<li><s>A15~A8 为8080/8085系统中页面地址高8位</s></li>
 <li>T7~T3 为8086系统中的中断类型码的高5位，低3位根据申请端自动填充</li>
 </ul>
 <ol start="3">
-<li>ICW3(主/从)<br><img src="http://ohe854y38.bkt.clouddn.com/icw3.png" alt="ICW2">  </li>
+<li>ICW3(主/从)<br>
+<img src="http://ohe854y38.bkt.clouddn.com/icw3.png" alt="ICW2"></li>
 </ol>
 <table>
 <thead>
@@ -563,13 +586,14 @@
 </tr>
 </tbody>
 </table>
-<p>A0=1，且ICW1的D1(SNGL)=0，跟在ICW2后表示对ICW3编程  </p>
+<p>A0=1，且ICW1的D1(SNGL)=0，跟在ICW2后表示对ICW3编程</p>
 <ul>
 <li>主片   Si=1 表示第IRi引脚上连接有从片</li>
 <li>从片   ID2~ID0对应从片的识别码，即表明从片连接到主片的第几个输入引脚上。CPU发出第一个中断响应负脉冲$\overline{INTA}$时，主片通过CAS2 ~CAS0送出识别码通知有中断请求的从片，每个从片将CAS2~CAS0上信号与自己内部的识别码(ID2~ID0)相比较，若相同，则在第二个$\overline{INTA}$信号到来时送出自己的中断类型码。</li>
 </ul>
 <ol start="4">
-<li>ICW4(方式控制)<br><img src="http://ohe854y38.bkt.clouddn.com/icw4.png" alt="ICW2">  </li>
+<li>ICW4(方式控制)
+<img src="http://ohe854y38.bkt.clouddn.com/icw4.png" alt="ICW2"></li>
 </ol>
 <table>
 <thead>
@@ -603,27 +627,57 @@
 </table>
 <p>A0=1，且ICW1的D0=1，跟在其他初始化字后表示对ICW4编程</p>
 <ul>
-<li>D0（μpm）<br>  D0=1 为非8位处理器体系<br>  <del>D0=0 为8位处理器体系</del>  </li>
-<li>D1（AEOI）<br>  D1=1 自动结束中断方式，在第二个$\overline{INTA}$清ISR(中断服务寄存器)中的对应位<br>  D1=0 非自动结束中断方式，中断结束时发EOI命令清ISR中的对应位  </li>
-<li>D2（$M/\overline{S}$）<br>  在缓冲方式下（BUF=1)，选择主片和从片，$M/\overline{S}$=1为主片，$M/\overline{S}$=0为从片。<br>  在非缓冲方式下，则$M/\overline{S}$不起作用，可为1，也可为0. 由$\overline{SP}/\overline{EN}$引脚设定主片和从片(接高电平为主片，接低电平为从片)。</li>
-<li>D3（BUF）<br>  D3=1 为缓冲工作方式，$\overline{SP}/\overline{EN}$为缓冲选通信号。<br>  D3=0 为非缓冲工作方式。  </li>
-<li>D4（SFNM）<br>  D4=1  为特殊全嵌套方式，此时允许同级中断再次进入，一般用于多片级联方式<br>  D4=0  为普通全嵌套方式，禁止同级中断再次进入。  </li>
+<li>D0（μpm）<br>
+D0=1 为非8位处理器体系<br>
+<s>D0=0 为8位处理器体系</s></li>
+<li>D1（AEOI）<br>
+D1=1 自动结束中断方式，在第二个$\overline{INTA}$清ISR(中断服务寄存器)中的对应位<br>
+D1=0 非自动结束中断方式，中断结束时发EOI命令清ISR中的对应位</li>
+<li>D2（$M/\overline{S}$）<br>
+在缓冲方式下（BUF=1)，选择主片和从片，$M/\overline{S}$=1为主片，$M/\overline{S}$=0为从片。<br>
+在非缓冲方式下，则$M/\overline{S}$不起作用，可为1，也可为0. 由$\overline{SP}/\overline{EN}$引脚设定主片和从片(接高电平为主片，接低电平为从片)。</li>
+<li>D3（BUF）<br>
+D3=1 为缓冲工作方式，$\overline{SP}/\overline{EN}$为缓冲选通信号。<br>
+D3=0 为非缓冲工作方式。</li>
+<li>D4（SFNM）<br>
+D4=1  为特殊全嵌套方式，此时允许同级中断再次进入，一般用于多片级联方式<br>
+D4=0  为普通全嵌套方式，禁止同级中断再次进入。</li>
 </ul>
-<h2 id="操作命令字"><a href="#操作命令字" class="headerlink" title="操作命令字"></a>操作命令字</h2><ol>
-<li><p>OCW1(IMR)<br><img src="http://ohe854y38.bkt.clouddn.com/ocw1.png" alt="ICW2"><br>A0=1 表示设置OCW1  </p>
+<h2>操作命令字</h2>
+<ol>
+<li>
+<p>OCW1(IMR)
+<img src="http://ohe854y38.bkt.clouddn.com/ocw1.png" alt="ICW2"><br>
+A0=1 表示设置OCW1</p>
 <ul>
-<li>Mi=1 表示屏蔽IRi输入中断请求  </li>
+<li>Mi=1 表示屏蔽IRi输入中断请求</li>
 </ul>
 </li>
-<li><p>OCW2<br><img src="http://ohe854y38.bkt.clouddn.com/ocw2.png" alt="ICW2"><br>A0=0，且D4D3 = 00，表示对OCW2编程</p>
+<li>
+<p>OCW2
+<img src="http://ohe854y38.bkt.clouddn.com/ocw2.png" alt="ICW2"><br>
+A0=0，且D4D3 = 00，表示对OCW2编程</p>
 <ul>
-<li>R  优先权循环状态<br>  R=1 优先权自动循环<br>  R=0 优先权不循环  </li>
-<li>SL 设定标志<br>  SL=1 L2、L1、L0有效<br>  SL=0 L2、L1、L0无效  </li>
-<li>EOI 中断结束命令标志<br>  EOI=1,非自动结束方式时清ISR中对应位<br>  一般EOI指令(普通结束指令)为<br>  <code>MOV      AL,  20H</code><br>  <code>OUT      20H, AL</code></li>
-<li>L2 L1 L0 指明中断号或最低优先权<br><img src="http://ohe854y38.bkt.clouddn.com/R-SL-EOI.png" alt="R-SL-EOI">  </li>
+<li>R  优先权循环状态<br>
+R=1 优先权自动循环<br>
+R=0 优先权不循环</li>
+<li>SL 设定标志<br>
+SL=1 L2、L1、L0有效<br>
+SL=0 L2、L1、L0无效</li>
+<li>EOI 中断结束命令标志<br>
+EOI=1,非自动结束方式时清ISR中对应位<br>
+一般EOI指令(普通结束指令)为<br>
+<code>MOV AL, 20H</code><br>
+<code>OUT 20H, AL</code></li>
+<li>L2 L1 L0 指明中断号或最低优先权<br>
+<img src="http://ohe854y38.bkt.clouddn.com/R-SL-EOI.png" alt="R-SL-EOI"></li>
 </ul>
 </li>
-<li>OCW3<br><img src="http://ohe854y38.bkt.clouddn.com/ocw3.png" alt="ICW2"><br>A0=0，且D4D3 = 01，表示对OCW3编程</li>
+<li>
+<p>OCW3
+<img src="http://ohe854y38.bkt.clouddn.com/ocw3.png" alt="ICW2"><br>
+A0=0，且D4D3 = 01，表示对OCW3编程</p>
+</li>
 </ol>
 <table>
 <thead>
@@ -652,9 +706,15 @@
 </tbody>
 </table>
 <ul>
-<li><p>P=1 ，设置8259A为查询工作方式，此时8259A不发INT信号，CPU通过查询指令决定服务程序<br>查询得到格式如下表所示<br><img src="http://ohe854y38.bkt.clouddn.com/%E6%9F%A5%E8%AF%A2.png" alt="image"><br>I=1 表示有中断请求<br>W2 W1 W0为当前最高优先级的中断请求中断号  </p>
+<li>
+<p>P=1 ，设置8259A为查询工作方式，此时8259A不发INT信号，CPU通过查询指令决定服务程序<br>
+查询得到格式如下表所示
+<img src="http://ohe854y38.bkt.clouddn.com/%E6%9F%A5%E8%AF%A2.png" alt="image">
+I=1 表示有中断请求<br>
+W2 W1 W0为当前最高优先级的中断请求中断号</p>
 </li>
-<li><p>P=0，由RR和RIS设置下一个读取的寄存器</p>
+<li>
+<p>P=0，由RR和RIS设置下一个读取的寄存器</p>
 </li>
 </ul>
 <table>
@@ -678,10 +738,9 @@
 </tr>
 </tbody>
 </table>
-
-<a href="https://m.do.co/c/4a945365cc4d" target="_blank" rel="noopener"><img src="http://bivori.com/images/proms/digital-ocean-cupon-code.png" width="728" height="90"></a>
+<p>
 <a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-
+</p>
 
       
     </div>
@@ -902,7 +961,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#内部结构"><span class="nav-number">1.</span> <span class="nav-text">内部结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初始化命令字"><span class="nav-number">2.</span> <span class="nav-text">初始化命令字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#操作命令字"><span class="nav-number">3.</span> <span class="nav-text">操作命令字</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">内部结构</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">初始化命令字</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">操作命令字</span></a></li></ol></div>
             
 
           </div>
