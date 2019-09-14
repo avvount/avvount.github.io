@@ -326,6 +326,144 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2019/09/14/cmake-gcc笔记/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Avvount">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/pic/donkey.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Avvount's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/09/14/cmake-gcc笔记/" itemprop="url">cmake&gcc笔记</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-09-14T21:54:32+08:00">2019-09-14</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          cmake常用编译选项
+指定项目名称  
+ project(myproject VERSION 0.1.0) 较老版本cmake可能不支持后两个参数,可以使用project(myproject)  
+
+设置C++标准  
+
+
+
+cmake 3.1后  set(CMAKE_CXX_STANDARD 1
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2019/09/14/cmake-gcc笔记/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2019/08/03/pm2_supervisor/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -397,18 +535,12 @@
         
           
           pm2
+pm2 startup  生成pm2-xxx.service
 
-
-pm2 startup
-生成pm2-xxx.service
-
-
-pm2 save
-保存当前 pm2 运行的各个应用保存到 ~/.pm2/dump.pm2 下，开机重启时读取该文件中的内容启动相关应用。
+pm2 save  保存当前 pm2 运行的各个应用保存到 ~/.pm2/dump.pm2 下，开机重启时读取该文件中的内容启动相关应用。
 
 
 supervisor
-
           
           <!--noindex-->
           <div class="post-button text-center">
@@ -1070,19 +1202,13 @@ x 关闭当前窗格
       
         
           
-          8051共有4个8位I/O口，共32口线。
-每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。
-P0口的结构与操作
-
-控制信号为0时，P0口做一般I/O口。
-控制信号为1时，P0口为地址/数据复用总线。
+          8051共有4个8位I/O口，共32口线。每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。
+P0口的结构与操作控制信号为0时，P0口做一般I/O口。控制信号为1时，P0口为地址/数据复用总线。  
 P0口做一般I/O口使用
-
-数据输出
-写脉冲加在C上
+数据输出写脉冲加在C上
 
 
-若D=0，则$\bar Q$=1
+若D=0，则$\bar Q$=1，则下拉
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1212,11 +1338,8 @@ P0口做一般I/O口使用
       
         
           
-          MCS-51内部时钟电路（CHMOS型）
-内部有一个用于构成振荡器的高增益反向放大器，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。
-PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。
-石英晶体振荡电路
-将石英晶体、C1、C2作为反馈元件，与内部放大器
+          MCS-51内部时钟电路（CHMOS型）内部有一个用于构成振荡器的高增益反向放大器，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。
+石英晶体振荡电路将石英晶体、C1、C2作为反馈元件，与内部放大器一起构
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1346,12 +1469,10 @@ PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，�
       
         
           
-          如在winkawaks.exe中不输入中文则如此设定：
+          如在winkawaks.exe中不输入中文则如此设定：  
 
-# squirrel.custom.yaml
-patch:
-	app_options/winkawaks.exe:
-		ascii_mode: true
+# squirrel.custom.yaml  
+patch:    app_options/winkawaks.exe:        ascii_mode: true  
 
 
 
@@ -1486,9 +1607,7 @@ patch:
       
         
           
-          最新稳定版
-最新测试版
-最新开发版
+          最新稳定版最新测试版最新开发版
 
 
 
@@ -1497,140 +1616,6 @@ patch:
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/05/Chrome浏览器离线安装包下载地址/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/04/05/ubuntu-debian-fcitx输入模块/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Avvount">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/pic/donkey.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Avvount's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/05/ubuntu-debian-fcitx输入模块/" itemprop="url">ubuntu&debian fcitx输入模块</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-05T20:30:20+08:00">2018-04-05</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          
-fcitx：fcitx主程序
-fcitx-sogoupinyin ：fcitx的搜狗拼音词库。（你也可以换成其他类型的词库比如五笔、rime等等，具体可以终端输入aptitude search fcitx搜索。）
-fcitx-config-gtk：fcitx的gtk的设置图形界面。
-fcitx-f
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/05/ubuntu-debian-fcitx输入模块/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1720,7 +1705,7 @@ fcitx-f
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1769,7 +1754,11 @@ fcitx-f
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2320,9 +2309,9 @@ fcitx-f
       
     
       
-        
-      
     
+      
+        
       
     
       

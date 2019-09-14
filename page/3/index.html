@@ -326,6 +326,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/03/21/rEFInd引导arch/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Avvount">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/pic/donkey.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Avvount's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/03/21/rEFInd引导arch/" itemprop="url">rEFInd引导arch</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T15:53:24+08:00">2018-03-21</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          使用rEFInd引导系统，配置文件简单，可以自动检测启动项。所以，果断淘汰掉grub2，改用rEFInd。
+安装Arch中安装rEFInd安装很简单pacman -S refind-efi
+配置手动配置Arch Linux菜单，添加菜单项如下123456789101112menuentry &quo
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/03/21/rEFInd引导arch/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/03/08/wine依赖记录/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -396,8 +528,7 @@
       
         
           
-          记录下安装Crossover时指定安装的依赖，以便以后删除时一起卸载
-1lib32-freetype2 lib32-gcc-libs lib32-glibc lib32-libice lib32-libpng lib32-libsm lib32-libx11 lib32-libxext python
+          记录下安装Crossover时指定安装的依赖，以便以后删除时一起卸载1lib32-freetype2 lib32-gcc-libs lib32-glibc lib32-libice lib32-libpng lib32-libsm lib32-libx11 lib32-libxext python2
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -528,12 +659,9 @@
         
           
           在U盘上装了个arch，想使用VBox从U盘启动，在网上找到了方法，其实不仅仅是U盘，可以是任何一块硬盘。方法记录在这里
-使用VBox的用户需要加入vboxusers组(宿主机)
-更改权限
-用户需要对要使用的U盘设备文件有读写权限
+使用VBox的用户需要加入vboxusers组(宿主机)更改权限用户需要对要使用的U盘设备文件有读写权限  
 sudo chmod o+rw /dev/sdx
-创建VMDK文件
-
+创建VMDK文件在
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -664,9 +792,8 @@ sudo chmod o+rw /dev/sdx
         
           
           使用ssh连接远程服务器经常被强行中断，使用mosh可以避免这一问题，但mosh无法向上翻页，还是想使用ssh，在网上找到了些解决办法。在此记录其中两种。
-配置服务端
-在服务端配置文件 /etc/ssh/sshd_config 中添加以下内容
-12ClientAliveInterval 30  Cl
+配置服务端在服务端配置文件 /etc/ssh/sshd_config 中添加以下内容
+12ClientAliveInterval 30  Cli
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -797,11 +924,10 @@ sudo chmod o+rw /dev/sdx
         
           
           挂机需安装vncserver、一个轻量级桌面以及firefox，在debian9下我安装的是tightvncserver、openbox和firefox-esr。
-挂ebesucher
-有两种方式
+挂ebesucher有两种方式
 
 安装firefox&lt;54版本，安装ebesucher扩展进行挂机
-打开挂机页面 https:/
+打开挂机页面 https://
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -931,8 +1057,7 @@ sudo chmod o+rw /dev/sdx
       
         
           
-          放假回家，才发现广电宽带跟校园网简直没法比，这次真是见识到了GFW的威力，不到十天，给我封了三四个IP了。ssh连接VPS也老是掉线，甚至连不上去，终于在网上找到一个很棒的工具——mosh，跟ssh类似，同时需要服务端和客户端，使用方法也很像，使用命令mosh USERNAME@IP。
-若更改了ss
+          放假回家，才发现广电宽带跟校园网简直没法比，这次真是见识到了GFW的威力，不到十天，给我封了三四个IP了。ssh连接VPS也老是掉线，甚至连不上去，终于在网上找到一个很棒的工具——mosh，跟ssh类似，同时需要服务端和客户端，使用方法也很像，使用命令mosh USERNAME@IP。若更改了ssh
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1062,8 +1187,7 @@ sudo chmod o+rw /dev/sdx
       
         
           
-          在VPS上使用transmission-daemon时出现以下错误
-12UDP Failed to set receive buffer: requested 4194304, got 425984 (tr-udp.c:84) UDP Failed to set send buffer: reque
+          在VPS上使用transmission-daemon时出现以下错误12UDP Failed to set receive buffer: requested 4194304, got 425984 (tr-udp.c:84) UDP Failed to set send buffer: reques
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1193,10 +1317,7 @@ sudo chmod o+rw /dev/sdx
       
         
           
-          查看多次登录失败IP
-grep &quot;Failed password for root&quot; /var/log/auth.log | awk '{print $11}' | sort | uniq -c | sort -nr | grep -v &quot;;&quot;
-
-更改ssh端
+          查看多次登录失败IPgrep &quot;Failed password for root&quot; /var/log/auth.log | awk &apos;{print $11}&apos; | sort | uniq -c | sort -nr | grep -v &quot;;&quot
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1326,13 +1447,10 @@ grep &quot;Failed password for root&quot; /var/log/auth.log | awk '{print $11}' 
       
         
           
-          根轨迹分析法
-根轨迹的基本概念
-根轨迹图是闭环系统特征方程的根（即闭环极点）随开环系统某一参数由零变化到无穷大时在S平面上的变化轨迹。
+          根轨迹分析法根轨迹的基本概念根轨迹图是闭环系统特征方程的根（即闭环极点）随开环系统某一参数由零变化到无穷大时在S平面上的变化轨迹。
 绘制根轨迹的基本规则
-
-根轨迹起始于开环极点，终止于开环零点。如果开环零点数目m小于开环极点数目n，则有n-m条根轨迹中止于无穷远处
-根轨迹的分支数等于特征方程的阶
+根轨迹起始于开环极点，终止于开环零点。如果开环零点数目m小于开环极点数目n，则有n-m条根轨迹中止于无穷远处  
+根轨迹的分支数等于特征方程的阶次
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1463,161 +1581,12 @@ grep &quot;Failed password for root&quot; /var/log/auth.log | awk '{print $11}' 
         
           
           控制系统的数学描述
-
-传递函数是线性定常系统的一种输入、输出关系描述，它取决于系统（或元件）的结构和参数，与输入函数无关（与外作用和初始条件无关）。
-反馈控制的系统，适当地匹配结构参数，有可能获得较高的工作精度和很强的抑制干扰的能力，同时又具备理想的复现、跟随指令输入的性能，这是反馈控制优于开环控制
+传递函数是线性定常系统的一种输入、输出关系描述，它取决于系统（或元件）的结构和参数，与输入函数无关（与外作用和初始条件无关）。  
+反馈控制的系统，适当地匹配结构参数，有可能获得较高的工作精度和很强的抑制干扰的能力，同时又具备理想的复现、跟随指令输入的性能，这是反馈控制优于开环控
           ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/01/06/自动控制原理2、3章/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/01/05/串行通信/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Avvount">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/pic/donkey.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Avvount's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/01/05/串行通信/" itemprop="url">串行通信</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-01-05T16:19:40+08:00">2018-01-05</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          计算机与外部交换信息称为通信，包括
-
-并行通信 — 计算机数据各位同时传送
-串行通信 — 数据逐位传送
-
-串行通信的特点
-
-串行通信只要一根数据线
-传输速度较慢
-接口电路复杂
-
-串行通信的应用
-
-只能接收串行信号的设备或只能串行输出设备
-长距离传送
-
-串行通信类型
-串行通信有同步和异步两种通信类型
-
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/01/05/串行通信/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1707,7 +1676,7 @@ grep &quot;Failed password for root&quot; /var/log/auth.log | awk '{print $11}' 
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1756,7 +1725,11 @@ grep &quot;Failed password for root&quot; /var/log/auth.log | awk '{print $11}' 
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2311,9 +2284,9 @@ grep &quot;Failed password for root&quot; /var/log/auth.log | awk '{print $11}' 
       
     
       
-        
-      
     
+      
+        
       
     
       

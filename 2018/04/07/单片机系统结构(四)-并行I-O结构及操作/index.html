@@ -99,13 +99,13 @@
 
 
 
-  <meta name="description" content="8051共有4个8位I/O口，共32口线。 每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。 P0口的结构与操作  控制信号为0时，P0口做一般I/O口。 控制信号为1时，P0口为地址/数据复用总线。 P0口做一般I/O口使用  数据输出 写脉冲加在C上   若D=0，则$\bar Q$=1，则下拉FET导通，P00引脚输出0 若D=1，则$\bar Q$=0，则下拉FET截止，P00引脚">
+  <meta name="description" content="8051共有4个8位I/O口，共32口线。每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。 P0口的结构与操作控制信号为0时，P0口做一般I/O口。控制信号为1时，P0口为地址/数据复用总线。   P0口做一般I/O口使用 数据输出写脉冲加在C上   若D=0，则$\bar Q$=1，则下拉FET导通，P00引脚输出0   若D=1，则$\bar Q$=0，则下拉FET截止，P00引脚高阻">
 <meta name="keywords" content="单片机原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单片机系统结构(四)——并行I&#x2F;O结构及操作">
 <meta property="og:url" content="https://avvount.github.io/2018/04/07/单片机系统结构(四)-并行I-O结构及操作/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="8051共有4个8位I/O口，共32口线。 每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。 P0口的结构与操作  控制信号为0时，P0口做一般I/O口。 控制信号为1时，P0口为地址/数据复用总线。 P0口做一般I/O口使用  数据输出 写脉冲加在C上   若D=0，则$\bar Q$=1，则下拉FET导通，P00引脚输出0 若D=1，则$\bar Q$=0，则下拉FET截止，P00引脚">
+<meta property="og:description" content="8051共有4个8位I/O口，共32口线。每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。 P0口的结构与操作控制信号为0时，P0口做一般I/O口。控制信号为1时，P0口为地址/数据复用总线。   P0口做一般I/O口使用 数据输出写脉冲加在C上   若D=0，则$\bar Q$=1，则下拉FET导通，P00引脚输出0   若D=1，则$\bar Q$=0，则下拉FET截止，P00引脚高阻">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/P0%E5%8F%A3.png">
 <meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/P1%E5%8F%A3.png">
@@ -115,7 +115,7 @@
 <meta property="og:updated_time" content="2019-09-01T03:32:22.535Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单片机系统结构(四)——并行I&#x2F;O结构及操作">
-<meta name="twitter:description" content="8051共有4个8位I/O口，共32口线。 每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。 P0口的结构与操作  控制信号为0时，P0口做一般I/O口。 控制信号为1时，P0口为地址/数据复用总线。 P0口做一般I/O口使用  数据输出 写脉冲加在C上   若D=0，则$\bar Q$=1，则下拉FET导通，P00引脚输出0 若D=1，则$\bar Q$=0，则下拉FET截止，P00引脚">
+<meta name="twitter:description" content="8051共有4个8位I/O口，共32口线。每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。 P0口的结构与操作控制信号为0时，P0口做一般I/O口。控制信号为1时，P0口为地址/数据复用总线。   P0口做一般I/O口使用 数据输出写脉冲加在C上   若D=0，则$\bar Q$=1，则下拉FET导通，P00引脚输出0   若D=1，则$\bar Q$=0，则下拉FET截止，P00引脚高阻">
 <meta name="twitter:image" content="http://ohe854y38.bkt.clouddn.com/P0%E5%8F%A3.png">
 
 
@@ -402,93 +402,59 @@
       
 
       
-        <p>8051共有4个8位I/O口，共32口线。
-每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。</p>
-<h1>P0口的结构与操作</h1>
-<p><img src="http://ohe854y38.bkt.clouddn.com/P0%E5%8F%A3.png" alt="P0口">
-控制信号为0时，P0口做一般<strong>I/O口</strong>。
-控制信号为1时，P0口为<strong>地址/数据复用总线</strong>。</p>
-<h2>P0口做一般I/O口使用</h2>
-<ol>
-<li>数据输出<br>
-写脉冲加在C上</li>
+        <p>8051共有4个8位I/O口，共32口线。<br>每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。</p>
+<h1 id="P0口的结构与操作"><a href="#P0口的结构与操作" class="headerlink" title="P0口的结构与操作"></a>P0口的结构与操作</h1><p><img src="http://ohe854y38.bkt.clouddn.com/P0%E5%8F%A3.png" alt="P0口"><br>控制信号为0时，P0口做一般<strong>I/O口</strong>。<br>控制信号为1时，P0口为<strong>地址/数据复用总线</strong>。  </p>
+<h2 id="P0口做一般I-O口使用"><a href="#P0口做一般I-O口使用" class="headerlink" title="P0口做一般I/O口使用"></a>P0口做一般I/O口使用</h2><ol>
+<li>数据输出<br>写脉冲加在C上</li>
 </ol>
 <ul>
-<li>若D=0，则$\bar Q$=1，则下拉FET导通，P00引脚输出0</li>
-<li>若D=1，则$\bar Q$=0，则下拉FET截止，P00引脚<strong>高阻</strong></li>
+<li>若D=0，则$\bar Q$=1，则下拉FET导通，P00引脚输出0  </li>
+<li>若D=1，则$\bar Q$=0，则下拉FET截止，P00引脚<strong>高阻</strong>  </li>
 </ul>
-<p><strong>注意</strong>：P0口作为一般I/O口时，要外接上拉电阻，以避免数据输出时，出现三态。</p>
+<p><strong>注意</strong>：P0口作为一般I/O口时，要外接上拉电阻，以避免数据输出时，出现三态。  </p>
 <ol start="2">
-<li>数据输入</li>
+<li>数据输入  </li>
 </ol>
 <ul>
-<li>
-<p>直接读<strong>端口引脚</strong>处的数据<br>
-由下面的三态缓冲器将端口数据送入内部总线</p>
-</li>
-<li>
-<p>读<strong>锁存器Q端</strong>的数据<br>
-由上面的三态缓冲器将端口数据送入内部总线</p>
-</li>
-<li>
-<p>读端口引脚处的数据与读锁存器处的数据的区别</p>
+<li>直接读<strong>端口引脚</strong>处的数据  <pre><code>由下面的三态缓冲器将端口数据送入内部总线  
+</code></pre></li>
+<li><p>读<strong>锁存器Q端</strong>的数据  </p>
+<pre><code>由上面的三态缓冲器将端口数据送入内部总线    
+</code></pre></li>
+<li><p>读端口引脚处的数据与读锁存器处的数据的区别  </p>
 <ul>
-<li>读锁存器的数据为了避免读错引脚上的电平</li>
-<li>读锁存器的数据为了适应“读-修改-写”类指令</li>
+<li>读锁存器的数据为了避免读错引脚上的电平  </li>
+<li>读锁存器的数据为了适应“读-修改-写”类指令  </li>
 </ul>
 </li>
 </ul>
-<h3>&quot;读-修改-写&quot;类指令</h3>
-<ol>
-<li>
-<p>指令的特点<br>
-先读口（锁存器Q端）<br>
-对读入的数据进行修改<br>
-再把修改后的数据写到端口上</p>
+<h3 id="“读-修改-写”类指令"><a href="#“读-修改-写”类指令" class="headerlink" title="“读-修改-写”类指令"></a>“读-修改-写”类指令</h3><ol>
+<li><p>指令的特点<br>先读口（锁存器Q端）<br>对读入的数据进行修改<br>再把修改后的数据写到端口上  </p>
 </li>
-<li>
-<p>规律<br>
-当<strong>目的操作数</strong>为I/O口或其中的某一位时，均为“读-修改-写”类指令，要从锁存器中读取数据<br>
-当<strong>源操作数</strong>为I/O口或其中的某一位时，要直接读引脚处数据</p>
+<li><p>规律<br>当<strong>目的操作数</strong>为I/O口或其中的某一位时，均为“读-修改-写”类指令，要从锁存器中读取数据<br>当<strong>源操作数</strong>为I/O口或其中的某一位时，要直接读引脚处数据  </p>
 </li>
 </ol>
-<h3>P0作为一般输入输出接口时是一个准双向口</h3>
-<ol>
-<li>原因<br>
-前一时刻，如果输出数据0，则Q=1，下拉FET导通，P00=0<br>
-下一时刻，要输入数据，由于下拉FET处于开通状态，数据不可能被正确输入，因而是一个准双向口</li>
-<li>解决办法<br>
-输入数据前，先把该口置1，使下拉FET截止，以便数据能正确输入</li>
+<h3 id="P0作为一般输入输出接口时是一个准双向口"><a href="#P0作为一般输入输出接口时是一个准双向口" class="headerlink" title="P0作为一般输入输出接口时是一个准双向口"></a>P0作为一般输入输出接口时是一个准双向口</h3><ol>
+<li>原因<br>前一时刻，如果输出数据0，则Q=1，下拉FET导通，P00=0<br>下一时刻，要输入数据，由于下拉FET处于开通状态，数据不可能被正确输入，因而是一个准双向口  </li>
+<li>解决办法<br>输入数据前，先把该口置1，使下拉FET截止，以便数据能正确输入  </li>
 </ol>
-<h2>P0口作为地址/数据总线</h2>
-<p>控制信号为高电平1，转换开关接至反向器输出端，同时与门开锁</p>
-<p>输入数据时，与作为一般I/O使用时相同，应先向该口置1（系统自动完成）<br>
-P0输出地址或数据时</p>
+<h2 id="P0口作为地址-数据总线"><a href="#P0口作为地址-数据总线" class="headerlink" title="P0口作为地址/数据总线"></a>P0口作为地址/数据总线</h2><p>控制信号为高电平1，转换开关接至反向器输出端，同时与门开锁  </p>
+<p>输入数据时，与作为一般I/O使用时相同，应先向该口置1（系统自动完成）<br>P0输出地址或数据时  </p>
 <ul>
-<li>若输出1，则上面FET开通、下面FET关断，P0.0=1</li>
-<li>若输出0，则下面FET开通、上面FET关断，P0.0=0<br>
-注意： P0作为数据/地址总线复用，输出数据时，不需外接上拉电阻</li>
+<li>若输出1，则上面FET开通、下面FET关断，P0.0=1  </li>
+<li>若输出0，则下面FET开通、上面FET关断，P0.0=0<br>注意： P0作为数据/地址总线复用，输出数据时，不需外接上拉电阻</li>
 </ul>
-<h1>P1口的结构与操作</h1>
-<p><img src="http://ohe854y38.bkt.clouddn.com/P1%E5%8F%A3.png" alt></p>
-<p>输出部分有内部上拉电阻R*约为20K，输出数据时不必外加上拉电阻
-其他部分与P0端口使用相类似，也是一个准双向口</p>
-<h1>P2口的结构与操作</h1>
-<p>控制信号为0时，P2口做<strong>一般I/O口</strong>。
-控制信号为1时，P2口为<strong>高8位地址输出</strong>。
-<img src="http://ohe854y38.bkt.clouddn.com/P2.png" alt>
-当P2口作为普通I/O口使用时，用法和P1口类似。<br>
-P2口输出地址信息时，此时单片机完成取指操作或对外部数据存储器16位地址的读写操作。</p>
-<h1>P3口的结构与操作</h1>
-<p>做普通端口使用时，变异功能应为“1”<br>
-使用第二功能时，输出端口锁存器应为“1”<br>
-<img src="http://ohe854y38.bkt.clouddn.com/P3.png" alt></p>
+<h1 id="P1口的结构与操作"><a href="#P1口的结构与操作" class="headerlink" title="P1口的结构与操作"></a>P1口的结构与操作</h1><p><img src="http://ohe854y38.bkt.clouddn.com/P1%E5%8F%A3.png" alt></p>
+<p>输出部分有内部上拉电阻R*约为20K，输出数据时不必外加上拉电阻<br>其他部分与P0端口使用相类似，也是一个准双向口</p>
+<h1 id="P2口的结构与操作"><a href="#P2口的结构与操作" class="headerlink" title="P2口的结构与操作"></a>P2口的结构与操作</h1><p>控制信号为0时，P2口做<strong>一般I/O口</strong>。<br>控制信号为1时，P2口为<strong>高8位地址输出</strong>。<br><img src="http://ohe854y38.bkt.clouddn.com/P2.png" alt><br>当P2口作为普通I/O口使用时，用法和P1口类似。<br>P2口输出地址信息时，此时单片机完成取指操作或对外部数据存储器16位地址的读写操作。  </p>
+<h1 id="P3口的结构与操作"><a href="#P3口的结构与操作" class="headerlink" title="P3口的结构与操作"></a>P3口的结构与操作</h1><p>做普通端口使用时，变异功能应为“1”<br>使用第二功能时，输出端口锁存器应为“1”<br><img src="http://ohe854y38.bkt.clouddn.com/P3.png" alt></p>
 <ul>
-<li>P3口第二功能</li>
+<li>P3口第二功能  </li>
 </ul>
 <table>
 <thead>
 <tr>
+<th></th>
 <th>引脚</th>
 <th>转义引脚</th>
 <th>功能说明</th>
@@ -496,68 +462,80 @@ P2口输出地址信息时，此时单片机完成取指操作或对外部数据
 </thead>
 <tbody>
 <tr>
+<td></td>
 <td>P3.0</td>
 <td>RXD</td>
 <td>串行数据接收端</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>P3.1</td>
 <td>TXD</td>
 <td>串行数据发送端</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>P3.2</td>
 <td>INT0</td>
 <td>外部中断0请求</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>P3.3</td>
 <td>INT1</td>
 <td>外部中断1请求</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>P3.4</td>
 <td>T0</td>
 <td>计数器0外部输入</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>P3.5</td>
 <td>T1</td>
 <td>计数器1外部输入</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>P3.6</td>
 <td>WR</td>
 <td>外部数据存储器写</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>P3.7</td>
 <td>RD</td>
 <td>外部数据存储器读</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h1>其它说明</h1>
-<ol>
-<li>I/O性质的另一观点</li>
+<h1 id="其它说明"><a href="#其它说明" class="headerlink" title="其它说明"></a>其它说明</h1><ol>
+<li>I/O性质的另一观点  </li>
 </ol>
 <ul>
-<li>P0为三态双向I/O<br>
-因当要输入数据时，先给P0锁存器置1，这时场效应管关断，该口线成为高阻状态，故称P0为三态双向口。</li>
-<li>P1~P3为准双向口<br>
-因当要输入数据时，先给P1~P3锁存器置1，这时场效应管关断，但由于P1~P3内部均有上拉电阻，该口线被拉成高电平，故称P1~P3为准双向口。</li>
+<li>P0为三态双向I/O<br>  因当要输入数据时，先给P0锁存器置1，这时场效应管关断，该口线成为高阻状态，故称P0为三态双向口。  </li>
+<li>P1~P3为准双向口<br>  因当要输入数据时，先给P1~P3锁存器置1，这时场效应管关断，但由于P1~P3内部均有上拉电阻，该口线被拉成高电平，故称P1~P3为准双向口。  </li>
 </ul>
 <ol start="2">
-<li>I/O的输出负载能力</li>
+<li>I/O的输出负载能力  </li>
 </ol>
 <ul>
-<li>P0口的每一位输出可以驱动8个LS  TTL输入。</li>
-<li>P1~P3口的每一位输出可以驱动4个LS  TTL输入。<br>
-负载能力产生的原因：  如果各口线内部输出驱动电路中的电流过大，可能导致输出信号电平的紊乱。</li>
+<li>P0口的每一位输出可以驱动8个LS  TTL输入。  </li>
+<li>P1~P3口的每一位输出可以驱动4个LS  TTL输入。<br>负载能力产生的原因：  如果各口线内部输出驱动电路中的电流过大，可能导致输出信号电平的紊乱。  </li>
 </ul>
-<p>
+
 <a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-</p>
+
 
       
     </div>
@@ -679,7 +657,7 @@ P2口输出地址信息时，此时单片机完成取指操作或对外部数据
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -728,7 +706,11 @@ P2口输出地址信息时，此时单片机完成取指操作或对外部数据
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -778,7 +760,7 @@ P2口输出地址信息时，此时单片机完成取指操作或对外部数据
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">P0口的结构与操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.</span> <span class="nav-text">P0口做一般I/O口使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.1.</span> <span class="nav-text">&quot;读-修改-写&quot;类指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">1.1.2.</span> <span class="nav-text">P0作为一般输入输出接口时是一个准双向口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.2.</span> <span class="nav-text">P0口作为地址/数据总线</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">P1口的结构与操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">P2口的结构与操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">P3口的结构与操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">其它说明</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#P0口的结构与操作"><span class="nav-number">1.</span> <span class="nav-text">P0口的结构与操作</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#P0口做一般I-O口使用"><span class="nav-number">1.1.</span> <span class="nav-text">P0口做一般I/O口使用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#“读-修改-写”类指令"><span class="nav-number">1.1.1.</span> <span class="nav-text">“读-修改-写”类指令</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#P0作为一般输入输出接口时是一个准双向口"><span class="nav-number">1.1.2.</span> <span class="nav-text">P0作为一般输入输出接口时是一个准双向口</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#P0口作为地址-数据总线"><span class="nav-number">1.2.</span> <span class="nav-text">P0口作为地址/数据总线</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P1口的结构与操作"><span class="nav-number">2.</span> <span class="nav-text">P1口的结构与操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P2口的结构与操作"><span class="nav-number">3.</span> <span class="nav-text">P2口的结构与操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#P3口的结构与操作"><span class="nav-number">4.</span> <span class="nav-text">P3口的结构与操作</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其它说明"><span class="nav-number">5.</span> <span class="nav-text">其它说明</span></a></li></ol></div>
             
 
           </div>

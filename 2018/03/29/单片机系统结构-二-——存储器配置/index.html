@@ -99,13 +99,13 @@
 
 
 
-  <meta name="description" content="物理上有四个存储空间逻辑上有三个存储空间     片内数据存储器 片内程序存储器片内数据存储器 片外数据存储器      64K       片外数据存储器 片外程序存储器片内外统一的程序存储器     64K           51子系列 52子系列     片内数据存储器 128B 256B   专用寄存器区 128B 128B   片内程序存储器 4K 8K    程序存储区">
+  <meta name="description" content="物理上有四个存储空间逻辑上有三个存储空间     片内数据存储器 片内程序存储器片内数据存储器 片外数据存储器      64K       片外数据存储器 片外程序存储器片内外统一的程序存储器     64K            51子系列 52子系列      片内数据存储器 128B 256B     专用寄存器区 128B 128B     片内程序存储器 4K 8K">
 <meta name="keywords" content="单片机原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单片机系统结构(二)——存储器配置">
 <meta property="og:url" content="https://avvount.github.io/2018/03/29/单片机系统结构-二-——存储器配置/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="物理上有四个存储空间逻辑上有三个存储空间     片内数据存储器 片内程序存储器片内数据存储器 片外数据存储器      64K       片外数据存储器 片外程序存储器片内外统一的程序存储器     64K           51子系列 52子系列     片内数据存储器 128B 256B   专用寄存器区 128B 128B   片内程序存储器 4K 8K    程序存储区">
+<meta property="og:description" content="物理上有四个存储空间逻辑上有三个存储空间     片内数据存储器 片内程序存储器片内数据存储器 片外数据存储器      64K       片外数据存储器 片外程序存储器片内外统一的程序存储器     64K            51子系列 52子系列      片内数据存储器 128B 256B     专用寄存器区 128B 128B     片内程序存储器 4K 8K">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E5%A4%96%E9%83%A8%E7%A8%8B%E5%BA%8F%E5%AD%98%E5%82%A8%E5%8C%BA.png">
 <meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/51%E7%89%87%E5%86%85%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%8C%BA.png">
@@ -115,7 +115,7 @@
 <meta property="og:updated_time" content="2019-09-01T03:33:03.654Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单片机系统结构(二)——存储器配置">
-<meta name="twitter:description" content="物理上有四个存储空间逻辑上有三个存储空间     片内数据存储器 片内程序存储器片内数据存储器 片外数据存储器      64K       片外数据存储器 片外程序存储器片内外统一的程序存储器     64K           51子系列 52子系列     片内数据存储器 128B 256B   专用寄存器区 128B 128B   片内程序存储器 4K 8K    程序存储区">
+<meta name="twitter:description" content="物理上有四个存储空间逻辑上有三个存储空间     片内数据存储器 片内程序存储器片内数据存储器 片外数据存储器      64K       片外数据存储器 片外程序存储器片内外统一的程序存储器     64K            51子系列 52子系列      片内数据存储器 128B 256B     专用寄存器区 128B 128B     片内程序存储器 4K 8K">
 <meta name="twitter:image" content="http://ohe854y38.bkt.clouddn.com/%E5%A4%96%E9%83%A8%E7%A8%8B%E5%BA%8F%E5%AD%98%E5%82%A8%E5%8C%BA.png">
 
 
@@ -402,17 +402,18 @@
       
 
       
-        <p>
+        
 <table>
     <tr><td colspan="2"> 物理上有四个存储空间</td><td colspan="2">逻辑上有三个存储空间</td></tr>
     <tr><td>片内数据存储器</td> <td>片内程序存储器</td><td>片内数据存储器</td> <td>片外数据存储器      64K</td></tr>  
     <tr><td>片外数据存储器</td> <td>片外程序存储器</td><td colspan="2">片内外统一的程序存储器     64K </td></tr>  
 </table>
 
-</p>
+
 <table>
 <thead>
 <tr>
+<th></th>
 <th></th>
 <th>51子系列</th>
 <th>52子系列</th>
@@ -420,43 +421,47 @@
 </thead>
 <tbody>
 <tr>
+<td></td>
 <td>片内数据存储器</td>
 <td>128B</td>
 <td>256B</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>专用寄存器区</td>
 <td>128B</td>
 <td>128B</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>片内程序存储器</td>
 <td>4K</td>
 <td>8K</td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h1>程序存储区</h1>
-<p>存放编制好的程序或表格数据，只能读取</p>
+<h1 id="程序存储区"><a href="#程序存储区" class="headerlink" title="程序存储区"></a>程序存储区</h1><p>存放编制好的程序或表格数据，只能读取  </p>
 <ol>
-<li>内外程序存储器的地址空间是统一的，共64K<br>
-<img src="http://ohe854y38.bkt.clouddn.com/%E5%A4%96%E9%83%A8%E7%A8%8B%E5%BA%8F%E5%AD%98%E5%82%A8%E5%8C%BA.png" alt></li>
+<li>内外程序存储器的地址空间是统一的，共64K<br><img src="http://ohe854y38.bkt.clouddn.com/%E5%A4%96%E9%83%A8%E7%A8%8B%E5%BA%8F%E5%AD%98%E5%82%A8%E5%8C%BA.png" alt>  </li>
 </ol>
 <ul>
-<li>若EA=1，则从内部ROM开始执行，超出内部ROM的容量时，再从外部ROM的1000H单元接着执行。（51子系列）</li>
-<li>若EA=0，则直接从外部ROM取指执行</li>
+<li>若EA=1，则从内部ROM开始执行，超出内部ROM的容量时，再从外部ROM的1000H单元接着执行。（51子系列）  </li>
+<li>若EA=0，则直接从外部ROM取指执行  </li>
 </ul>
 <ol start="2">
-<li>对程序存储器访问的寻址方式</li>
+<li>对程序存储器访问的寻址方式  </li>
 </ol>
 <ul>
-<li>立即数寻址</li>
-<li>基址+变址寻址</li>
+<li>立即数寻址  </li>
+<li>基址+变址寻址  </li>
 </ul>
 <ol start="3">
-<li>程序存储器中的特殊单元</li>
+<li>程序存储器中的特殊单元  </li>
 </ol>
-<p>
+
 
 <table>
 <tr><td> 0000H </td><td>取指执行程序的起始单元，一般在该单元放一条绝对跳转指令，用户设计的主程序从跳转地址开始安放</td></tr>
@@ -468,55 +473,38 @@
 <tr><td> 002BH </td><td>定时器2溢出中断中断服务程序的入口地址  </td></tr>
 </table>
 
-</p>
-<h1>片内数据存储器</h1>
-<ol>
-<li>片内数据存储区的编址</li>
+
+<h1 id="片内数据存储器"><a href="#片内数据存储器" class="headerlink" title="片内数据存储器"></a>片内数据存储器</h1><ol>
+<li>片内数据存储区的编址  </li>
 </ol>
 <ul>
-<li>
-<p>51子系列:低128字节RAM与SFR块相连<br>
-<img src="http://ohe854y38.bkt.clouddn.com/51%E7%89%87%E5%86%85%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%8C%BA.png" alt></p>
+<li><p>51子系列:低128字节RAM与SFR块相连<br><img src="http://ohe854y38.bkt.clouddn.com/51%E7%89%87%E5%86%85%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%8C%BA.png" alt>  </p>
 </li>
-<li>
-<p>52子系列:高128字节RAM与SFR块逻辑地址重合<br>
-<img src="http://ohe854y38.bkt.clouddn.com/52%E7%89%87%E5%86%85%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%8C%BA.png" alt></p>
+<li><p>52子系列:高128字节RAM与SFR块逻辑地址重合<br><img src="http://ohe854y38.bkt.clouddn.com/52%E7%89%87%E5%86%85%E6%95%B0%E6%8D%AE%E5%AD%98%E5%82%A8%E5%8C%BA.png" alt>  </p>
 <ul>
-<li>高128RAM：寄存器间接寻址</li>
-<li>SFR：直接寻址</li>
+<li>高128RAM：寄存器间接寻址  </li>
+<li>SFR：直接寻址  </li>
 </ul>
 </li>
 </ul>
 <ol start="2">
-<li>低128字节RAM的配置</li>
+<li>低128字节RAM的配置  </li>
 </ol>
-<p><img src="http://ohe854y38.bkt.clouddn.com/%E4%BD%8E128%E5%AD%97%E8%8A%82RAM%E7%9A%84%E9%85%8D%E7%BD%AE.png" alt></p>
+<p><img src="http://ohe854y38.bkt.clouddn.com/%E4%BD%8E128%E5%AD%97%E8%8A%82RAM%E7%9A%84%E9%85%8D%E7%BD%AE.png" alt>  </p>
 <ul>
-<li>
-<p>通用寄存器区<br>
-4组8个8位寄存器R0~R7<br>
-由PSW中的RS1,RS0选择当前工作区</p>
+<li><p>通用寄存器区<br>4组8个8位寄存器R0~R7<br>由PSW中的RS1,RS0选择当前工作区</p>
 </li>
-<li>
-<p>位寻址空间<br>
-20H~2FH字节可以位寻址</p>
+<li><p>位寻址空间<br>20H~2FH字节可以位寻址  </p>
 </li>
-<li>
-<p>字节寻址空间<br>
-30H~7FH字节(80B)</p>
+<li><p>字节寻址空间<br>30H~7FH字节(80B)  </p>
 </li>
-<li>
-<p>堆栈<br>
-堆栈设置在内部数据存储区<br>
-堆栈的位置不固定，可以通过一个专用寄存器SP（栈指针）来设定栈顶的位置<br>
-数据入栈时，栈指针递增<br>
-堆栈深度最大为128B</p>
+<li><p>堆栈<br>堆栈设置在内部数据存储区<br>堆栈的位置不固定，可以通过一个专用寄存器SP（栈指针）来设定栈顶的位置<br>数据入栈时，栈指针递增<br>堆栈深度最大为128B  </p>
 </li>
 </ul>
-<h1>专用寄存器</h1>
-<table>
+<h1 id="专用寄存器"><a href="#专用寄存器" class="headerlink" title="专用寄存器"></a>专用寄存器</h1><table>
 <thead>
 <tr>
+<th></th>
 <th>标识符</th>
 <th>名    称</th>
 <th>地址</th>
@@ -524,104 +512,144 @@
 </thead>
 <tbody>
 <tr>
+<td></td>
 <td>*ACC</td>
 <td>累加器</td>
 <td>E0H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>*B</td>
 <td>B寄存器</td>
 <td>F0H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>*PSW</td>
 <td>程序状态字</td>
 <td>D0H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>SP</td>
 <td>堆栈指针</td>
 <td>81H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>DPTR</td>
 <td>数据指针(DPH和DPL)</td>
 <td>82H,83H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>*P0</td>
 <td>口0</td>
 <td>80H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>*P1</td>
 <td>口1</td>
 <td>90H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>*P2</td>
 <td>口2</td>
 <td>A0H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>*P3</td>
 <td>口3</td>
 <td>B0H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>*IP</td>
 <td>中断优先级寄存器</td>
 <td>B8H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>*IE</td>
 <td>中断控制寄存器</td>
 <td>A8H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>TMOD</td>
 <td>定时器方式寄存器</td>
 <td>89H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>*TCON</td>
 <td>定时器控制寄存器</td>
 <td>88H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>TH0</td>
 <td>计数器0高位</td>
 <td>8CH</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>TL0</td>
 <td>计数器0低位</td>
 <td>8AH</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>TH1</td>
 <td>计数器1高位</td>
 <td>8DH</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>TL1</td>
 <td>计数器1低位</td>
 <td>8BH</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>*SCON</td>
 <td>串行口控制</td>
 <td>98H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>SBUF</td>
 <td>串行数据缓冲器</td>
 <td>99H</td>
+<td></td>
 </tr>
 <tr>
+<td></td>
 <td>PCON</td>
 <td>电源控制</td>
 <td>97H</td>
+<td></td>
 </tr>
 </tbody>
 </table>
@@ -632,28 +660,13 @@
 <li>*表示 可以位寻址的寄存器   （其地址可被8整除）</li>
 </ul>
 <ol>
-<li>
-<p>程序计数器PC<br>
-用于存放下一条要执行指令的地址<br>
-是一个16位专用寄存器，寻址范围为0~65535  （64K）<br>
-PC在物理上是独立的，不属于内部数据存储器的SFR</p>
+<li><p>程序计数器PC<br>用于存放下一条要执行指令的地址<br>是一个16位专用寄存器，寻址范围为0~65535  （64K）<br>PC在物理上是独立的，不属于内部数据存储器的SFR</p>
 </li>
-<li>
-<p>累加器A（Acc）<br>
-最常用的一个专用寄存器<br>
-大部分单操作数指令的操作数取自累加器<br>
-很多双操作数指令的一个操作数取自累加器<br>
-加、减、乘、除运算指令的结果都存放在A或AB中</p>
+<li><p>累加器A（Acc）<br>最常用的一个专用寄存器<br>大部分单操作数指令的操作数取自累加器<br>很多双操作数指令的一个操作数取自累加器<br>加、减、乘、除运算指令的结果都存放在A或AB中  </p>
 </li>
-<li>
-<p>B寄存器<br>
-在乘、除法指令中用到B寄存器<br>
-乘法：两个操作数分别取自A和B，结果存放于AB中<br>
-除法：被除数在A中、除数在B中，商在A、余数在B中<br>
-其它指令中，B可作为RAM的一个单元用</p>
+<li><p>B寄存器<br>在乘、除法指令中用到B寄存器<br>乘法：两个操作数分别取自A和B，结果存放于AB中<br>除法：被除数在A中、除数在B中，商在A、余数在B中<br>其它指令中，B可作为RAM的一个单元用</p>
 </li>
-<li>
-<p>程序状态字寄存器PSW  —  <strong>保存指令执行状态</strong></p>
+<li><p>程序状态字寄存器PSW  —  <strong>保存指令执行状态</strong>  </p>
 </li>
 </ol>
 <table>
@@ -683,103 +696,41 @@ PC在物理上是独立的，不属于内部数据存储器的SFR</p>
 </tbody>
 </table>
 <ul>
-<li>
-<p>Cy：进位标志<br>
-保存算术运算的进或借位<br>
-位操作的累加器</p>
+<li>Cy：进位标志<br>保存算术运算的进或借位<br>位操作的累加器  </li>
+<li>AC：辅助进位标志<br>加法或减法运算产生从D3向D4进位或借位时，AC=1<br>常用于十进制调整指令  </li>
+<li>F0：标志0，用户定义的一个状态标记  </li>
+<li>RS1, RS0：通用寄存器组选择<br>  0      0       寄存器组0(00H~07H）<br>  0      1       寄存器组1(08H~0FH）<br>  1      0       寄存器组2(10H~17H）<br>  1      1       寄存器组3(18H~1FH）  </li>
+<li>OV：溢出标志位<br>  当执行算术指令时，由硬件置位或清除，以指示溢出状态。  <ul>
+<li>执行加法操作时，以$C’_i$表示第i位向第i+1位有进位，则 $$OV=C’_6 ⊕ C’_7 $$<br>溢出标志可以判断带符号数相加时，和数是否溢出，即大于127或小于-128   </li>
+<li>对于减法操作，以$C’_i$表示第i位向第i+1位有借位，则$$OV= C’_6 ⊕ C’_7$$</li>
+<li>对于乘法操作，若两数乘积大于255时，则OV=1  </li>
+<li>对于除法，当除数为0时，OV=1  </li>
+</ul>
 </li>
-<li>
-<p>AC：辅助进位标志<br>
-加法或减法运算产生从D3向D4进位或借位时，AC=1<br>
-常用于十进制调整指令</p>
-</li>
-<li>
-<p>F0：标志0，用户定义的一个状态标记</p>
-</li>
-<li>
-<p>RS1, RS0：通用寄存器组选择<br>
-0      0       寄存器组0(00H~07H）<br>
-0      1       寄存器组1(08H~0FH）<br>
-1      0       寄存器组2(10H~17H）<br>
-1      1       寄存器组3(18H~1FH）</p>
-</li>
-<li>
-<p>OV：溢出标志位<br>
-当执行算术指令时，由硬件置位或清除，以指示溢出状态。</p>
+<li>P：奇偶标志位<br> 每个机器周期根据累加器A中的内容的奇偶性由硬件置/复位<br> A中1的个数为奇P=1，否则为P=0<br> 该位对串行通讯的数据传输有重要意义，可以借助该位进行奇偶校验  </li>
+<li><p>栈指针SP<br>  SP为8位寄存器，指示栈顶位置<br>  系统复位后，SP初始值为07H，最好将其设为1FH或更大  </p>
 <ul>
-<li>执行加法操作时，以$C'_i$表示第i位向第i+1位有进位，则 $$OV=C'_6 ⊕ C'_7 $$<br>
-溢出标志可以判断带符号数相加时，和数是否溢出，即大于127或小于-128</li>
-<li>对于减法操作，以$C'_i$表示第i位向第i+1位有借位，则$$OV= C'_6 ⊕ C'_7$$</li>
-<li>对于乘法操作，若两数乘积大于255时，则OV=1</li>
-<li>对于除法，当除数为0时，OV=1</li>
-</ul>
-</li>
-<li>
-<p>P：奇偶标志位<br>
-每个机器周期根据累加器A中的内容的奇偶性由硬件置/复位<br>
-A中1的个数为奇P=1，否则为P=0<br>
-该位对串行通讯的数据传输有重要意义，可以借助该位进行奇偶校验</p>
-</li>
-<li>
-<p>栈指针SP<br>
-SP为8位寄存器，指示栈顶位置<br>
-系统复位后，SP初始值为07H，最好将其设为1FH或更大</p>
-<ul>
-<li>进栈：SP+1，再压栈</li>
-<li>出栈：先出栈，再SP-1<br>
-改变SP的途径
-<ul>
-<li>软件直接改变</li>
-<li>执行PUSH或POP指令</li>
-<li>子程序调用、返回</li>
-<li>中断响应与返回</li>
+<li>进栈：SP+1，再压栈  </li>
+<li>出栈：先出栈，再SP-1<br>改变SP的途径  <ul>
+<li>软件直接改变  </li>
+<li>执行PUSH或POP指令  </li>
+<li>子程序调用、返回  </li>
+<li>中断响应与返回  </li>
 </ul>
 </li>
 </ul>
 </li>
-<li>
-<p>数据指针DPTR<br>
-DPTR是16位寄存器，也可作为两个独立的8位寄存器DPL、DPH使用<br>
-主要用于保存16位地址，可以寻址64K地址空间<br>
-当访问外部数据存储器时，可作为<strong>间址寄存器</strong><br>
-<code>MOVX A , @DPTR</code><br>
-<code>MOVX @DPTR , A</code><br>
-当访问程序存储器时，可作为<strong>基址寄存器</strong><br>
-<code>MOVC A , @A+DPTR</code></p>
+<li><p>数据指针DPTR<br>  DPTR是16位寄存器，也可作为两个独立的8位寄存器DPL、DPH使用<br>  主要用于保存16位地址，可以寻址64K地址空间<br>  当访问外部数据存储器时，可作为<strong>间址寄存器</strong><br>  <code>MOVX     A ,      @DPTR</code><br>  <code>MOVX     @DPTR ,      A</code><br>  当访问程序存储器时，可作为<strong>基址寄存器</strong><br>  <code>MOVC   A ,     @A+DPTR</code>  </p>
 </li>
-<li>
-<p>串行口数据缓冲器SBUF<br>
-用于存放欲发送或已接受的数据<br>
-包含两个独立的寄存器：发送缓冲器、接收缓冲器</p>
-</li>
-<li>
-<p>定时器/计数器<br>
-T0、T1、T2为三个16位寄存器，各由2个8位寄存器组成：TH0、TL0、TH1、TL1、TH2、TL2<br>
-系统可以对TH0、TL0、TH1、TL1、TH2、TL2进行寻址<br>
-不能把T0、T1、T2作为16位寄存器使用</p>
-</li>
-<li>
-<p>端口P0~P3<br>
-由端口硬件结构，P0~P3都有相应的锁存器，因而P0~P3可作为专用寄存器使用<br>
-由于可以把P0~P3当作寄存器使用，因而不再设口操作指令，都用MOV</p>
-</li>
-<li>
-<p>其它常用寄存器<br>
-IP：中断优先级寄存器<br>
-IE：允许中断寄存器<br>
-TMOD：定时器模式选择寄存器<br>
-TCON：定时器控制寄存器<br>
-SCON：串行口控制寄存器<br>
-PCON：电源控制寄存器</p>
-</li>
+<li>串行口数据缓冲器SBUF<br>  用于存放欲发送或已接受的数据<br>  包含两个独立的寄存器：发送缓冲器、接收缓冲器  </li>
+<li>定时器/计数器<br>  T0、T1、T2为三个16位寄存器，各由2个8位寄存器组成：TH0、TL0、TH1、TL1、TH2、TL2<br>  系统可以对TH0、TL0、TH1、TL1、TH2、TL2进行寻址<br>  不能把T0、T1、T2作为16位寄存器使用  </li>
+<li>端口P0~P3<br>  由端口硬件结构，P0~P3都有相应的锁存器，因而P0~P3可作为专用寄存器使用<br>  由于可以把P0~P3当作寄存器使用，因而不再设口操作指令，都用MOV</li>
+<li>其它常用寄存器<br>  IP：中断优先级寄存器<br>  IE：允许中断寄存器<br>  TMOD：定时器模式选择寄存器<br>  TCON：定时器控制寄存器<br>  SCON：串行口控制寄存器<br>  PCON：电源控制寄存器  </li>
 </ul>
-<h1>外部数据存储器</h1>
-<p>寻址空间：64K<br>
-采用间接寻址方式访问，间址寄存器为R0、R1和DPTR</p>
-<h1>布尔处理机</h1>
-<p>
+<h1 id="外部数据存储器"><a href="#外部数据存储器" class="headerlink" title="外部数据存储器"></a>外部数据存储器</h1><p>寻址空间：64K<br>采用间接寻址方式访问，间址寄存器为R0、R1和DPTR  </p>
+<h1 id="布尔处理机"><a href="#布尔处理机" class="headerlink" title="布尔处理机"></a>布尔处理机</h1>
 <a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-</p>
+
 
       
     </div>
@@ -901,7 +852,7 @@ PCON：电源控制寄存器</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -950,7 +901,11 @@ PCON：电源控制寄存器</p>
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -1000,7 +955,7 @@ PCON：电源控制寄存器</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">程序存储区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">片内数据存储器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">专用寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">外部数据存储器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">布尔处理机</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#程序存储区"><span class="nav-number">1.</span> <span class="nav-text">程序存储区</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#片内数据存储器"><span class="nav-number">2.</span> <span class="nav-text">片内数据存储器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#专用寄存器"><span class="nav-number">3.</span> <span class="nav-text">专用寄存器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外部数据存储器"><span class="nav-number">4.</span> <span class="nav-text">外部数据存储器</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#布尔处理机"><span class="nav-number">5.</span> <span class="nav-text">布尔处理机</span></a></li></ol></div>
             
 
           </div>

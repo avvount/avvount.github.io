@@ -326,6 +326,140 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/04/05/ubuntu-debian-fcitx输入模块/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Avvount">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/pic/donkey.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Avvount's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/04/05/ubuntu-debian-fcitx输入模块/" itemprop="url">ubuntu&debian fcitx输入模块</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-05T20:30:20+08:00">2018-04-05</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          
+fcitx：fcitx主程序
+fcitx-sogoupinyin ：fcitx的搜狗拼音词库。（你也可以换成其他类型的词库比如五笔、rime等等，具体可以终端输入aptitude search fcitx搜索。）
+fcitx-config-gtk：fcitx的gtk的设置图形界面。
+fcitx-f
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2018/04/05/ubuntu-debian-fcitx输入模块/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/04/05/Linux目录结构&文件类型/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -396,13 +530,9 @@
       
         
           
-          目录结构
-
-文件类型
-链接文件（link）
-就是类似Windows系统下面的捷径啦！ 第一个属性为 [ l ]（英文L的小写），例如 [lrwxrwxrwx]
-设备与设备文件（device）
-与系统周边及储存等相关的一些文件， 通常都集中在/dev这个目录之下！通常又分为两种：
+          目录结构  
+文件类型链接文件（link）就是类似Windows系统下面的捷径啦！ 第一个属性为 [ l ]（英文L的小写），例如 [lrwxrwxrwx]  
+设备与设备文件（device）与系统周边及储存等相关的一些文件， 通常都集中在/dev这个目录之下！通常又分为两种：
 区块（block）设
           ...
           <!--noindex-->
@@ -533,18 +663,12 @@
       
         
           
-          硬件时钟使用 UTC
-推荐使用这种方法，参考archwiki页面
+          硬件时钟使用 UTC推荐使用这种方法，参考archwiki页面#Windows_.E7.B3.BB.E7.BB.9F.E4.BD.BF.E7.94.A8_UTC)  
 
+代码:timedatectl set-local-rtc 0 
+timedatectl set-ntp 1
 
-
-代码:
-timedatectl set-local-rtc 0 timedatectl set-ntp 1
-
-
-修改 Windows 注册表：
-代码:
-Reg add HKLM\SYSTEM\CurrentControlSet\
+修改 Windows
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -811,14 +935,12 @@ Reg add HKLM\SYSTEM\CurrentControlSet\
       
         
           
-          编译
-在notepad++中打开“运行”，输入以下代码并保存，可以自定义快捷键以及设置命令名
-cmd /k g++ $(FULL_CURRENT_PATH) -o $(CURRENT_DIRECTORY)\$(NAME_PART) &amp;PAUSE &amp;EXIT
+          编译在notepad++中打开“运行”，输入以下代码并保存，可以自定义快捷键以及设置命令名cmd /k g++ $(FULL_CURRENT_PATH) -o $(CURRENT_DIRECTORY)\$(NAME_PART) &amp;PAUSE &amp;EXIT
 
 
 
 cmd /k
-执行命
+执行命令后
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -949,13 +1071,10 @@ cmd /k
         
           
           现代控制理论特点
-
-描述对象的方法
-状态空间模型，适用于多输入多输出、时变、非线性系统。(MIMO system;Time-varying system; Nonlinear system)
-处理方法
-应用现代数学方法，以计算机作为工具，系统化的分析和综合方法。
-实现多目标控制
-预测控制、鲁棒控制、
+描述对象的方法  状态空间模型，适用于多输入多输出、时变、非线性系统。(MIMO system;Time-varying system; Nonlinear system)
+处理方法  应用现代数学方法，以计算机作为工具，系统化的分析和综合方法。
+实现多目标控制  
+预测控制、鲁棒
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1086,11 +1205,9 @@ cmd /k
         
           
           
-需安装软件包 lm_sensors
-检测传感器：
-$ sudo sh -c &quot;yes|sensors-detect&quot;
-查看CPU温度
-$ sensors
+需安装软件包 lm_sensors  
+检测传感器：$ sudo sh -c &quot;yes|sensors-detect&quot;  
+查看CPU温度$ sensors
 
 
 
@@ -1237,14 +1354,16 @@ $ sensors
 
 
 
+
 51子系列
 52子系列
 
 
 
 
+
 片内数据存储器
-128
+1
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1567,142 +1686,6 @@ X2（ XTAL2）连接片内部振荡器输
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/03/21/rEFInd引导arch/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Avvount">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/pic/donkey.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Avvount's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/03/21/rEFInd引导arch/" itemprop="url">rEFInd引导arch</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-03-21T15:53:24+08:00">2018-03-21</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          使用rEFInd引导系统，配置文件简单，可以自动检测启动项。所以，果断淘汰掉grub2，改用rEFInd。
-安装
-Arch中安装rEFInd安装很简单
-pacman -S refind-efi
-配置
-手动配置Arch Linux菜单，添加菜单项如下
-123456789101112menuentry 
-          ...
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/03/21/rEFInd引导arch/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1752,7 +1735,7 @@ pacman -S refind-efi
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">46</span>
+                    <span class="site-state-item-count">47</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -1801,7 +1784,11 @@ pacman -S refind-efi
                     
                       
                     
-                    <span class="site-state-item-count">17</span>
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">19</span>
                     <span class="site-state-item-name">标签</span>
                   </a>
                 </div>
@@ -2354,9 +2341,9 @@ pacman -S refind-efi
       
     
       
-        
-      
     
+      
+        
       
     
       
