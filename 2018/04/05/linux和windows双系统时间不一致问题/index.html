@@ -99,20 +99,18 @@
 
 
 
-  <meta name="description" content="硬件时钟使用 UTC推荐使用这种方法，参考archwiki页面#Windows_.E7.B3.BB.E7.BB.9F.E4.BD.BF.E7.94.A8_UTC)    代码:timedatectl set-local-rtc 0  timedatectl set-ntp 1  修改 Windows 注册表：代码:Reg add HKLM\SYSTEM\CurrentControlSet\Cont">
+  <meta name="description" content="以下两种方式都可以,推荐第一种方式 硬件时钟使用 UTC参考archwiki页面    设置linux使用UTC时间 12timedatectl set-local-rtc 0 timedatectl set-ntp 1  修改 Windows 注册表   1Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v R">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux和windows双系统时间不一致问题">
 <meta property="og:url" content="https://avvount.github.io/2018/04/05/linux和windows双系统时间不一致问题/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="硬件时钟使用 UTC推荐使用这种方法，参考archwiki页面#Windows_.E7.B3.BB.E7.BB.9F.E4.BD.BF.E7.94.A8_UTC)    代码:timedatectl set-local-rtc 0  timedatectl set-ntp 1  修改 Windows 注册表：代码:Reg add HKLM\SYSTEM\CurrentControlSet\Cont">
+<meta property="og:description" content="以下两种方式都可以,推荐第一种方式 硬件时钟使用 UTC参考archwiki页面    设置linux使用UTC时间 12timedatectl set-local-rtc 0 timedatectl set-ntp 1  修改 Windows 注册表   1Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v R">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:updated_time" content="2019-09-01T03:30:46.938Z">
+<meta property="og:updated_time" content="2020-10-11T07:23:42.021Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux和windows双系统时间不一致问题">
-<meta name="twitter:description" content="硬件时钟使用 UTC推荐使用这种方法，参考archwiki页面#Windows_.E7.B3.BB.E7.BB.9F.E4.BD.BF.E7.94.A8_UTC)    代码:timedatectl set-local-rtc 0  timedatectl set-ntp 1  修改 Windows 注册表：代码:Reg add HKLM\SYSTEM\CurrentControlSet\Cont">
-<meta name="twitter:image" content="https://www.vultr.com/media/banner_1.png">
+<meta name="twitter:description" content="以下两种方式都可以,推荐第一种方式 硬件时钟使用 UTC参考archwiki页面    设置linux使用UTC时间 12timedatectl set-local-rtc 0 timedatectl set-ntp 1  修改 Windows 注册表   1Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v R">
 
 
 
@@ -398,25 +396,25 @@
       
 
       
-        <h1 id="硬件时钟使用-UTC"><a href="#硬件时钟使用-UTC" class="headerlink" title="硬件时钟使用 UTC"></a>硬件时钟使用 UTC</h1><p>推荐使用这种方法，参考<a href="https://wiki.archlinux.org/index.php/Time_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87" target="_blank" rel="noopener">archwiki页面</a>#Windows_.E7.B3.BB.E7.BB.9F.E4.BD.BF.E7.94.A8_UTC)  </p>
+        <p>以下两种方式都可以,推荐第一种方式</p>
+<h2 id="硬件时钟使用-UTC"><a href="#硬件时钟使用-UTC" class="headerlink" title="硬件时钟使用 UTC"></a>硬件时钟使用 UTC</h2><p>参考<a href="https://wiki.archlinux.org/index.php/Time_(%E7%AE%80%E4%BD%93%E4%B8%AD%E6%96%87)#Windows_.E7.B3.BB.E7.BB.9F.E4.BD.BF.E7.94.A8_UTC" target="_blank" rel="noopener">archwiki页面</a>  </p>
 <ol>
-<li><p>代码:<br><code>timedatectl set-local-rtc 0 
-timedatectl set-ntp 1</code></p>
+<li><p>设置linux使用UTC时间</p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">timedatectl <span class="built_in">set</span>-local-rtc 0 </span><br><span class="line">timedatectl <span class="built_in">set</span>-ntp 1</span><br></pre></td></tr></table></figure>
 </li>
-<li><p>修改 Windows 注册表：<br>代码:<br><code>Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d 1</code></p>
+<li><p>修改 Windows 注册表  </p>
+<figure class="highlight bat"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Reg add HKLM\SYSTEM\CurrentControlSet\Control\TimeZoneInformation /v RealTimeIsUniversal /t REG_DWORD /d <span class="number">1</span></span><br></pre></td></tr></table></figure>
 </li>
-<li><p>关闭 Windows 网络对时时</p>
+<li><p>关闭 Windows 网络对时</p>
 </li>
 </ol>
-<h1 id="硬件时钟使用本地时间"><a href="#硬件时钟使用本地时间" class="headerlink" title="硬件时钟使用本地时间"></a>硬件时钟使用本地时间</h1><ol>
-<li><p>设置linux使用本地时间<br>代码:<br><code>timedatectl set-local-rtc 1</code><br><code>timedatectl set-ntp 0</code></p>
+<h2 id="硬件时钟使用本地时间"><a href="#硬件时钟使用本地时间" class="headerlink" title="硬件时钟使用本地时间"></a>硬件时钟使用本地时间</h2><ol>
+<li><p>设置linux使用本地时间  </p>
+<figure class="highlight zsh"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">timedatectl <span class="built_in">set</span>-local-rtc 1</span><br><span class="line">timedatectl <span class="built_in">set</span>-ntp 0</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>打开 Windows 网络对时</p>
 </li>
 </ol>
-
-<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-
 
       
     </div>
@@ -641,7 +639,7 @@ timedatectl set-ntp 1</code></p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#硬件时钟使用-UTC"><span class="nav-number">1.</span> <span class="nav-text">硬件时钟使用 UTC</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#硬件时钟使用本地时间"><span class="nav-number">2.</span> <span class="nav-text">硬件时钟使用本地时间</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件时钟使用-UTC"><span class="nav-number">1.</span> <span class="nav-text">硬件时钟使用 UTC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#硬件时钟使用本地时间"><span class="nav-number">2.</span> <span class="nav-text">硬件时钟使用本地时间</span></a></li></ol></div>
             
 
           </div>

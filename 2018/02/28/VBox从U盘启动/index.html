@@ -99,20 +99,18 @@
 
 
 
-  <meta name="description" content="在U盘上装了个arch，想使用VBox从U盘启动，在网上找到了方法，其实不仅仅是U盘，可以是任何一块硬盘。方法记录在这里 使用VBox的用户需要加入vboxusers组(宿主机)更改权限用户需要对要使用的U盘设备文件有读写权限   sudo chmod o+rw /dev/sdx 创建VMDK文件在帮助VBox帮助文档上找到以下内容    To create an image that repre">
+  <meta name="description" content="在U盘上装了个arch，想使用VBox从U盘启动，在网上找到了方法，其实不仅仅是U盘，可以是任何一块硬盘。方法记录在这里 使用VBox的用户需要加入vboxusers组(宿主机) 更改权限 用户需要对要使用的U盘设备文件有读写权限 sudo chmod o+rw /dev/sdx 创建VMDK文件 在帮助VBox帮助文档上找到以下内容  To create an image that repres">
 <meta name="keywords" content="Linux,VBox">
 <meta property="og:type" content="article">
 <meta property="og:title" content="VBox从U盘启动">
 <meta property="og:url" content="https://avvount.github.io/2018/02/28/VBox从U盘启动/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="在U盘上装了个arch，想使用VBox从U盘启动，在网上找到了方法，其实不仅仅是U盘，可以是任何一块硬盘。方法记录在这里 使用VBox的用户需要加入vboxusers组(宿主机)更改权限用户需要对要使用的U盘设备文件有读写权限   sudo chmod o+rw /dev/sdx 创建VMDK文件在帮助VBox帮助文档上找到以下内容    To create an image that repre">
+<meta property="og:description" content="在U盘上装了个arch，想使用VBox从U盘启动，在网上找到了方法，其实不仅仅是U盘，可以是任何一块硬盘。方法记录在这里 使用VBox的用户需要加入vboxusers组(宿主机) 更改权限 用户需要对要使用的U盘设备文件有读写权限 sudo chmod o+rw /dev/sdx 创建VMDK文件 在帮助VBox帮助文档上找到以下内容  To create an image that repres">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:updated_time" content="2019-09-01T03:28:09.049Z">
+<meta property="og:updated_time" content="2020-10-11T06:18:49.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="VBox从U盘启动">
-<meta name="twitter:description" content="在U盘上装了个arch，想使用VBox从U盘启动，在网上找到了方法，其实不仅仅是U盘，可以是任何一块硬盘。方法记录在这里 使用VBox的用户需要加入vboxusers组(宿主机)更改权限用户需要对要使用的U盘设备文件有读写权限   sudo chmod o+rw /dev/sdx 创建VMDK文件在帮助VBox帮助文档上找到以下内容    To create an image that repre">
-<meta name="twitter:image" content="https://www.vultr.com/media/banner_1.png">
+<meta name="twitter:description" content="在U盘上装了个arch，想使用VBox从U盘启动，在网上找到了方法，其实不仅仅是U盘，可以是任何一块硬盘。方法记录在这里 使用VBox的用户需要加入vboxusers组(宿主机) 更改权限 用户需要对要使用的U盘设备文件有读写权限 sudo chmod o+rw /dev/sdx 创建VMDK文件 在帮助VBox帮助文档上找到以下内容  To create an image that repres">
 
 
 
@@ -399,24 +397,27 @@
 
       
         <p>在U盘上装了个arch，想使用VBox从U盘启动，在网上找到了方法，其实不仅仅是U盘，可以是任何一块硬盘。方法记录在这里</p>
-<h1 id="使用VBox的用户需要加入vboxusers组-宿主机"><a href="#使用VBox的用户需要加入vboxusers组-宿主机" class="headerlink" title="使用VBox的用户需要加入vboxusers组(宿主机)"></a>使用VBox的用户需要加入vboxusers组(宿主机)</h1><h1 id="更改权限"><a href="#更改权限" class="headerlink" title="更改权限"></a>更改权限</h1><p>用户需要对要使用的U盘设备文件有读写权限  </p>
+<h1>使用VBox的用户需要加入vboxusers组(宿主机)</h1>
+<h1>更改权限</h1>
+<p>用户需要对要使用的U盘设备文件有读写权限</p>
 <p><code>sudo chmod o+rw /dev/sdx</code></p>
-<h1 id="创建VMDK文件"><a href="#创建VMDK文件" class="headerlink" title="创建VMDK文件"></a>创建VMDK文件</h1><p>在帮助VBox帮助文档上找到以下内容  </p>
+<h1>创建VMDK文件</h1>
+<p>在帮助VBox帮助文档上找到以下内容</p>
 <blockquote>
-<p>To create an image that represents an entire physical hard disk (which will not contain any actual data, as this will all be stored on the physical disk), on a Linux host, use the command<br><code>VBoxManage internalcommands createrawvmdk -filename /path/to/file.vmdk -rawdisk /dev/sdx</code>  </p>
+<p>To create an image that represents an entire physical hard disk (which will not contain any actual data, as this will all be stored on the physical disk), on a Linux host, use the command<br>
+<code>VBoxManage internalcommands createrawvmdk -filename /path/to/file.vmdk -rawdisk /dev/sdx</code></p>
 </blockquote>
 <p>执行上边这条命令后，使虚拟机从刚刚创建到vmdk文件启动即可</p>
 <ul>
 <li>每次想从U盘启动时都要先执行一次第二步</li>
 </ul>
-<h1 id="从硬盘的指定分区启动"><a href="#从硬盘的指定分区启动" class="headerlink" title="从硬盘的指定分区启动"></a>从硬盘的指定分区启动</h1><p>帮助文档如下：</p>
+<h1>从硬盘的指定分区启动</h1>
+<p>帮助文档如下：</p>
 <blockquote>
-<p>To create a special image for raw partition support (which will contain a small amount of data, as already mentioned), on a Linux host, use the command<br><code>VBoxManage internalcommands createrawvmdk -filename /path/to/file.vmdk
--rawdisk /dev/sda -partitions 1,5</code><br>As you can see, the command is identical to the one for “full hard disk” access, except for the additional -partitions parameter. This example would create the image /path/to/file.vmdk (which, again, must be absolute), and partitions 1 and 5 of /dev/sda would be made accessible to the guest.</p>
+<p>To create a special image for raw partition support (which will contain a small amount of data, as already mentioned), on a Linux host, use the command
+<code>VBoxManage internalcommands createrawvmdk -filename /path/to/file.vmdk -rawdisk /dev/sda -partitions 1,5</code><br>
+As you can see, the command is identical to the one for “full hard disk” access, except for the additional -partitions parameter. This example would create the image /path/to/file.vmdk (which, again, must be absolute), and partitions 1 and 5 of /dev/sda would be made accessible to the guest.</p>
 </blockquote>
-
-<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-
 
       
     </div>
@@ -643,7 +644,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#使用VBox的用户需要加入vboxusers组-宿主机"><span class="nav-number">1.</span> <span class="nav-text">使用VBox的用户需要加入vboxusers组(宿主机)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#更改权限"><span class="nav-number">2.</span> <span class="nav-text">更改权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#创建VMDK文件"><span class="nav-number">3.</span> <span class="nav-text">创建VMDK文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#从硬盘的指定分区启动"><span class="nav-number">4.</span> <span class="nav-text">从硬盘的指定分区启动</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">使用VBox的用户需要加入vboxusers组(宿主机)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">更改权限</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">创建VMDK文件</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">从硬盘的指定分区启动</span></a></li></ol></div>
             
 
           </div>

@@ -99,20 +99,18 @@
 
 
 
-  <meta name="description" content="使用rEFInd引导系统，配置文件简单，可以自动检测启动项。所以，果断淘汰掉grub2，改用rEFInd。 安装Arch中安装rEFInd安装很简单pacman -S refind-efi 配置手动配置Arch Linux菜单，添加菜单项如下123456789101112menuentry &amp;quot;Arch Linux&amp;quot; &amp;#123;    icon     /EFI/refind/">
+  <meta name="description" content="使用rEFInd引导系统，配置文件简单，可以自动检测启动项。所以，果断淘汰掉grub2，改用rEFInd。 安装 Arch中安装rEFInd安装很简单 pacman -S refind-efi 配置 手动配置Arch Linux菜单，添加菜单项如下 123456789101112menuentry &amp;quot;Arch Linux&amp;quot; &amp;#123;    icon     /EFI/ref">
 <meta name="keywords" content="Arch,Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="rEFInd引导arch">
 <meta property="og:url" content="https://avvount.github.io/2018/03/21/rEFInd引导arch/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="使用rEFInd引导系统，配置文件简单，可以自动检测启动项。所以，果断淘汰掉grub2，改用rEFInd。 安装Arch中安装rEFInd安装很简单pacman -S refind-efi 配置手动配置Arch Linux菜单，添加菜单项如下123456789101112menuentry &amp;quot;Arch Linux&amp;quot; &amp;#123;    icon     /EFI/refind/">
+<meta property="og:description" content="使用rEFInd引导系统，配置文件简单，可以自动检测启动项。所以，果断淘汰掉grub2，改用rEFInd。 安装 Arch中安装rEFInd安装很简单 pacman -S refind-efi 配置 手动配置Arch Linux菜单，添加菜单项如下 123456789101112menuentry &amp;quot;Arch Linux&amp;quot; &amp;#123;    icon     /EFI/ref">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:updated_time" content="2019-09-01T03:30:11.558Z">
+<meta property="og:updated_time" content="2020-10-11T06:18:49.760Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="rEFInd引导arch">
-<meta name="twitter:description" content="使用rEFInd引导系统，配置文件简单，可以自动检测启动项。所以，果断淘汰掉grub2，改用rEFInd。 安装Arch中安装rEFInd安装很简单pacman -S refind-efi 配置手动配置Arch Linux菜单，添加菜单项如下123456789101112menuentry &amp;quot;Arch Linux&amp;quot; &amp;#123;    icon     /EFI/refind/">
-<meta name="twitter:image" content="https://www.vultr.com/media/banner_1.png">
+<meta name="twitter:description" content="使用rEFInd引导系统，配置文件简单，可以自动检测启动项。所以，果断淘汰掉grub2，改用rEFInd。 安装 Arch中安装rEFInd安装很简单 pacman -S refind-efi 配置 手动配置Arch Linux菜单，添加菜单项如下 123456789101112menuentry &amp;quot;Arch Linux&amp;quot; &amp;#123;    icon     /EFI/ref">
 
 
 
@@ -399,12 +397,13 @@
 
       
         <p>使用rEFInd引导系统，配置文件简单，可以自动检测启动项。所以，果断淘汰掉grub2，改用rEFInd。</p>
-<h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>Arch中安装rEFInd安装很简单<br><code>pacman -S refind-efi</code></p>
-<h1 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h1><p>手动配置Arch Linux菜单，添加菜单项如下<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">menuentry &quot;Arch Linux&quot; &#123;</span><br><span class="line">    icon     /EFI/refind/refind-theme-regular/icons/128-48/os_arch.png</span><br><span class="line">    loader   /vmlinuz-linux</span><br><span class="line">    initrd   /initramfs-linux.img</span><br><span class="line">    options  &quot;root=UUID=c42c79b5-559e-48b5-8738-dc0c8af43d63 rw quiet initrd=intel-ucode.img&quot;</span><br><span class="line">    submenuentry &quot;Boot using fallback initramfs&quot; &#123;</span><br><span class="line">        initrd initramfs-linux-fallback.img</span><br><span class="line">    &#125;</span><br><span class="line">    submenuentry &quot;Boot to terminal&quot; &#123;</span><br><span class="line">        add_options &quot;systemd.unit=multi-user.target&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h1>安装</h1>
+<p>Arch中安装rEFInd安装很简单<br>
+<code>pacman -S refind-efi</code></p>
+<h1>配置</h1>
+<p>手动配置Arch Linux菜单，添加菜单项如下<br>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">menuentry &quot;Arch Linux&quot; &#123;</span><br><span class="line">    icon     /EFI/refind/refind-theme-regular/icons/128-48/os_arch.png</span><br><span class="line">    loader   /vmlinuz-linux</span><br><span class="line">    initrd   /initramfs-linux.img</span><br><span class="line">    options  &quot;root=UUID=c42c79b5-559e-48b5-8738-dc0c8af43d63 rw quiet initrd=intel-ucode.img&quot;</span><br><span class="line">    submenuentry &quot;Boot using fallback initramfs&quot; &#123;</span><br><span class="line">        initrd initramfs-linux-fallback.img</span><br><span class="line">    &#125;</span><br><span class="line">    submenuentry &quot;Boot to terminal&quot; &#123;</span><br><span class="line">        add_options &quot;systemd.unit=multi-user.target&quot;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
 <p>这里options后为内核参数，UUID指的是根目录GUID，Intel CPU要加内核参数<code>initrd=intel-ucode.img</code>，这里的<code>intel-ucode.img</code>在<code>ESP</code>分区下</p>
-
-<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-
 
       
     </div>
@@ -631,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#配置"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">配置</span></a></li></ol></div>
             
 
           </div>

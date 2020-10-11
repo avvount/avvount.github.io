@@ -99,20 +99,18 @@
 
 
 
-  <meta name="description" content="有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi更新系统时间 timedatectl set-ntp true分区格式化根分区 mkfs.ext4 /dev/sda挂载分区 mount /dev/sda7 /mntmkdir /mnt/bootmount /dev/sda2 /mnt/bootmkdir /mnt/homemount /dev/sda">
+  <meta name="description" content="有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi 更新系统时间 timedatectl set-ntp true 分区 格式化根分区 mkfs.ext4 /dev/sda# 挂载分区  mount /dev/sda7 /mnt mkdir /mnt/boot mount /dev/sda2 /mnt/boot mkdir /mnt/home moun">
 <meta name="keywords" content="Arch">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Arch安装步骤">
 <meta property="og:url" content="https://avvount.github.io/2018/01/01/Arch-installation-guide/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi更新系统时间 timedatectl set-ntp true分区格式化根分区 mkfs.ext4 /dev/sda挂载分区 mount /dev/sda7 /mntmkdir /mnt/bootmount /dev/sda2 /mnt/bootmkdir /mnt/homemount /dev/sda">
+<meta property="og:description" content="有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi 更新系统时间 timedatectl set-ntp true 分区 格式化根分区 mkfs.ext4 /dev/sda# 挂载分区  mount /dev/sda7 /mnt mkdir /mnt/boot mount /dev/sda2 /mnt/boot mkdir /mnt/home moun">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:updated_time" content="2019-09-01T03:35:37.014Z">
+<meta property="og:updated_time" content="2020-10-11T06:18:49.769Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Arch安装步骤">
-<meta name="twitter:description" content="有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi更新系统时间 timedatectl set-ntp true分区格式化根分区 mkfs.ext4 /dev/sda挂载分区 mount /dev/sda7 /mntmkdir /mnt/bootmount /dev/sda2 /mnt/bootmkdir /mnt/homemount /dev/sda">
-<meta name="twitter:image" content="https://www.vultr.com/media/banner_1.png">
+<meta name="twitter:description" content="有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi 更新系统时间 timedatectl set-ntp true 分区 格式化根分区 mkfs.ext4 /dev/sda# 挂载分区  mount /dev/sda7 /mnt mkdir /mnt/boot mount /dev/sda2 /mnt/boot mkdir /mnt/home moun">
 
 
 
@@ -398,50 +396,93 @@
       
 
       
-        <h2 id="有线网络执行systemctl-start-dhcpcd-无线执行wifi-menu链接wifi"><a href="#有线网络执行systemctl-start-dhcpcd-无线执行wifi-menu链接wifi" class="headerlink" title="有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi"></a>有线网络执行<code>systemctl start dhcpcd</code>,无线执行<code>wifi-menu</code>链接wifi</h2><h2 id="更新系统时间-timedatectl-set-ntp-true"><a href="#更新系统时间-timedatectl-set-ntp-true" class="headerlink" title="更新系统时间 timedatectl set-ntp true"></a>更新系统时间 <code>timedatectl set-ntp true</code></h2><h2 id="分区"><a href="#分区" class="headerlink" title="分区"></a>分区</h2><h2 id="格式化根分区-mkfs-ext4-dev-sda"><a href="#格式化根分区-mkfs-ext4-dev-sda" class="headerlink" title="格式化根分区 mkfs.ext4 /dev/sda"></a>格式化根分区 mkfs.ext4 /dev/sda</h2><h2 id="挂载分区"><a href="#挂载分区" class="headerlink" title="挂载分区"></a>挂载分区</h2><blockquote>
-<p>mount /dev/sda7 /mnt<br>mkdir /mnt/boot<br>mount /dev/sda2 /mnt/boot<br>mkdir /mnt/home<br>mount /dev/sda6 /mnt/home</p>
+        <h2>有线网络执行<code>systemctl start dhcpcd</code>,无线执行<code>wifi-menu</code>链接wifi</h2>
+<h2>更新系统时间 <code>timedatectl set-ntp true</code></h2>
+<h2>分区</h2>
+<h2>格式化根分区 mkfs.ext4 /dev/sda#</h2>
+<h2>挂载分区</h2>
+<blockquote>
+<p>mount /dev/sda7 /mnt
+mkdir /mnt/boot
+mount /dev/sda2 /mnt/boot
+mkdir /mnt/home
+mount /dev/sda6 /mnt/home</p>
 </blockquote>
-<h2 id="编辑-etc-pacman-d-mirrorlist"><a href="#编辑-etc-pacman-d-mirrorlist" class="headerlink" title="编辑 /etc/pacman.d/mirrorlist"></a>编辑 <code>/etc/pacman.d/mirrorlist</code></h2><h2 id="安装基本系统"><a href="#安装基本系统" class="headerlink" title="安装基本系统"></a>安装基本系统</h2><p><code>pacstrap /mnt base base-devel</code></p>
-<h2 id="生成fstab"><a href="#生成fstab" class="headerlink" title="生成fstab"></a>生成fstab</h2><p><code>genfstab -U /mnt &gt; /mnt/etc/fstab</code></p>
-<h2 id="change-root到新系统"><a href="#change-root到新系统" class="headerlink" title="change root到新系统"></a>change root到新系统</h2><p><code>arch-chroot /mnt</code></p>
-<h2 id="设置时区"><a href="#设置时区" class="headerlink" title="设置时区"></a>设置时区</h2><blockquote>
-<p>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime<br>hwclock –systohc –utc</p>
+<h2>编辑 <code>/etc/pacman.d/mirrorlist</code></h2>
+<h2>安装基本系统</h2>
+<p><code>pacstrap /mnt base base-devel</code></p>
+<h2>生成fstab</h2>
+<p><code>genfstab -U /mnt &gt; /mnt/etc/fstab</code></p>
+<h2>change root到新系统</h2>
+<p><code>arch-chroot /mnt</code></p>
+<h2>设置时区</h2>
+<blockquote>
+<p>ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime
+hwclock --systohc --utc</p>
 </blockquote>
-<h2 id="设置语言"><a href="#设置语言" class="headerlink" title="设置语言"></a>设置语言</h2><p>编辑<code>/etc/locale.gen</code><br>执行<code>locale-gen</code></p>
-<h2 id="执行echo-LANG-en-US-UTF-8-gt-etc-locale-conf"><a href="#执行echo-LANG-en-US-UTF-8-gt-etc-locale-conf" class="headerlink" title="执行echo LANG=en_US.UTF-8 &gt; /etc/locale.conf"></a>执行<code>echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</code></h2><h2 id="设置主机名"><a href="#设置主机名" class="headerlink" title="设置主机名"></a>设置主机名</h2><blockquote>
-<p>echo Archpc &gt;&gt; /etc/hostname<br>echo “127.0.1.1    Archpc.localdomain Archpc” &gt;&gt; /etc/hosts</p>
+<h2>设置语言</h2>
+<p>编辑<code>/etc/locale.gen</code>
+执行<code>locale-gen</code></p>
+<h2>执行<code>echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</code></h2>
+<h2>设置主机名</h2>
+<blockquote>
+<p>echo Archpc &gt;&gt; /etc/hostname
+echo &quot;127.0.1.1	Archpc.localdomain Archpc&quot; &gt;&gt; /etc/hosts</p>
 </blockquote>
-<h2 id="安装必要软件"><a href="#安装必要软件" class="headerlink" title="安装必要软件"></a>安装必要软件</h2><p><code>pacman -S gvim net-tools wireless_tools wpa_supplicant dialog intel-ucode os-prober grub efibootmgr openssh linux-headers</code></p>
-<h2 id="编辑-etc-lvm-lvm-conf"><a href="#编辑-etc-lvm-lvm-conf" class="headerlink" title="编辑 /etc/lvm/lvm.conf"></a>编辑 <code>/etc/lvm/lvm.conf</code></h2><p>设置set use_lvmetad = 1 为 use_lvmetad = 0</p>
-<h2 id="安装grub"><a href="#安装grub" class="headerlink" title="安装grub"></a>安装grub</h2><blockquote>
-<p>grub-install –target=x86_64-efi –efi-directory=/boot –bootloader-id=grub<br>grub-mkconfig -o /boot/grub/grub.cfg</p>
+<h2>安装必要软件</h2>
+<p><code>pacman -S gvim net-tools wireless_tools wpa_supplicant dialog intel-ucode os-prober grub efibootmgr openssh linux-headers</code></p>
+<h2>编辑 <code>/etc/lvm/lvm.conf</code></h2>
+<p>设置set use_lvmetad = 1 为 use_lvmetad = 0</p>
+<h2>安装grub</h2>
+<blockquote>
+<p>grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=grub
+grub-mkconfig -o /boot/grub/grub.cfg</p>
 </blockquote>
-<h2 id="设置root密码-amp-添加普通用户"><a href="#设置root密码-amp-添加普通用户" class="headerlink" title="设置root密码 &amp; 添加普通用户"></a>设置root密码 &amp; 添加普通用户</h2><blockquote>
-<p>useradd -m -G wheel beta<br>set beta password<br>visudo</p>
+<h2>设置root密码 &amp; 添加普通用户</h2>
+<blockquote>
+<p>useradd -m -G wheel beta
+set beta password
+visudo</p>
 </blockquote>
-<h2 id="其他配置"><a href="#其他配置" class="headerlink" title="其他配置"></a>其他配置</h2><h4 id="安装桌面环境"><a href="#安装桌面环境" class="headerlink" title="安装桌面环境"></a>安装桌面环境</h4><ul>
-<li>安装必要软件包<br><code>pacman -S xorg-xinit xf86-video-intel</code></li>
-<li>安装gnome桌面<br><code>pacman -S gnome</code><br>执行echo <code>&quot;exec gnome-session&quot; &gt;&gt; ~/.xinitrc</code>后可通过startx命令进入桌面</li>
-<li>设置中文<br>startx进入中文桌面<br><code>echo &quot;export LANG=zh_CN.UTF-8&quot; &gt;&gt; ~/.xinitrc</code><br>桌面管理器进入中文桌面(最新gnome例外)<br><code>echo &quot;export LANG=zh_CN.UTF-8&quot; &gt;&gt; ~/.xprofile</code></li>
+<h2>其他配置</h2>
+<h4>安装桌面环境</h4>
+<ul>
+<li>安装必要软件包
+<code>pacman -S xorg-xinit xf86-video-intel</code></li>
+<li>安装gnome桌面
+<code>pacman -S gnome</code>
+执行echo <code>&quot;exec gnome-session&quot; &gt;&gt; ~/.xinitrc</code>后可通过startx命令进入桌面</li>
+<li>设置中文
+startx进入中文桌面
+<code>echo &quot;export LANG=zh_CN.UTF-8&quot; &gt;&gt; ~/.xinitrc</code>
+桌面管理器进入中文桌面(最新gnome例外)
+<code>echo &quot;export LANG=zh_CN.UTF-8&quot; &gt;&gt; ~/.xprofile</code></li>
 </ul>
-<h4 id="安装nvidia驱动"><a href="#安装nvidia驱动" class="headerlink" title="安装nvidia驱动"></a>安装nvidia驱动</h4><blockquote>
-<p>pacman -S nvidia bumblebee bbswitch<br>echo “blacklist nouveau” &gt;&gt; /etc/modprobe.d/blacklist.conf</p>
+<h4>安装nvidia驱动</h4>
+<blockquote>
+<p>pacman -S nvidia bumblebee bbswitch
+echo &quot;blacklist nouveau&quot; &gt;&gt; /etc/modprobe.d/blacklist.conf</p>
 </blockquote>
 <p>重启</p>
-<h4 id="设置fcitx输入法-将以下三行内容分别写入-xinitrc和-xprofile-gnome需写入-etc-environment-中"><a href="#设置fcitx输入法-将以下三行内容分别写入-xinitrc和-xprofile-gnome需写入-etc-environment-中" class="headerlink" title="设置fcitx输入法,将以下三行内容分别写入~/.xinitrc和~/.xprofile(gnome需写入/etc/environment)中"></a>设置fcitx输入法,将以下三行内容分别写入~/.xinitrc和~/.xprofile(gnome需写入/etc/environment)中</h4><blockquote>
-<p>export GTK_IM_MODULE=fcitx<br>export QT_IM_MODULE=fcitx<br>export XMODIFIERS=@im=fcitx</p>
-</blockquote>
-<h4 id="启用multilib仓库"><a href="#启用multilib仓库" class="headerlink" title="启用multilib仓库"></a>启用multilib仓库</h4><p>编辑 /etc/pacman.conf，取消下面内容的注释：</p>
+<h4>设置fcitx输入法,将以下三行内容分别写入~/.xinitrc和~/.xprofile(gnome需写入/etc/environment)中</h4>
 <blockquote>
-<p>[multilib]<br>Include = /etc/pacman.d/mirrorlist</p>
+<p>export GTK_IM_MODULE=fcitx
+export QT_IM_MODULE=fcitx
+export XMODIFIERS=@im=fcitx</p>
 </blockquote>
-<h4 id="启用archlinuxcn源"><a href="#启用archlinuxcn源" class="headerlink" title="启用archlinuxcn源"></a>启用archlinuxcn源</h4><p>在/etc/pacman.conf中添加：</p>
+<h4>启用multilib仓库</h4>
+<p>编辑 /etc/pacman.conf，取消下面内容的注释：</p>
 <blockquote>
-<p>[archlinuxcn]<br>Server = <a href="https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch" target="_blank" rel="noopener">https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch</a><br>Server = <a href="https://mirrors.ustc.edu.cn/archlinuxcn/$arch" target="_blank" rel="noopener">https://mirrors.ustc.edu.cn/archlinuxcn/$arch</a></p>
+<p>[multilib]
+Include = /etc/pacman.d/mirrorlist</p>
 </blockquote>
-
-<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-
+<h4>启用archlinuxcn源</h4>
+<p>在/etc/pacman.conf中添加：</p>
+<blockquote>
+<p>[archlinuxcn]
+Server = https://mirrors.tuna.tsinghua.edu.cn/archlinuxcn/$arch
+Server = https://mirrors.ustc.edu.cn/archlinuxcn/$arch</p>
+</blockquote>
 
       
     </div>
@@ -666,7 +707,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#有线网络执行systemctl-start-dhcpcd-无线执行wifi-menu链接wifi"><span class="nav-number">1.</span> <span class="nav-text">有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#更新系统时间-timedatectl-set-ntp-true"><span class="nav-number">2.</span> <span class="nav-text">更新系统时间 timedatectl set-ntp true</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#分区"><span class="nav-number">3.</span> <span class="nav-text">分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式化根分区-mkfs-ext4-dev-sda"><span class="nav-number">4.</span> <span class="nav-text">格式化根分区 mkfs.ext4 /dev/sda</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#挂载分区"><span class="nav-number">5.</span> <span class="nav-text">挂载分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑-etc-pacman-d-mirrorlist"><span class="nav-number">6.</span> <span class="nav-text">编辑 /etc/pacman.d/mirrorlist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装基本系统"><span class="nav-number">7.</span> <span class="nav-text">安装基本系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#生成fstab"><span class="nav-number">8.</span> <span class="nav-text">生成fstab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#change-root到新系统"><span class="nav-number">9.</span> <span class="nav-text">change root到新系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置时区"><span class="nav-number">10.</span> <span class="nav-text">设置时区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置语言"><span class="nav-number">11.</span> <span class="nav-text">设置语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#执行echo-LANG-en-US-UTF-8-gt-etc-locale-conf"><span class="nav-number">12.</span> <span class="nav-text">执行echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置主机名"><span class="nav-number">13.</span> <span class="nav-text">设置主机名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装必要软件"><span class="nav-number">14.</span> <span class="nav-text">安装必要软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编辑-etc-lvm-lvm-conf"><span class="nav-number">15.</span> <span class="nav-text">编辑 /etc/lvm/lvm.conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安装grub"><span class="nav-number">16.</span> <span class="nav-text">安装grub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设置root密码-amp-添加普通用户"><span class="nav-number">17.</span> <span class="nav-text">设置root密码 &amp; 添加普通用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他配置"><span class="nav-number">18.</span> <span class="nav-text">其他配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#安装桌面环境"><span class="nav-number">18.0.1.</span> <span class="nav-text">安装桌面环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#安装nvidia驱动"><span class="nav-number">18.0.2.</span> <span class="nav-text">安装nvidia驱动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#设置fcitx输入法-将以下三行内容分别写入-xinitrc和-xprofile-gnome需写入-etc-environment-中"><span class="nav-number">18.0.3.</span> <span class="nav-text">设置fcitx输入法,将以下三行内容分别写入~/.xinitrc和~/.xprofile(gnome需写入/etc/environment)中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启用multilib仓库"><span class="nav-number">18.0.4.</span> <span class="nav-text">启用multilib仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#启用archlinuxcn源"><span class="nav-number">18.0.5.</span> <span class="nav-text">启用archlinuxcn源</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">更新系统时间 timedatectl set-ntp true</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">格式化根分区 mkfs.ext4 /dev/sda#</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">挂载分区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">编辑 /etc/pacman.d/mirrorlist</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">安装基本系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">8.</span> <span class="nav-text">生成fstab</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">9.</span> <span class="nav-text">change root到新系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">10.</span> <span class="nav-text">设置时区</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">11.</span> <span class="nav-text">设置语言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">12.</span> <span class="nav-text">执行echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">13.</span> <span class="nav-text">设置主机名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">14.</span> <span class="nav-text">安装必要软件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">15.</span> <span class="nav-text">编辑 /etc/lvm/lvm.conf</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">16.</span> <span class="nav-text">安装grub</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">17.</span> <span class="nav-text">设置root密码 &amp; 添加普通用户</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">18.</span> <span class="nav-text">其他配置</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">18.0.1.</span> <span class="nav-text">安装桌面环境</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">18.0.2.</span> <span class="nav-text">安装nvidia驱动</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">18.0.3.</span> <span class="nav-text">设置fcitx输入法,将以下三行内容分别写入~/.xinitrc和~/.xprofile(gnome需写入/etc/environment)中</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">18.0.4.</span> <span class="nav-text">启用multilib仓库</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#undefined"><span class="nav-number">18.0.5.</span> <span class="nav-text">启用archlinuxcn源</span></a></li></ol></li></ol></div>
             
 
           </div>

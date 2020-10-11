@@ -99,20 +99,18 @@
 
 
 
-  <meta name="description" content="printf函数调用的一般形式为:​    printf(“格式控制字符串”, 输出表列) 格式字符串在Turbo C中格式字符串的一般形式为：  [标志][输出最小宽度][.精度][长度]类型。如：printf(&amp;quot;%-10.3lf&amp;quot;,a)其中方括号[]中的项为可选项。各项的意义介绍如下。  标志标志字符为 -、+、# 和空格四种，其意义下表所示：     标志 意义">
+  <meta name="description" content="printf函数调用的一般形式为: ​	printf(“格式控制字符串”, 输出表列) 格式字符串 在Turbo C中格式字符串的一般形式为：   [标志][输出最小宽度][.精度][长度]类型。 如：printf(&amp;quot;%-10.3lf&amp;quot;,a) 其中方括号[]中的项为可选项。 各项的意义介绍如下。  标志 标志字符为 -、+、# 和空格四种，其意义下表所示：     标志 意义">
 <meta name="keywords" content="编程,C语言">
 <meta property="og:type" content="article">
 <meta property="og:title" content="C语言格式输出函数printf详解">
 <meta property="og:url" content="https://avvount.github.io/2017/09/28/C语言格式输出函数printf详解/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="printf函数调用的一般形式为:​    printf(“格式控制字符串”, 输出表列) 格式字符串在Turbo C中格式字符串的一般形式为：  [标志][输出最小宽度][.精度][长度]类型。如：printf(&amp;quot;%-10.3lf&amp;quot;,a)其中方括号[]中的项为可选项。各项的意义介绍如下。  标志标志字符为 -、+、# 和空格四种，其意义下表所示：     标志 意义">
+<meta property="og:description" content="printf函数调用的一般形式为: ​	printf(“格式控制字符串”, 输出表列) 格式字符串 在Turbo C中格式字符串的一般形式为：   [标志][输出最小宽度][.精度][长度]类型。 如：printf(&amp;quot;%-10.3lf&amp;quot;,a) 其中方括号[]中的项为可选项。 各项的意义介绍如下。  标志 标志字符为 -、+、# 和空格四种，其意义下表所示：     标志 意义">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:updated_time" content="2019-09-01T03:31:24.859Z">
+<meta property="og:updated_time" content="2020-10-11T06:18:49.768Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="C语言格式输出函数printf详解">
-<meta name="twitter:description" content="printf函数调用的一般形式为:​    printf(“格式控制字符串”, 输出表列) 格式字符串在Turbo C中格式字符串的一般形式为：  [标志][输出最小宽度][.精度][长度]类型。如：printf(&amp;quot;%-10.3lf&amp;quot;,a)其中方括号[]中的项为可选项。各项的意义介绍如下。  标志标志字符为 -、+、# 和空格四种，其意义下表所示：     标志 意义">
-<meta name="twitter:image" content="https://www.vultr.com/media/banner_1.png">
+<meta name="twitter:description" content="printf函数调用的一般形式为: ​	printf(“格式控制字符串”, 输出表列) 格式字符串 在Turbo C中格式字符串的一般形式为：   [标志][输出最小宽度][.精度][长度]类型。 如：printf(&amp;quot;%-10.3lf&amp;quot;,a) 其中方括号[]中的项为可选项。 各项的意义介绍如下。  标志 标志字符为 -、+、# 和空格四种，其意义下表所示：     标志 意义">
 
 
 
@@ -398,10 +396,17 @@
       
 
       
-        <h2 id="printf函数调用的一般形式为"><a href="#printf函数调用的一般形式为" class="headerlink" title="printf函数调用的一般形式为:"></a>printf函数调用的一般形式为:</h2><p>​    <code>printf(“格式控制字符串”, 输出表列)</code></p>
-<h2 id="格式字符串"><a href="#格式字符串" class="headerlink" title="格式字符串"></a>格式字符串</h2><p>在Turbo C中格式字符串的一般形式为：<br>  [标志][输出最小宽度][.精度][长度]类型。<br>如：<code>printf(&quot;%-10.3lf&quot;,a)</code><br>其中方括号[]中的项为可选项。<br>各项的意义介绍如下。</p>
+        <h2>printf函数调用的一般形式为:</h2>
+<p>​	<code>printf(“格式控制字符串”, 输出表列)</code></p>
+<h2>格式字符串</h2>
+<p>在Turbo C中格式字符串的一般形式为：
+  [标志][输出最小宽度][.精度][长度]类型。
+如：<code>printf(&quot;%-10.3lf&quot;,a)</code>
+其中方括号[]中的项为可选项。
+各项的意义介绍如下。</p>
 <ol>
-<li>标志<br>标志字符为 -、+、# 和空格四种，其意义下表所示：</li>
+<li>标志
+标志字符为 -、+、# 和空格四种，其意义下表所示：</li>
 </ol>
 <table>
 <thead>
@@ -430,10 +435,14 @@
 </tbody>
 </table>
 <ol start="2">
-<li>输出最小宽度<br>用十进制整数来表示输出的最少位数。若实际位数多于定义的宽度，则按实际位数输出，若实际位数少于定义的宽度则补以空格或0。</li>
-<li>精度<br>精度格式符以“.”开头，后跟十进制整数。本项的意义是：如果输出数字，则表示小数的位数；如果输出的是字符，则表示输出字符的个数；若实际位数大于所定义的精度数，则截去超过的部分。</li>
-<li>长度<br>长度格式符为h、l两种，h表示按短整型量输出，l表示按长整型量输出。</li>
-<li>类型<br>类型字符用以表示输出数据的类型，其格式符和意义如下表所示：</li>
+<li>输出最小宽度
+用十进制整数来表示输出的最少位数。若实际位数多于定义的宽度，则按实际位数输出，若实际位数少于定义的宽度则补以空格或0。</li>
+<li>精度
+精度格式符以“.”开头，后跟十进制整数。本项的意义是：如果输出数字，则表示小数的位数；如果输出的是字符，则表示输出字符的个数；若实际位数大于所定义的精度数，则截去超过的部分。</li>
+<li>长度
+长度格式符为h、l两种，h表示按短整型量输出，l表示按长整型量输出。</li>
+<li>类型
+类型字符用以表示输出数据的类型，其格式符和意义如下表所示：</li>
 </ol>
 <table>
 <thead>
@@ -481,10 +490,9 @@
 </tr>
 </tbody>
 </table>
-<p>对o类，在输出时加前缀o；<br>对x类，在输出时加前缀0x；<br>对e、g、f 类当结果有小数时才给出小数点。</p>
-
-<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-
+<p>对o类，在输出时加前缀o；
+对x类，在输出时加前缀0x；
+对e、g、f 类当结果有小数时才给出小数点。</p>
 
       
     </div>
@@ -711,7 +719,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#printf函数调用的一般形式为"><span class="nav-number">1.</span> <span class="nav-text">printf函数调用的一般形式为:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#格式字符串"><span class="nav-number">2.</span> <span class="nav-text">格式字符串</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">printf函数调用的一般形式为:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">格式字符串</span></a></li></ol></div>
             
 
           </div>

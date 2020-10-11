@@ -99,21 +99,20 @@
 
 
 
-  <meta name="description" content="存储系统   中断系统硬件中断 可屏蔽中断 — 输入为INTR引脚，高电平有效，受IF标志控制   非屏蔽中断— 输入为NMI引脚，上升沿有效，不受IF控制    软件中断 除法溢出中断（DIV和IDIV）（INT 0） 若除数为0或商超过寄存器所能表达的范围，则产生类型为0的软件中断 单步中断 （INT 1） 若TF=1，则CPU每执行完一条指令后便产生类型码为1的软件中断 执行INT指令引起的">
+  <meta name="description" content="存储系统  中断系统 硬件中断  可屏蔽中断 — 输入为INTR引脚，高电平有效，受IF标志控制 非屏蔽中断— 输入为NMI引脚，上升沿有效，不受IF控制  软件中断  除法溢出中断（DIV和IDIV）（INT 0） 若除数为0或商超过寄存器所能表达的范围，则产生类型为0的软件中断 单步中断 （INT 1） 若TF=1，则CPU每执行完一条指令后便产生类型码为1的软件中断 执行INT指令引起的中断">
 <meta name="keywords" content="计算机原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="存储&#x2F;输入输出接口&#x2F;中断">
 <meta property="og:url" content="https://avvount.github.io/2018/01/05/存储-输入输出接口-中断/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="存储系统   中断系统硬件中断 可屏蔽中断 — 输入为INTR引脚，高电平有效，受IF标志控制   非屏蔽中断— 输入为NMI引脚，上升沿有效，不受IF控制    软件中断 除法溢出中断（DIV和IDIV）（INT 0） 若除数为0或商超过寄存器所能表达的范围，则产生类型为0的软件中断 单步中断 （INT 1） 若TF=1，则CPU每执行完一条指令后便产生类型码为1的软件中断 执行INT指令引起的">
+<meta property="og:description" content="存储系统  中断系统 硬件中断  可屏蔽中断 — 输入为INTR引脚，高电平有效，受IF标志控制 非屏蔽中断— 输入为NMI引脚，上升沿有效，不受IF控制  软件中断  除法溢出中断（DIV和IDIV）（INT 0） 若除数为0或商超过寄存器所能表达的范围，则产生类型为0的软件中断 单步中断 （INT 1） 若TF=1，则CPU每执行完一条指令后便产生类型码为1的软件中断 执行INT指令引起的中断">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E5%A5%87%E5%81%B6%E5%AD%98%E5%82%A8.png">
-<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:updated_time" content="2019-09-01T03:33:13.085Z">
+<meta property="og:image" content="https://github.com/avvount/Picture-Bed/raw/master/%E5%A5%87%E5%81%B6%E5%AD%98%E5%82%A8.png">
+<meta property="og:updated_time" content="2020-10-11T06:20:45.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="存储&#x2F;输入输出接口&#x2F;中断">
-<meta name="twitter:description" content="存储系统   中断系统硬件中断 可屏蔽中断 — 输入为INTR引脚，高电平有效，受IF标志控制   非屏蔽中断— 输入为NMI引脚，上升沿有效，不受IF控制    软件中断 除法溢出中断（DIV和IDIV）（INT 0） 若除数为0或商超过寄存器所能表达的范围，则产生类型为0的软件中断 单步中断 （INT 1） 若TF=1，则CPU每执行完一条指令后便产生类型码为1的软件中断 执行INT指令引起的">
-<meta name="twitter:image" content="http://ohe854y38.bkt.clouddn.com/%E5%A5%87%E5%81%B6%E5%AD%98%E5%82%A8.png">
+<meta name="twitter:description" content="存储系统  中断系统 硬件中断  可屏蔽中断 — 输入为INTR引脚，高电平有效，受IF标志控制 非屏蔽中断— 输入为NMI引脚，上升沿有效，不受IF控制  软件中断  除法溢出中断（DIV和IDIV）（INT 0） 若除数为0或商超过寄存器所能表达的范围，则产生类型为0的软件中断 单步中断 （INT 1） 若TF=1，则CPU每执行完一条指令后便产生类型码为1的软件中断 执行INT指令引起的中断">
+<meta name="twitter:image" content="https://github.com/avvount/Picture-Bed/raw/master/%E5%A5%87%E5%81%B6%E5%AD%98%E5%82%A8.png">
 
 
 
@@ -399,26 +398,32 @@
       
 
       
-        <h2 id="存储系统"><a href="#存储系统" class="headerlink" title="存储系统"></a>存储系统</h2><p><img src="http://ohe854y38.bkt.clouddn.com/%E5%A5%87%E5%81%B6%E5%AD%98%E5%82%A8.png" alt="8086奇偶存储">  </p>
-<h2 id="中断系统"><a href="#中断系统" class="headerlink" title="中断系统"></a>中断系统</h2><h3 id="硬件中断"><a href="#硬件中断" class="headerlink" title="硬件中断"></a>硬件中断</h3><ol>
-<li>可屏蔽中断 — 输入为INTR引脚，高电平有效，受IF标志控制  </li>
-<li>非屏蔽中断— 输入为NMI引脚，上升沿有效，不受IF控制  </li>
+        <h2>存储系统</h2>
+<p><img src="https://github.com/avvount/Picture-Bed/raw/master/%E5%A5%87%E5%81%B6%E5%AD%98%E5%82%A8.png" alt="8086奇偶存储"></p>
+<h2>中断系统</h2>
+<h3>硬件中断</h3>
+<ol>
+<li>可屏蔽中断 — 输入为INTR引脚，高电平有效，受IF标志控制</li>
+<li>非屏蔽中断— 输入为NMI引脚，上升沿有效，不受IF控制</li>
 </ol>
-<h3 id="软件中断"><a href="#软件中断" class="headerlink" title="软件中断"></a>软件中断</h3><ol>
-<li>除法溢出中断（DIV和IDIV）（INT 0）<br> 若除数为0或商超过寄存器所能表达的范围，则产生类型为0的软件中断</li>
-<li>单步中断 （INT 1）<br> 若TF=1，则CPU每执行完一条指令后便产生类型码为1的软件中断</li>
-<li>执行INT指令引起的中断（INT n）<br> 执行INT n指令则会引起中断类型码为n的软件中断</li>
-<li>执行 INTO 指令引起的中断（INT 4）<br> 若OF=1，则指令INTO引起中断类型码为4的软件中断</li>
+<h3>软件中断</h3>
+<ol>
+<li>除法溢出中断（DIV和IDIV）（INT 0）<br>
+若除数为0或商超过寄存器所能表达的范围，则产生类型为0的软件中断</li>
+<li>单步中断 （INT 1）<br>
+若TF=1，则CPU每执行完一条指令后便产生类型码为1的软件中断</li>
+<li>执行INT指令引起的中断（INT n）<br>
+执行INT n指令则会引起中断类型码为n的软件中断</li>
+<li>执行 INTO 指令引起的中断（INT 4）<br>
+若OF=1，则指令INTO引起中断类型码为4的软件中断</li>
 </ol>
-<h3 id="中断优先级"><a href="#中断优先级" class="headerlink" title="中断优先级"></a>中断优先级</h3><ol>
-<li>软件中断（单步中断除外）       优先级最高  </li>
+<h3>中断优先级</h3>
+<ol>
+<li>软件中断（单步中断除外）       优先级最高</li>
 <li>NMI中断</li>
 <li>INTR中断</li>
 <li>单步中断        优先级最低</li>
 </ol>
-
-<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-
 
       
     </div>
@@ -643,7 +648,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#存储系统"><span class="nav-number">1.</span> <span class="nav-text">存储系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#中断系统"><span class="nav-number">2.</span> <span class="nav-text">中断系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#硬件中断"><span class="nav-number">2.1.</span> <span class="nav-text">硬件中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#软件中断"><span class="nav-number">2.2.</span> <span class="nav-text">软件中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#中断优先级"><span class="nav-number">2.3.</span> <span class="nav-text">中断优先级</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">存储系统</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">中断系统</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">硬件中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">软件中断</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">中断优先级</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -99,21 +99,20 @@
 
 
 
-  <meta name="description" content="控制口    SC1 SC0 计数器选择  RW1 RW0 计数器读/写选择     0 0 计数器0  0 0 锁存计数器当前计数值   0 1 计数器1  0 1 读/写计数值低8位   1 0 计数器2  1 0 读/写计数值高8位   1 1 非法  1 1 先低8位，再高8位       M2 M1 M0 计数器工作方式选择  BCD 计数器进制选择     0 0 0 方式0  0 1">
+  <meta name="description" content="控制口     SC1 SC0 计数器选择  RW1 RW0 计数器读/写选择     0 0 计数器0  0 0 锁存计数器当前计数值   0 1 计数器1  0 1 读/写计数值低8位   1 0 计数器2  1 0 读/写计数值高8位   1 1 非法  1 1 先低8位，再高8位       M2 M1 M0 计数器工作方式选择  BCD 计数器进制选择     0 0 0 方式0  0">
 <meta name="keywords" content="计算机原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="可编程计数器8253">
 <meta property="og:url" content="https://avvount.github.io/2018/01/05/可编程计数器8253/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="控制口    SC1 SC0 计数器选择  RW1 RW0 计数器读/写选择     0 0 计数器0  0 0 锁存计数器当前计数值   0 1 计数器1  0 1 读/写计数值低8位   1 0 计数器2  1 0 读/写计数值高8位   1 1 非法  1 1 先低8位，再高8位       M2 M1 M0 计数器工作方式选择  BCD 计数器进制选择     0 0 0 方式0  0 1">
+<meta property="og:description" content="控制口     SC1 SC0 计数器选择  RW1 RW0 计数器读/写选择     0 0 计数器0  0 0 锁存计数器当前计数值   0 1 计数器1  0 1 读/写计数值低8位   1 0 计数器2  1 0 读/写计数值高8位   1 1 非法  1 1 先低8位，再高8位       M2 M1 M0 计数器工作方式选择  BCD 计数器进制选择     0 0 0 方式0  0">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/8253_ctrl.png">
-<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:updated_time" content="2019-09-01T03:34:59.877Z">
+<meta property="og:image" content="https://github.com/avvount/Picture-Bed/raw/master/8253_ctrl.png">
+<meta property="og:updated_time" content="2020-10-11T06:20:45.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="可编程计数器8253">
-<meta name="twitter:description" content="控制口    SC1 SC0 计数器选择  RW1 RW0 计数器读/写选择     0 0 计数器0  0 0 锁存计数器当前计数值   0 1 计数器1  0 1 读/写计数值低8位   1 0 计数器2  1 0 读/写计数值高8位   1 1 非法  1 1 先低8位，再高8位       M2 M1 M0 计数器工作方式选择  BCD 计数器进制选择     0 0 0 方式0  0 1">
-<meta name="twitter:image" content="http://ohe854y38.bkt.clouddn.com/8253_ctrl.png">
+<meta name="twitter:description" content="控制口     SC1 SC0 计数器选择  RW1 RW0 计数器读/写选择     0 0 计数器0  0 0 锁存计数器当前计数值   0 1 计数器1  0 1 读/写计数值低8位   1 0 计数器2  1 0 读/写计数值高8位   1 1 非法  1 1 先低8位，再高8位       M2 M1 M0 计数器工作方式选择  BCD 计数器进制选择     0 0 0 方式0  0">
+<meta name="twitter:image" content="https://github.com/avvount/Picture-Bed/raw/master/8253_ctrl.png">
 
 
 
@@ -399,7 +398,8 @@
       
 
       
-        <h2 id="控制口"><a href="#控制口" class="headerlink" title="控制口"></a>控制口</h2><p><img src="http://ohe854y38.bkt.clouddn.com/8253_ctrl.png" alt="8253控制字"></p>
+        <h2>控制口</h2>
+<p><img src="https://github.com/avvount/Picture-Bed/raw/master/8253_ctrl.png" alt="8253控制字"></p>
 <table>
 <thead>
 <tr>
@@ -488,12 +488,16 @@
 <td>0</td>
 <td>方式2</td>
 <td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>x</td>
 <td>1</td>
 <td>1</td>
 <td>方式3</td>
+<td></td>
+<td></td>
 <td></td>
 </tr>
 <tr>
@@ -502,6 +506,8 @@
 <td>0</td>
 <td>方式4</td>
 <td></td>
+<td></td>
+<td></td>
 </tr>
 <tr>
 <td>1</td>
@@ -509,44 +515,49 @@
 <td>1</td>
 <td>方式5</td>
 <td></td>
+<td></td>
+<td></td>
 </tr>
 </tbody>
 </table>
-<h2 id="方式0-—-计数结束产生中断方式"><a href="#方式0-—-计数结束产生中断方式" class="headerlink" title="方式0 — 计数结束产生中断方式"></a>方式0 — 计数结束产生中断方式</h2><ol>
-<li>写入控制字后OUT即变为<strong>低电平</strong>，<strong>计数到0时</strong>，OUT变为<strong>高电平</strong>，并<strong>停止计数</strong>  </li>
-<li>计数初值N写入后在下一个CLK下降沿才送入计数装置开始计数，因此实际计数为N+1个脉冲  </li>
-<li>GATE为高电平时允许计数，为低电平时停止计数  </li>
-<li>若计数过程中写入新的计数初值，则在<strong>下一个CLK</strong>按新值重新计数  </li>
+<h2>方式0 — 计数结束产生中断方式</h2>
+<ol>
+<li>写入控制字后OUT即变为<strong>低电平</strong>，<strong>计数到0时</strong>，OUT变为<strong>高电平</strong>，并<strong>停止计数</strong></li>
+<li>计数初值N写入后在下一个CLK下降沿才送入计数装置开始计数，因此实际计数为N+1个脉冲</li>
+<li>GATE为高电平时允许计数，为低电平时停止计数</li>
+<li>若计数过程中写入新的计数初值，则在<strong>下一个CLK</strong>按新值重新计数</li>
 </ol>
-<h2 id="方式1-—-可重新触发单稳态触发器方式"><a href="#方式1-—-可重新触发单稳态触发器方式" class="headerlink" title="方式1 — 可重新触发单稳态触发器方式"></a>方式1 — 可重新触发单稳态触发器方式</h2><ol>
-<li>写入控制字后OUT即变为<strong>高电平</strong>，<strong>等待GATE上升沿</strong>后，下一个CLK的下降沿才开始计数，并置OUT为<strong>低电平</strong>，<strong>计数到0时</strong>OUT又变为<strong>高电平</strong>  </li>
+<h2>方式1 — 可重新触发单稳态触发器方式</h2>
+<ol>
+<li>写入控制字后OUT即变为<strong>高电平</strong>，<strong>等待GATE上升沿</strong>后，下一个CLK的下降沿才开始计数，并置OUT为<strong>低电平</strong>，<strong>计数到0时</strong>OUT又变为<strong>高电平</strong></li>
 <li>计数结束后，若GATE端再来上升沿，则会再次触发一轮计数周期</li>
 <li>若计数过程中写入新的计数初值，需<strong>等待GATE端再次触发</strong>后才按新的初值计数</li>
 </ol>
-<h2 id="方式2-—-分频器方式"><a href="#方式2-—-分频器方式" class="headerlink" title="方式2  —  分频器方式"></a>方式2  —  分频器方式</h2><ol>
+<h2>方式2  —  分频器方式</h2>
+<ol>
 <li>写入控制字后OUT即变为<strong>高电平</strong>，写入计数初值后，下一个CLK的下降沿开始计数，<strong>减到1时</strong>OUT变为<strong>低电平</strong>，持续一个CLK后OUT又变为高电平，并自动开始下一次计数过程。 Fout = Fclk/N</li>
 <li>GATE为高电平时允许计数，为低电平时停止计数</li>
 <li>计数期间送入新值，不影响当前计数周期，<strong>下一周期</strong>才按新值计数</li>
 </ol>
-<h2 id="方式3-—-方波发生器方式"><a href="#方式3-—-方波发生器方式" class="headerlink" title="方式3  —  方波发生器方式"></a>方式3  —  方波发生器方式</h2><ol>
+<h2>方式3  —  方波发生器方式</h2>
+<ol>
 <li>写入控制字后OUT即变为<strong>高电平</strong>，写入计数初值后，下一个CLK的下降沿开始计数，<strong>计数到一半</strong>时OUT变为<strong>低电平</strong>，计到终值时OUT又变为高电平，并自动开始下一次计数过程。 Fout = Fclk / N</li>
 <li>若N为<strong>偶数</strong>，则高、低电平持续时间相等，均为N/2个CLK，即OUT输出为方波；若N为<strong>奇数</strong>，则高电平持续时间为(N+1)/2个CLK，低电平持续时间为(N–1)/2个CLK</li>
 <li>GATE为高电平允许计数，为低电平则停止计数</li>
 <li>计数期间送入新值，不影响当前计数周期，<strong>下一周期</strong>才按新值计数</li>
 </ol>
-<h2 id="方式4-—-软件触发选通方式"><a href="#方式4-—-软件触发选通方式" class="headerlink" title="方式4  —  软件触发选通方式"></a>方式4  —  软件触发选通方式</h2><ol>
-<li>写入控制字后OUT即变为<strong>高电平</strong>，写入计数初值后，下一个CLK的下降沿开始计数，<strong>计数到0时</strong>，OUT输出一个CLK的<strong>负脉冲</strong>，并<strong>停止计数</strong>  </li>
-<li>GATE为高电平允许计数，为低电平则停止计数  </li>
+<h2>方式4  —  软件触发选通方式</h2>
+<ol>
+<li>写入控制字后OUT即变为<strong>高电平</strong>，写入计数初值后，下一个CLK的下降沿开始计数，<strong>计数到0时</strong>，OUT输出一个CLK的<strong>负脉冲</strong>，并<strong>停止计数</strong></li>
+<li>GATE为高电平允许计数，为低电平则停止计数</li>
 <li>若计数过程中写入新的计数初值，则在<strong>下一个CLK</strong>按新值重新计数</li>
 </ol>
-<h2 id="方式5-—-硬件触发选通方式"><a href="#方式5-—-硬件触发选通方式" class="headerlink" title="方式5  —  硬件触发选通方式"></a>方式5  —  硬件触发选通方式</h2><ol>
-<li>写入控制字后OUT即变为<strong>高电平</strong>，写入计数初值，<strong>等待GATE上升沿</strong>后。下一个CLK的下降沿才开始计数，<strong>计数到0</strong>时OUT输出一个CLK的<strong>负脉冲</strong>，并<strong>停止计数</strong>  </li>
-<li>计数结束后，若GATE端再来上升沿，则会再次触发一轮计数周期  </li>
+<h2>方式5  —  硬件触发选通方式</h2>
+<ol>
+<li>写入控制字后OUT即变为<strong>高电平</strong>，写入计数初值，<strong>等待GATE上升沿</strong>后。下一个CLK的下降沿才开始计数，<strong>计数到0</strong>时OUT输出一个CLK的<strong>负脉冲</strong>，并<strong>停止计数</strong></li>
+<li>计数结束后，若GATE端再来上升沿，则会再次触发一轮计数周期</li>
 <li>若计数过程中写入新的计数初值，需<strong>等待GATE端再次触发</strong>后才按新的初值计数</li>
 </ol>
-
-<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-
 
       
     </div>
@@ -771,7 +782,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#控制口"><span class="nav-number">1.</span> <span class="nav-text">控制口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式0-—-计数结束产生中断方式"><span class="nav-number">2.</span> <span class="nav-text">方式0 — 计数结束产生中断方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式1-—-可重新触发单稳态触发器方式"><span class="nav-number">3.</span> <span class="nav-text">方式1 — 可重新触发单稳态触发器方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式2-—-分频器方式"><span class="nav-number">4.</span> <span class="nav-text">方式2  —  分频器方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式3-—-方波发生器方式"><span class="nav-number">5.</span> <span class="nav-text">方式3  —  方波发生器方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式4-—-软件触发选通方式"><span class="nav-number">6.</span> <span class="nav-text">方式4  —  软件触发选通方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#方式5-—-硬件触发选通方式"><span class="nav-number">7.</span> <span class="nav-text">方式5  —  硬件触发选通方式</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">控制口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">方式0 — 计数结束产生中断方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">方式1 — 可重新触发单稳态触发器方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">方式2  —  分频器方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">方式3  —  方波发生器方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">方式4  —  软件触发选通方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">7.</span> <span class="nav-text">方式5  —  硬件触发选通方式</span></a></li></ol></div>
             
 
           </div>

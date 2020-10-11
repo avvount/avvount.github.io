@@ -99,25 +99,24 @@
 
 
 
-  <meta name="description" content="MCS-51内部时钟电路（CHMOS型）内部有一个用于构成振荡器的高增益反向放大器，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。 石英晶体振荡电路将石英晶体、C1、C2作为反馈元件，与内部放大器一起构成一个自激振荡器，其发出的脉冲直接送入内部时钟。    石英晶体的特性  当信号频率为$f_0$时，">
+  <meta name="description" content="MCS-51内部时钟电路（CHMOS型） 内部有一个用于构成振荡器的高增益反向放大器，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。 PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。 石英晶体振荡电路 将石英晶体、C1、C2作为反馈元件，与内部放大器一起构成一个自激振荡器，其发出的脉冲直接送入内部时钟。   石英晶体的特性 当信号频率为$f_0$时">
 <meta name="keywords" content="单片机原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单片机系统结构(三)——时钟电路">
 <meta property="og:url" content="https://avvount.github.io/2018/04/07/单片机系统结构-三-——时钟电路/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="MCS-51内部时钟电路（CHMOS型）内部有一个用于构成振荡器的高增益反向放大器，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。 石英晶体振荡电路将石英晶体、C1、C2作为反馈元件，与内部放大器一起构成一个自激振荡器，其发出的脉冲直接送入内部时钟。    石英晶体的特性  当信号频率为$f_0$时，">
+<meta property="og:description" content="MCS-51内部时钟电路（CHMOS型） 内部有一个用于构成振荡器的高增益反向放大器，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。 PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。 石英晶体振荡电路 将石英晶体、C1、C2作为反馈元件，与内部放大器一起构成一个自激振荡器，其发出的脉冲直接送入内部时钟。   石英晶体的特性 当信号频率为$f_0$时">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF.png">
-<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E5%A4%96%E6%8E%A5%E6%97%B6%E9%92%9F%E6%BA%90.png">
-<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/CPU%E6%97%B6%E5%BA%8F.png">
-<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E4%B8%8A%E7%94%B5%E5%A4%8D%E4%BD%8D%E7%94%B5%E8%B7%AF.png">
-<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E5%BC%80%E5%85%B3%E5%A4%8D%E4%BD%8D%E7%94%B5%E8%B7%AF.png">
-<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:updated_time" content="2019-09-01T03:32:29.715Z">
+<meta property="og:image" content="https://github.com/avvount/Picture-Bed/raw/master/%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF.png">
+<meta property="og:image" content="https://github.com/avvount/Picture-Bed/raw/master/%E5%A4%96%E6%8E%A5%E6%97%B6%E9%92%9F%E6%BA%90.png">
+<meta property="og:image" content="https://github.com/avvount/Picture-Bed/raw/master/CPU%E6%97%B6%E5%BA%8F.png">
+<meta property="og:image" content="https://github.com/avvount/Picture-Bed/raw/master/%E4%B8%8A%E7%94%B5%E5%A4%8D%E4%BD%8D%E7%94%B5%E8%B7%AF.png">
+<meta property="og:image" content="https://github.com/avvount/Picture-Bed/raw/master/%E5%BC%80%E5%85%B3%E5%A4%8D%E4%BD%8D%E7%94%B5%E8%B7%AF.png">
+<meta property="og:updated_time" content="2020-10-11T06:20:45.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单片机系统结构(三)——时钟电路">
-<meta name="twitter:description" content="MCS-51内部时钟电路（CHMOS型）内部有一个用于构成振荡器的高增益反向放大器，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。 石英晶体振荡电路将石英晶体、C1、C2作为反馈元件，与内部放大器一起构成一个自激振荡器，其发出的脉冲直接送入内部时钟。    石英晶体的特性  当信号频率为$f_0$时，">
-<meta name="twitter:image" content="http://ohe854y38.bkt.clouddn.com/%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF.png">
+<meta name="twitter:description" content="MCS-51内部时钟电路（CHMOS型） 内部有一个用于构成振荡器的高增益反向放大器，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。 PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。 石英晶体振荡电路 将石英晶体、C1、C2作为反馈元件，与内部放大器一起构成一个自激振荡器，其发出的脉冲直接送入内部时钟。   石英晶体的特性 当信号频率为$f_0$时">
+<meta name="twitter:image" content="https://github.com/avvount/Picture-Bed/raw/master/%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF.png">
 
 
 
@@ -403,24 +402,50 @@
       
 
       
-        <h1 id="MCS-51内部时钟电路（CHMOS型）"><a href="#MCS-51内部时钟电路（CHMOS型）" class="headerlink" title="MCS-51内部时钟电路（CHMOS型）"></a>MCS-51内部时钟电路（CHMOS型）</h1><p>内部有一个用于构成振荡器的<strong>高增益反向放大器</strong>，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。<br>PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。</p>
-<h1 id="石英晶体振荡电路"><a href="#石英晶体振荡电路" class="headerlink" title="石英晶体振荡电路"></a>石英晶体振荡电路</h1><p>将石英晶体、C1、C2作为反馈元件，与内部放大器一起构成一个<strong>自激振荡器</strong>，其发出的脉冲直接送入内部时钟。<br><img src="http://ohe854y38.bkt.clouddn.com/%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF.png" alt>  </p>
+        <h1>MCS-51内部时钟电路（CHMOS型）</h1>
+<p>内部有一个用于构成振荡器的<strong>高增益反向放大器</strong>，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。
+PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。</p>
+<h1>石英晶体振荡电路</h1>
+<p>将石英晶体、C1、C2作为反馈元件，与内部放大器一起构成一个<strong>自激振荡器</strong>，其发出的脉冲直接送入内部时钟。<br>
+<img src="https://github.com/avvount/Picture-Bed/raw/master/%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF.png" alt></p>
 <ul>
-<li>石英晶体的特性<br>  当信号频率为$f_0$时，石英晶体的阻抗最小，信号最易通过<br>  振荡频率只取决于谐振频率$f_0$，一般为$1.2MHz~12MHz$</li>
-<li>电容参数<br>  C1和C2一般取30±10PF，电容的大小会略微影响振荡频率及振荡的稳定性<br>  在设计印刷线路板时，应使晶体和电容尽可能离单片机近些，以减少寄生电容  </li>
+<li>石英晶体的特性<br>
+当信号频率为$f_0$时，石英晶体的阻抗最小，信号最易通过<br>
+振荡频率只取决于谐振频率$f_0$，一般为$1.2MHz~12MHz$</li>
+<li>电容参数<br>
+C1和C2一般取30±10PF，电容的大小会略微影响振荡频率及振荡的稳定性<br>
+在设计印刷线路板时，应使晶体和电容尽可能离单片机近些，以减少寄生电容</li>
 </ul>
-<h1 id="外部时钟源接法"><a href="#外部时钟源接法" class="headerlink" title="外部时钟源接法"></a>外部时钟源接法</h1><p><img src="http://ohe854y38.bkt.clouddn.com/%E5%A4%96%E6%8E%A5%E6%97%B6%E9%92%9F%E6%BA%90.png" alt="外接时钟源">  </p>
-<p>不同类型的单片机，外部振荡源信号可能接入X2，要参考单片机具体内部电路或手册<br>对外部信号的占空比没有什么要求，但要求最小高电平和低电平持续时间应符合产品技术条件的要求（20ns)</p>
-<h1 id="CPU时序"><a href="#CPU时序" class="headerlink" title="CPU时序"></a>CPU时序</h1><p>时序是非常重要的概念，它指明单片机内部及内部与外部相互联系所遵循的规律<br><img src="http://ohe854y38.bkt.clouddn.com/CPU%E6%97%B6%E5%BA%8F.png" alt="CPU时序">  </p>
-<h2 id="振荡周期"><a href="#振荡周期" class="headerlink" title="振荡周期"></a>振荡周期</h2><pre><code>为单片机提供定时信号的振荡源的周期  
-</code></pre><h2 id="状态周期（时钟周期或S周期）"><a href="#状态周期（时钟周期或S周期）" class="headerlink" title="状态周期（时钟周期或S周期）"></a>状态周期（时钟周期或S周期）</h2><pre><code>是振荡周期的2倍，每个时钟周期被分为2个节拍，即P1、P2  
+<h1>外部时钟源接法</h1>
+<p><img src="https://github.com/avvount/Picture-Bed/raw/master/%E5%A4%96%E6%8E%A5%E6%97%B6%E9%92%9F%E6%BA%90.png" alt="外接时钟源"></p>
+<p>不同类型的单片机，外部振荡源信号可能接入X2，要参考单片机具体内部电路或手册<br>
+对外部信号的占空比没有什么要求，但要求最小高电平和低电平持续时间应符合产品技术条件的要求（20ns)</p>
+<h1>CPU时序</h1>
+<p>时序是非常重要的概念，它指明单片机内部及内部与外部相互联系所遵循的规律<br>
+<img src="https://github.com/avvount/Picture-Bed/raw/master/CPU%E6%97%B6%E5%BA%8F.png" alt="CPU时序"></p>
+<h2>振荡周期</h2>
+<pre><code>为单片机提供定时信号的振荡源的周期  
+</code></pre>
+<h2>状态周期（时钟周期或S周期）</h2>
+<pre><code>是振荡周期的2倍，每个时钟周期被分为2个节拍，即P1、P2  
 在每个时钟周期的前半周期，P1信号有效，这时通常完成算术、逻辑操作
 在每个时钟周期的后半周期，P2信号有效，内部寄存器与寄存器之间的传输一般发生在此状态  
-</code></pre><h2 id="机器周期"><a href="#机器周期" class="headerlink" title="机器周期"></a>机器周期</h2><pre><code>一个机器周期由六个时钟周期组成，机器周期是指令执行时间的基本单位  
-</code></pre><h2 id="指令周期"><a href="#指令周期" class="headerlink" title="指令周期"></a>指令周期</h2><pre><code>执行一条指令所需的全部时间，一个指令周期通常包含1、2、4个机器周期  
-</code></pre><h1 id="指令长度（1-3字节）与指令周期的关系"><a href="#指令长度（1-3字节）与指令周期的关系" class="headerlink" title="指令长度（1~3字节）与指令周期的关系"></a>指令长度（1~3字节）与指令周期的关系</h1><p>单字节、双字节指令可能是单周期或双周期的<br>3字节指令都为双周期<br>乘除法指令为4周期  </p>
-<h1 id="复位与复位电路"><a href="#复位与复位电路" class="headerlink" title="复位与复位电路"></a>复位与复位电路</h1><p>复位是使CPU和系统中其它部件处于一个确定的初始状态，并从这个状态开始工作<br>RST引脚上出现2个周期的高电平时，单片机复位</p>
-<h2 id="单片机的复位状态"><a href="#单片机的复位状态" class="headerlink" title="单片机的复位状态"></a>单片机的复位状态</h2><table>
+</code></pre>
+<h2>机器周期</h2>
+<pre><code>一个机器周期由六个时钟周期组成，机器周期是指令执行时间的基本单位  
+</code></pre>
+<h2>指令周期</h2>
+<pre><code>执行一条指令所需的全部时间，一个指令周期通常包含1、2、4个机器周期  
+</code></pre>
+<h1>指令长度（1~3字节）与指令周期的关系</h1>
+<p>单字节、双字节指令可能是单周期或双周期的<br>
+3字节指令都为双周期<br>
+乘除法指令为4周期</p>
+<h1>复位与复位电路</h1>
+<p>复位是使CPU和系统中其它部件处于一个确定的初始状态，并从这个状态开始工作<br>
+RST引脚上出现2个周期的高电平时，单片机复位</p>
+<h2>单片机的复位状态</h2>
+<table>
 <thead>
 <tr>
 <th>寄存器</th>
@@ -502,13 +527,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="复位电路"><a href="#复位电路" class="headerlink" title="复位电路"></a>复位电路</h2><ol>
-<li>上电复位电路<img src="http://ohe854y38.bkt.clouddn.com/%E4%B8%8A%E7%94%B5%E5%A4%8D%E4%BD%8D%E7%94%B5%E8%B7%AF.png" alt></li>
-<li>开关复位电路<img src="http://ohe854y38.bkt.clouddn.com/%E5%BC%80%E5%85%B3%E5%A4%8D%E4%BD%8D%E7%94%B5%E8%B7%AF.png" alt></li>
+<h2>复位电路</h2>
+<ol>
+<li>上电复位电路<img src="https://github.com/avvount/Picture-Bed/raw/master/%E4%B8%8A%E7%94%B5%E5%A4%8D%E4%BD%8D%E7%94%B5%E8%B7%AF.png" alt></li>
+<li>开关复位电路<img src="https://github.com/avvount/Picture-Bed/raw/master/%E5%BC%80%E5%85%B3%E5%A4%8D%E4%BD%8D%E7%94%B5%E8%B7%AF.png" alt></li>
 </ol>
-
-<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-
 
       
     </div>
@@ -733,7 +756,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#MCS-51内部时钟电路（CHMOS型）"><span class="nav-number">1.</span> <span class="nav-text">MCS-51内部时钟电路（CHMOS型）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#石英晶体振荡电路"><span class="nav-number">2.</span> <span class="nav-text">石英晶体振荡电路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#外部时钟源接法"><span class="nav-number">3.</span> <span class="nav-text">外部时钟源接法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#CPU时序"><span class="nav-number">4.</span> <span class="nav-text">CPU时序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#振荡周期"><span class="nav-number">4.1.</span> <span class="nav-text">振荡周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#状态周期（时钟周期或S周期）"><span class="nav-number">4.2.</span> <span class="nav-text">状态周期（时钟周期或S周期）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#机器周期"><span class="nav-number">4.3.</span> <span class="nav-text">机器周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#指令周期"><span class="nav-number">4.4.</span> <span class="nav-text">指令周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#指令长度（1-3字节）与指令周期的关系"><span class="nav-number">5.</span> <span class="nav-text">指令长度（1~3字节）与指令周期的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#复位与复位电路"><span class="nav-number">6.</span> <span class="nav-text">复位与复位电路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#单片机的复位状态"><span class="nav-number">6.1.</span> <span class="nav-text">单片机的复位状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#复位电路"><span class="nav-number">6.2.</span> <span class="nav-text">复位电路</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">MCS-51内部时钟电路（CHMOS型）</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">石英晶体振荡电路</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">外部时钟源接法</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">4.</span> <span class="nav-text">CPU时序</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.1.</span> <span class="nav-text">振荡周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.2.</span> <span class="nav-text">状态周期（时钟周期或S周期）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.3.</span> <span class="nav-text">机器周期</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">4.4.</span> <span class="nav-text">指令周期</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">5.</span> <span class="nav-text">指令长度（1~3字节）与指令周期的关系</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">6.</span> <span class="nav-text">复位与复位电路</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.1.</span> <span class="nav-text">单片机的复位状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">6.2.</span> <span class="nav-text">复位电路</span></a></li></ol></li></ol></div>
             
 
           </div>

@@ -99,21 +99,20 @@
 
 
 
-  <meta name="description" content="目录结构   文件类型链接文件（link）就是类似Windows系统下面的捷径啦！ 第一个属性为 [ l ]（英文L的小写），例如 [lrwxrwxrwx]   设备与设备文件（device）与系统周边及储存等相关的一些文件， 通常都集中在/dev这个目录之下！通常又分为两种： 区块（block）设备文件就是一些储存数据， 以提供系统随机存取的周边设备，举例来说，硬盘与软盘等就是啦！ 你可以随机的">
+  <meta name="description" content="目录结构  文件类型 链接文件（link） 就是类似Windows系统下面的捷径啦！ 第一个属性为 [ l ]（英文L的小写），例如 [lrwxrwxrwx] 设备与设备文件（device） 与系统周边及储存等相关的一些文件， 通常都集中在/dev这个目录之下！通常又分为两种： 区块（block）设备文件 就是一些储存数据， 以提供系统随机存取的周边设备，举例来说，硬盘与软盘等就是啦！ 你可以随机">
 <meta name="keywords" content="Linux">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Linux目录结构&amp;文件类型">
 <meta property="og:url" content="https://avvount.github.io/2018/04/05/Linux目录结构&文件类型/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="目录结构   文件类型链接文件（link）就是类似Windows系统下面的捷径啦！ 第一个属性为 [ l ]（英文L的小写），例如 [lrwxrwxrwx]   设备与设备文件（device）与系统周边及储存等相关的一些文件， 通常都集中在/dev这个目录之下！通常又分为两种： 区块（block）设备文件就是一些储存数据， 以提供系统随机存取的周边设备，举例来说，硬盘与软盘等就是啦！ 你可以随机的">
+<meta property="og:description" content="目录结构  文件类型 链接文件（link） 就是类似Windows系统下面的捷径啦！ 第一个属性为 [ l ]（英文L的小写），例如 [lrwxrwxrwx] 设备与设备文件（device） 与系统周边及储存等相关的一些文件， 通常都集中在/dev这个目录之下！通常又分为两种： 区块（block）设备文件 就是一些储存数据， 以提供系统随机存取的周边设备，举例来说，硬盘与软盘等就是啦！ 你可以随机">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:image" content="http://ohe854y38.bkt.clouddn.com/%E7%9B%AE%E5%BD%95%E6%A0%91.jpg">
-<meta property="og:image" content="https://www.vultr.com/media/banner_1.png">
-<meta property="og:updated_time" content="2019-09-01T03:30:36.665Z">
+<meta property="og:image" content="https://github.com/avvount/Picture-Bed/raw/master/%E7%9B%AE%E5%BD%95%E6%A0%91.jpg">
+<meta property="og:updated_time" content="2020-10-11T06:20:45.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Linux目录结构&amp;文件类型">
-<meta name="twitter:description" content="目录结构   文件类型链接文件（link）就是类似Windows系统下面的捷径啦！ 第一个属性为 [ l ]（英文L的小写），例如 [lrwxrwxrwx]   设备与设备文件（device）与系统周边及储存等相关的一些文件， 通常都集中在/dev这个目录之下！通常又分为两种： 区块（block）设备文件就是一些储存数据， 以提供系统随机存取的周边设备，举例来说，硬盘与软盘等就是啦！ 你可以随机的">
-<meta name="twitter:image" content="http://ohe854y38.bkt.clouddn.com/%E7%9B%AE%E5%BD%95%E6%A0%91.jpg">
+<meta name="twitter:description" content="目录结构  文件类型 链接文件（link） 就是类似Windows系统下面的捷径啦！ 第一个属性为 [ l ]（英文L的小写），例如 [lrwxrwxrwx] 设备与设备文件（device） 与系统周边及储存等相关的一些文件， 通常都集中在/dev这个目录之下！通常又分为两种： 区块（block）设备文件 就是一些储存数据， 以提供系统随机存取的周边设备，举例来说，硬盘与软盘等就是啦！ 你可以随机">
+<meta name="twitter:image" content="https://github.com/avvount/Picture-Bed/raw/master/%E7%9B%AE%E5%BD%95%E6%A0%91.jpg">
 
 
 
@@ -399,16 +398,21 @@
       
 
       
-        <h1 id="目录结构"><a href="#目录结构" class="headerlink" title="目录结构"></a>目录结构</h1><p><img src="http://ohe854y38.bkt.clouddn.com/%E7%9B%AE%E5%BD%95%E6%A0%91.jpg" alt="目录树">  </p>
-<h1 id="文件类型"><a href="#文件类型" class="headerlink" title="文件类型"></a>文件类型</h1><h2 id="链接文件（link）"><a href="#链接文件（link）" class="headerlink" title="链接文件（link）"></a>链接文件（link）</h2><p>就是类似Windows系统下面的捷径啦！ 第一个属性为 [ l ]（英文L的小写），例如 [lrwxrwxrwx]  </p>
-<h2 id="设备与设备文件（device）"><a href="#设备与设备文件（device）" class="headerlink" title="设备与设备文件（device）"></a>设备与设备文件（device）</h2><p>与系统周边及储存等相关的一些文件， 通常都集中在/dev这个目录之下！通常又分为两种：</p>
-<h2 id="区块（block）设备文件"><a href="#区块（block）设备文件" class="headerlink" title="区块（block）设备文件"></a>区块（block）设备文件</h2><p>就是一些储存数据， 以提供系统随机存取的周边设备，举例来说，硬盘与软盘等就是啦！ 你可以随机的在硬盘的不同区块读写，这种设备就是区块设备啰！你可以自行查一下/dev/sda看看， 会发现第一个属性为[ b ]喔！</p>
-<h2 id="字符（character）设备文件"><a href="#字符（character）设备文件" class="headerlink" title="字符（character）设备文件"></a>字符（character）设备文件</h2><p>亦即是一些序列埠的周边设备， 例如键盘、鼠标等等！这些设备的特色就是“一次性读取”的，不能够截断输出。 举例来说，你不可能让鼠标“跳到”另一个画面，而是“连续性滑动”到另一个地方啊！第一个属性为 [ c ]。</p>
-<h2 id="数据接口文件（sockets）"><a href="#数据接口文件（sockets）" class="headerlink" title="数据接口文件（sockets）"></a>数据接口文件（sockets）</h2><p>既然被称为数据接口文件， 想当然尔，这种类型的文件通常被用在网络上的数据承接了。我们可以启动一个程序来监听用户端的要求， 而用户端就可以通过这个socket来进行数据的沟通了。第一个属性为[ s ]， 最常在/run或/tmp这些个目录中看到这种文件类型了。</p>
-<h2 id="数据输送档（FIFO-pipe）"><a href="#数据输送档（FIFO-pipe）" class="headerlink" title="数据输送档（FIFO, pipe）"></a>数据输送档（FIFO, pipe）</h2><p>FIFO也是一种特殊的文件类型，他主要的目的在解决多个程序同时存取一个文件所造成的错误问题。 FIFO是first-in-first-out的缩写。第一个属性为[ p ] 。</p>
-
-<a href="https://www.vultr.com/?ref=7294452" target="_blank" rel="noopener"><img src="https://www.vultr.com/media/banner_1.png" width="728" height="90"></a>
-
+        <h1>目录结构</h1>
+<p><img src="https://github.com/avvount/Picture-Bed/raw/master/%E7%9B%AE%E5%BD%95%E6%A0%91.jpg" alt="目录树"></p>
+<h1>文件类型</h1>
+<h2>链接文件（link）</h2>
+<p>就是类似Windows系统下面的捷径啦！ 第一个属性为 [ l ]（英文L的小写），例如 [lrwxrwxrwx]</p>
+<h2>设备与设备文件（device）</h2>
+<p>与系统周边及储存等相关的一些文件， 通常都集中在/dev这个目录之下！通常又分为两种：</p>
+<h2>区块（block）设备文件</h2>
+<p>就是一些储存数据， 以提供系统随机存取的周边设备，举例来说，硬盘与软盘等就是啦！ 你可以随机的在硬盘的不同区块读写，这种设备就是区块设备啰！你可以自行查一下/dev/sda看看， 会发现第一个属性为[ b ]喔！</p>
+<h2>字符（character）设备文件</h2>
+<p>亦即是一些序列埠的周边设备， 例如键盘、鼠标等等！这些设备的特色就是“一次性读取”的，不能够截断输出。 举例来说，你不可能让鼠标“跳到”另一个画面，而是“连续性滑动”到另一个地方啊！第一个属性为 [ c ]。</p>
+<h2>数据接口文件（sockets）</h2>
+<p>既然被称为数据接口文件， 想当然尔，这种类型的文件通常被用在网络上的数据承接了。我们可以启动一个程序来监听用户端的要求， 而用户端就可以通过这个socket来进行数据的沟通了。第一个属性为[ s ]， 最常在/run或/tmp这些个目录中看到这种文件类型了。</p>
+<h2>数据输送档（FIFO, pipe）</h2>
+<p>FIFO也是一种特殊的文件类型，他主要的目的在解决多个程序同时存取一个文件所造成的错误问题。 FIFO是first-in-first-out的缩写。第一个属性为[ p ] 。</p>
 
       
     </div>
@@ -633,7 +637,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目录结构"><span class="nav-number">1.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#文件类型"><span class="nav-number">2.</span> <span class="nav-text">文件类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#链接文件（link）"><span class="nav-number">2.1.</span> <span class="nav-text">链接文件（link）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#设备与设备文件（device）"><span class="nav-number">2.2.</span> <span class="nav-text">设备与设备文件（device）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#区块（block）设备文件"><span class="nav-number">2.3.</span> <span class="nav-text">区块（block）设备文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#字符（character）设备文件"><span class="nav-number">2.4.</span> <span class="nav-text">字符（character）设备文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据接口文件（sockets）"><span class="nav-number">2.5.</span> <span class="nav-text">数据接口文件（sockets）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据输送档（FIFO-pipe）"><span class="nav-number">2.6.</span> <span class="nav-text">数据输送档（FIFO, pipe）</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">目录结构</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">文件类型</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">链接文件（link）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">设备与设备文件（device）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">区块（block）设备文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">字符（character）设备文件</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.5.</span> <span class="nav-text">数据接口文件（sockets）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.6.</span> <span class="nav-text">数据输送档（FIFO, pipe）</span></a></li></ol></li></ol></div>
             
 
           </div>
