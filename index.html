@@ -326,6 +326,138 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2020/11/13/sqlalchemy/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Avvount">
+      <meta itemprop="description" content>
+      <meta itemprop="image" content="/pic/donkey.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Avvount's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2020/11/13/sqlalchemy/" itemprop="url">sqlalchemy使用问题记录.md</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2020-11-13T22:39:49+08:00">2020-11-13</time>
+            
+
+            
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+          在多进程中使用全局engine导致出错问题Connection problems with SQLAlchemy and multiple processes  
+Using Connection Pools with Multiprocessing or os.fork()  
+
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2020/11/13/sqlalchemy/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
+        
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2020/04/18/Kubernetes/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -802,8 +934,10 @@ supervisor
         
           
           统计宽字节的字符串长度12wchar_t *p="aaa";  int len=wcslen(p2);
+
 CString 转 char *1234CString str("aaa");CSringA tmp;    tmp=str; char *p=tmp.GetBuffer();
-事件对象与互斥对象
+
+事件对象与互斥
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -938,7 +1072,8 @@ CString 转 char *1234CString str("aaa");CSringA tmp;    tmp=str; char *p=tmp.Ge
 ? 可以查看所有的快捷键列表
 
 窗格操作
-% 左右平分出两个窗格*” 上下平分出两个窗格
+% 左右平分出两个窗格
+“ 上下平分出两个窗格
 x 关闭当前窗格
 { 当前窗格前移
 } 当前窗格后移
@@ -1333,19 +1468,13 @@ x 关闭当前窗格
       
         
           
-          8051共有4个8位I/O口，共32口线。
-每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。
-P0口的结构与操作
-
-控制信号为0时，P0口做一般I/O口。
-控制信号为1时，P0口为地址/数据复用总线。
+          8051共有4个8位I/O口，共32口线。每位均有自己的锁存器(SFR)，输出驱动器和输入缓冲器。
+P0口的结构与操作控制信号为0时，P0口做一般I/O口。控制信号为1时，P0口为地址/数据复用总线。  
 P0口做一般I/O口使用
-
-数据输出
-写脉冲加在C上
+数据输出写脉冲加在C上
 
 
-若D=0，则$\bar Q$=1
+若D=0，则$\bar Q$=1，则下拉
           ...
           <!--noindex-->
           <div class="post-button text-center">
@@ -1475,151 +1604,12 @@ P0口做一般I/O口使用
       
         
           
-          MCS-51内部时钟电路（CHMOS型）
-内部有一个用于构成振荡器的高增益反向放大器，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。
-PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。
-石英晶体振荡电路
-将石英晶体、C1、C2作为反馈元件，与内部放大器
+          MCS-51内部时钟电路（CHMOS型）内部有一个用于构成振荡器的高增益反向放大器，引脚XTAL1和XTAL2分别是此放大器的输入端和输出端。PD为电源控制寄存器中的一位，PD=1时，可切断振荡器工作，使系统进入低功耗工作状态。
+石英晶体振荡电路将石英晶体、C1、C2作为反馈元件，与内部放大器一起构
           ...
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/04/07/单片机系统结构-三-——时钟电路/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-
-    
-
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://avvount.github.io/2018/04/05/rime指定程序不输入中文/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Avvount">
-      <meta itemprop="description" content>
-      <meta itemprop="image" content="/pic/donkey.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Avvount's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/04/05/rime指定程序不输入中文/" itemprop="url">rime指定程序不输入中文</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-04-05T21:14:13+08:00">2018-04-05</time>
-            
-
-            
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-          如在winkawaks.exe中不输入中文则如此设定：  
-
-squirrel.custom.yaml
-123patch:      app_options/winkawaks.exe:          ascii_mode: true
-
-
-
-          
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/04/05/rime指定程序不输入中文/#more" rel="contents">
               阅读全文 &raquo;
             </a>
           </div>
@@ -1709,7 +1699,7 @@ squirrel.custom.yaml
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -2317,9 +2307,9 @@ squirrel.custom.yaml
       
     
       
-        
-      
     
+      
+        
       
     
       

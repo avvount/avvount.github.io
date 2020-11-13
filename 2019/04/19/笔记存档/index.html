@@ -99,17 +99,17 @@
 
 
 
-  <meta name="description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2); CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer(); 事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:1#define WM_RECVDATA WM">
+  <meta name="description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2);  CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer();  事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:   1#define WM_RECVDA">
 <meta property="og:type" content="article">
 <meta property="og:title" content="笔记存档">
 <meta property="og:url" content="https://avvount.github.io/2019/04/19/笔记存档/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2); CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer(); 事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:1#define WM_RECVDATA WM">
+<meta property="og:description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2);  CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer();  事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:   1#define WM_RECVDA">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2019-04-19T06:45:39.314Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="笔记存档">
-<meta name="twitter:description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2); CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer(); 事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:1#define WM_RECVDATA WM">
+<meta name="twitter:description" content="统计宽字节的字符串长度12wchar_t *p=&quot;aaa&quot;;  int len=wcslen(p2);  CString 转 char *1234CString str(&quot;aaa&quot;);CSringA tmp;    tmp=str; char *p=tmp.GetBuffer();  事件对象与互斥对象都属于内核对象添加自定义消息 定义消息宏    Eg:   1#define WM_RECVDA">
 
 
 
@@ -396,19 +396,27 @@
 
       
         <h2 id="统计宽字节的字符串长度"><a href="#统计宽字节的字符串长度" class="headerlink" title="统计宽字节的字符串长度"></a>统计宽字节的字符串长度</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">wchar_t</span> *p=<span class="string">"aaa"</span>;  </span><br><span class="line"><span class="keyword">int</span> len=wcslen(p2);</span><br></pre></td></tr></table></figure>
+
 <h2 id="CString-转-char"><a href="#CString-转-char" class="headerlink" title="CString 转 char *"></a>CString 转 char *</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">CString <span class="title">str</span><span class="params">(<span class="string">"aaa"</span>)</span></span>;</span><br><span class="line">CSringA tmp;    </span><br><span class="line">tmp=str; </span><br><span class="line"><span class="keyword">char</span> *p=tmp.GetBuffer();</span><br></pre></td></tr></table></figure>
+
 <h2 id="事件对象与互斥对象都属于内核对象"><a href="#事件对象与互斥对象都属于内核对象" class="headerlink" title="事件对象与互斥对象都属于内核对象"></a>事件对象与互斥对象都属于内核对象</h2><h2 id="添加自定义消息"><a href="#添加自定义消息" class="headerlink" title="添加自定义消息"></a>添加自定义消息</h2><ol>
 <li>定义消息宏  </li>
 </ol>
-<p>Eg:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WM_RECVDATA WM_USER+1</span></span><br></pre></td></tr></table></figure></p>
+<p>Eg:  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> WM_RECVDATA WM_USER+1</span></span><br></pre></td></tr></table></figure>
+
 <ol start="2">
 <li>在头文件中添加消息响应函数原型声明  </li>
 </ol>
-<p>Eg:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">afx_msg LRESULT <span class="title">OnrecvData</span><span class="params">(WPARAM wParam,LPARAM lParam)</span></span>;</span><br></pre></td></tr></table></figure></p>
+<p>Eg:  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">afx_msg LRESULT <span class="title">OnrecvData</span><span class="params">(WPARAM wParam,LPARAM lParam)</span></span>;</span><br></pre></td></tr></table></figure>
+
 <ol start="3">
-<li>在源文件中<code>BEGIN_MESSAGE_MAP( )</code>和<code>END_MESSAGE_MAP()</code>之间添加消息映射，不要写在<code>//}}AFX_MSG_MAP</code>宏之间    </li>
+<li>在源文件中<code>BEGIN_MESSAGE_MAP( )</code>和<code>END_MESSAGE_MAP()</code>之间添加消息映射，不要写在<code> //}}AFX_MSG_MAP</code>宏之间    </li>
 </ol>
-<p>Eg:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ON_MESSAGE(WM_RECVDATA,OnRecvData)</span><br></pre></td></tr></table></figure></p>
+<p>Eg:  </p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ON_MESSAGE(WM_RECVDATA,OnRecvData)</span><br></pre></td></tr></table></figure>
+
 <ol start="4">
 <li><p>编写消息响应函数的实现 </p>
 </li>
@@ -417,7 +425,7 @@
 </ol>
 <h2 id="类的动态创建"><a href="#类的动态创建" class="headerlink" title="类的动态创建"></a>类的动态创建</h2><p>在头文件中添加<code>DECLARE_DYNCREATE(class_name)</code>宏，源文件中添加<code>IMPLEMENT_DYNCREATE(class_name , base_class_name)</code>宏。</p>
 <h2 id="Sublime快捷键设置"><a href="#Sublime快捷键设置" class="headerlink" title="Sublime快捷键设置"></a>Sublime快捷键设置</h2><ol>
-<li><p><code>Ctrl + hjkl</code>快速移动光标,在首选项-&gt;快捷键设置中添加以下代码  </p>
+<li><p><code>Ctrl + hjkl </code>快速移动光标,在首选项-&gt;快捷键设置中添加以下代码  </p>
 <figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[</span><br><span class="line">	&#123; <span class="attr">"keys"</span>: [<span class="string">"ctrl+h"</span>], <span class="attr">"command"</span>: <span class="string">"move"</span>, <span class="attr">"args"</span>: &#123;<span class="attr">"by"</span>: <span class="string">"characters"</span>, <span class="attr">"forward"</span>: <span class="literal">false</span>&#125; &#125;,</span><br><span class="line">	&#123; <span class="attr">"keys"</span>: [<span class="string">"ctrl+l"</span>], <span class="attr">"command"</span>: <span class="string">"move"</span>, <span class="attr">"args"</span>: &#123;<span class="attr">"by"</span>: <span class="string">"characters"</span>, <span class="attr">"forward"</span>: <span class="literal">true</span>&#125; &#125;,</span><br><span class="line">	&#123; <span class="attr">"keys"</span>: [<span class="string">"ctrl+k"</span>], <span class="attr">"command"</span>: <span class="string">"move"</span>, <span class="attr">"args"</span>: &#123;<span class="attr">"by"</span>: <span class="string">"lines"</span>, <span class="attr">"forward"</span>: <span class="literal">false</span>&#125; &#125;,</span><br><span class="line">	&#123; <span class="attr">"keys"</span>: [<span class="string">"ctrl+j"</span>], <span class="attr">"command"</span>: <span class="string">"move"</span>, <span class="attr">"args"</span>: &#123;<span class="attr">"by"</span>: <span class="string">"lines"</span>, <span class="attr">"forward"</span>: <span class="literal">true</span>&#125; &#125;,</span><br><span class="line">	&#123; <span class="attr">"keys"</span>: [<span class="string">"ctrl+shift+h"</span>], <span class="attr">"command"</span>: <span class="string">"move"</span>, <span class="attr">"args"</span>: &#123;<span class="attr">"by"</span>: <span class="string">"words"</span>, <span class="attr">"forward"</span>: <span class="literal">false</span>&#125; &#125;,</span><br><span class="line">	&#123; <span class="attr">"keys"</span>: [<span class="string">"ctrl+shift+l"</span>], <span class="attr">"command"</span>: <span class="string">"move"</span>, <span class="attr">"args"</span>: &#123;<span class="attr">"by"</span>: <span class="string">"word_ends"</span>, <span class="attr">"forward"</span>: <span class="literal">true</span>&#125; &#125;,</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 </li>
 <li><p>开启vim模式</p>
@@ -539,7 +547,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>

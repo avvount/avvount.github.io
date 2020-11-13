@@ -99,20 +99,20 @@
 
 
 
-  <meta name="description" content="引脚逻辑图  8051单片机为40条引脚双列直插式封装 引脚可分为三个部分   引脚描述 电源引脚 VCC——+5V GND——接地 时钟引脚   X1（ XTAL1 ） 连接片内部振荡器的输入端 外接晶体时，它外接石英晶体的一端 采用外部脉冲振荡器时，此引脚为驱动端 X2（ XTAL2） 连接片内部振荡器输出端 外接晶体时，它外接石英晶体的另一端 采用外部脉冲振荡器时，此引脚空  控制引脚">
+  <meta name="description" content="引脚逻辑图 8051单片机为40条引脚双列直插式封装   引脚可分为三个部分   引脚描述电源引脚VCC——+5VGND——接地 时钟引脚  X1（ XTAL1 ）连接片内部振荡器的输入端外接晶体时，它外接石英晶体的一端采用外部脉冲振荡器时，此引脚为驱动端   X2（ XTAL2）连接片内部振荡器输出端外接晶体时，它外接石英晶体的另一端采用外部脉冲振荡器时，此引脚空    控制引脚 $RST/V_">
 <meta name="keywords" content="单片机原理">
 <meta property="og:type" content="article">
 <meta property="og:title" content="单片机系统结构(一)——引脚描述">
 <meta property="og:url" content="https://avvount.github.io/2018/03/29/单片机系统结构-一-——引脚描述/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="引脚逻辑图  8051单片机为40条引脚双列直插式封装 引脚可分为三个部分   引脚描述 电源引脚 VCC——+5V GND——接地 时钟引脚   X1（ XTAL1 ） 连接片内部振荡器的输入端 外接晶体时，它外接石英晶体的一端 采用外部脉冲振荡器时，此引脚为驱动端 X2（ XTAL2） 连接片内部振荡器输出端 外接晶体时，它外接石英晶体的另一端 采用外部脉冲振荡器时，此引脚空  控制引脚">
+<meta property="og:description" content="引脚逻辑图 8051单片机为40条引脚双列直插式封装   引脚可分为三个部分   引脚描述电源引脚VCC——+5VGND——接地 时钟引脚  X1（ XTAL1 ）连接片内部振荡器的输入端外接晶体时，它外接石英晶体的一端采用外部脉冲振荡器时，此引脚为驱动端   X2（ XTAL2）连接片内部振荡器输出端外接晶体时，它外接石英晶体的另一端采用外部脉冲振荡器时，此引脚空    控制引脚 $RST/V_">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://github.com/avvount/Picture-Bed/raw/master/MCS-51%E5%BC%95%E8%84%9A%E9%80%BB%E8%BE%91%E5%9B%BE.png">
 <meta property="og:image" content="https://github.com/avvount/Picture-Bed/raw/master/MCS-51%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF.png">
 <meta property="og:updated_time" content="2020-10-11T06:20:45.268Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="单片机系统结构(一)——引脚描述">
-<meta name="twitter:description" content="引脚逻辑图  8051单片机为40条引脚双列直插式封装 引脚可分为三个部分   引脚描述 电源引脚 VCC——+5V GND——接地 时钟引脚   X1（ XTAL1 ） 连接片内部振荡器的输入端 外接晶体时，它外接石英晶体的一端 采用外部脉冲振荡器时，此引脚为驱动端 X2（ XTAL2） 连接片内部振荡器输出端 外接晶体时，它外接石英晶体的另一端 采用外部脉冲振荡器时，此引脚空  控制引脚">
+<meta name="twitter:description" content="引脚逻辑图 8051单片机为40条引脚双列直插式封装   引脚可分为三个部分   引脚描述电源引脚VCC——+5VGND——接地 时钟引脚  X1（ XTAL1 ）连接片内部振荡器的输入端外接晶体时，它外接石英晶体的一端采用外部脉冲振荡器时，此引脚为驱动端   X2（ XTAL2）连接片内部振荡器输出端外接晶体时，它外接石英晶体的另一端采用外部脉冲振荡器时，此引脚空    控制引脚 $RST/V_">
 <meta name="twitter:image" content="https://github.com/avvount/Picture-Bed/raw/master/MCS-51%E5%BC%95%E8%84%9A%E9%80%BB%E8%BE%91%E5%9B%BE.png">
 
 
@@ -399,56 +399,32 @@
       
 
       
-        <h1>引脚逻辑图</h1>
-<ul>
-<li>8051单片机为40条引脚双列直插式封装</li>
+        <h1 id="引脚逻辑图"><a href="#引脚逻辑图" class="headerlink" title="引脚逻辑图"></a>引脚逻辑图</h1><ul>
+<li>8051单片机为40条引脚双列直插式封装  </li>
 <li>引脚可分为三个部分</li>
 </ul>
-<p><img src="https://github.com/avvount/Picture-Bed/raw/master/MCS-51%E5%BC%95%E8%84%9A%E9%80%BB%E8%BE%91%E5%9B%BE.png" alt></p>
-<h1>引脚描述</h1>
-<h2>电源引脚</h2>
-<p>VCC——+5V<br>
-GND——接地</p>
-<h2>时钟引脚</h2>
-<p><img src="https://github.com/avvount/Picture-Bed/raw/master/MCS-51%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF.png" alt></p>
+<p><img src="https://github.com/avvount/Picture-Bed/raw/master/MCS-51%E5%BC%95%E8%84%9A%E9%80%BB%E8%BE%91%E5%9B%BE.png"></p>
+<h1 id="引脚描述"><a href="#引脚描述" class="headerlink" title="引脚描述"></a>引脚描述</h1><h2 id="电源引脚"><a href="#电源引脚" class="headerlink" title="电源引脚"></a>电源引脚</h2><p>VCC——+5V<br>GND——接地</p>
+<h2 id="时钟引脚"><a href="#时钟引脚" class="headerlink" title="时钟引脚"></a>时钟引脚</h2><p><img src="https://github.com/avvount/Picture-Bed/raw/master/MCS-51%E6%8C%AF%E8%8D%A1%E7%94%B5%E8%B7%AF.png"></p>
 <ol>
-<li>X1（ XTAL1 ）
-连接片内部振荡器的输入端<br>
-外接晶体时，它外接石英晶体的一端<br>
-采用外部脉冲振荡器时，此引脚为驱动端</li>
-<li>X2（ XTAL2）
-连接片内部振荡器输出端<br>
-外接晶体时，它外接石英晶体的另一端<br>
-采用外部脉冲振荡器时，此引脚空</li>
+<li>X1（ XTAL1 ）<br>连接片内部振荡器的输入端<br>外接晶体时，它外接石英晶体的一端<br>采用外部脉冲振荡器时，此引脚为驱动端  </li>
+<li>X2（ XTAL2）<br>连接片内部振荡器输出端<br>外接晶体时，它外接石英晶体的另一端<br>采用外部脉冲振荡器时，此引脚空  </li>
 </ol>
-<h2>控制引脚</h2>
-<ol>
-<li>
-<p>$RST/V_{PD}$——复位信号<br>
-振荡器工作时，此引脚 <strong>2 个机器周期的高电平复位CPU</strong><br>
-掉电期间，若该引脚接备用电源，可保证RAM中数据不丢失</p>
+<h2 id="控制引脚"><a href="#控制引脚" class="headerlink" title="控制引脚"></a>控制引脚</h2><ol>
+<li><p>$RST/V_{PD}$——复位信号<br>振荡器工作时，此引脚 <strong>2 个机器周期的高电平复位CPU</strong><br>掉电期间，若该引脚接备用电源，可保证RAM中数据不丢失  </p>
 </li>
-<li>
-<p>$ALE/\overline{PROG}$——地址锁存信号<br>
-访问外部存储器时，<strong>锁存低 8 位地址</strong><br>
-无外部RAM时，ALE输出晶振 6分频脉冲<br>
-对EEPROM编程时，用于输入编程脉冲</p>
+<li><p>$ALE/\overline{PROG}$——地址锁存信号<br>访问外部存储器时，<strong>锁存低 8 位地址</strong><br>无外部RAM时，ALE输出晶振 6分频脉冲<br>对EEPROM编程时，用于输入编程脉冲  </p>
 </li>
-<li>
-<p>$\overline{EA}/ VPP$——允许访问片内外程序 存储器控制端</p>
-</li>
-</ol>
+<li><p>$\overline{EA}/ VPP$——允许访问片内外程序 存储器控制端  </p>
 <ul>
-<li>EA=1，从内部程序存储器开始执行程序</li>
-<li>EA=0，只访问外程序存储器<br>
-对EEPROM编程时，VPP用于加21V的编程电源</li>
+<li>EA=1，从内部程序存储器开始执行程序  </li>
+<li>EA=0，只访问外程序存储器<br>对EEPROM编程时，VPP用于加21V的编程电源  </li>
 </ul>
-<ol start="4">
-<li>$\overline{PSEN}$ ——外部程序存储器读<br>
-从程序存储器中取指令或读取数据时，该信号有效</li>
+</li>
+<li><p>$\overline{PSEN}$ ——外部程序存储器读<br>从程序存储器中取指令或读取数据时，该信号有效    </p>
+</li>
 </ol>
-<h2>并行I/O口引脚</h2>
-<p>
+<h2 id="并行I-O口引脚"><a href="#并行I-O口引脚" class="headerlink" title="并行I/O口引脚"></a>并行I/O口引脚</h2>
 <table>
     <tr><td rowspan="4">P0口</td></tr>
     <tr><td>8位漏级开路准双向I/O口</td></tr>
@@ -466,9 +442,10 @@ GND——接地</p>
     <tr><td>能驱动4个LS  TTL输入</td></tr>
     <tr><td>每位口线还具有第二功能</td></tr>
 </table>
-</p>
+  
+
 <ul>
-<li>P3口第二功能</li>
+<li>P3口第二功能  </li>
 </ul>
 <table>
 <thead>
@@ -478,8 +455,7 @@ GND——接地</p>
 <th>功能说明</th>
 </tr>
 </thead>
-<tbody>
-<tr>
+<tbody><tr>
 <td>P3.0</td>
 <td>RXD</td>
 <td>串行数据接收端</td>
@@ -519,8 +495,7 @@ GND——接地</p>
 <td>RD</td>
 <td>外部数据存储器读</td>
 </tr>
-</tbody>
-</table>
+</tbody></table>
 
       
     </div>
@@ -642,7 +617,7 @@ GND——接地</p>
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">48</span>
+                    <span class="site-state-item-count">49</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -745,7 +720,7 @@ GND——接地</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">引脚逻辑图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">引脚描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.1.</span> <span class="nav-text">电源引脚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.2.</span> <span class="nav-text">时钟引脚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.3.</span> <span class="nav-text">控制引脚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.4.</span> <span class="nav-text">并行I/O口引脚</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#引脚逻辑图"><span class="nav-number">1.</span> <span class="nav-text">引脚逻辑图</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#引脚描述"><span class="nav-number">2.</span> <span class="nav-text">引脚描述</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#电源引脚"><span class="nav-number">2.1.</span> <span class="nav-text">电源引脚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#时钟引脚"><span class="nav-number">2.2.</span> <span class="nav-text">时钟引脚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#控制引脚"><span class="nav-number">2.3.</span> <span class="nav-text">控制引脚</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#并行I-O口引脚"><span class="nav-number">2.4.</span> <span class="nav-text">并行I/O口引脚</span></a></li></ol></li></ol></div>
             
 
           </div>
