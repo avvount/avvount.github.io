@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Python GUI 开发]]></title>
+    <url>%2F2021%2F06%2F13%2FPython-GUI-%E5%BC%80%E5%8F%91%2F</url>
+    <content type="text"><![CDATA[之前尝试过使用tkinter写python界面,但是没用过可视化的界面设计工具,今天简单玩儿了一下PyQt和PAGE PAGE是基于tkinter的,界面有点丑,但貌似比PyQt轻量一些,感觉不太好用界面拖拽完成后点击Gen_Python-&gt;Generate Python GUI和Gen_Python-&gt;Generate Support Module,一共生产了三个文件page.tcl、page.py、page_support.py，通过page.py来启动 选定控价点击”Set Command”，弹出窗口中输入回调函数，回调函数会生成在page_support.py里 PyQt安装PyQt5和pyqt5-tools两个模块，pyqt5-tools包里带了qt designer。 qt designer的界面就比较友好了，带中文界面，界面拖拽完成后保存，会生成一个.ui文件，执行pyuic5 - o xxx.py xxx.ui将ui文件转换为python代码新建一个python文件，贴入以下代码，Ui_Dialog是designer设计好的对话框控件对象，信号和槽的连接可以在designer中设置也可以在MainDialog类中写，但是在designer里貌似不能自定义槽函数，这种就不得不自己写connect函数了 1234567891011121314import sysfrom PyQt5.QtWidgets import QApplication, QDialogfrom pyqt_demo import Ui_Dialogclass MainDialog(QDialog, Ui_Dialog): def __init__(self, parent=None): super(QDialog, self).__init__(parent) self.setupUi(self)if __name__ == '__main__': myapp = QApplication(sys.argv) myDlg = MainDialog() myDlg.show() sys.exit(myapp.exec_())]]></content>
+      <tags>
+        <tag>Python</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[sqlalchemy使用问题记录.md]]></title>
     <url>%2F2020%2F11%2F13%2Fsqlalchemy%2F</url>
     <content type="text"><![CDATA[在多进程中使用全局engine导致出错问题Connection problems with SQLAlchemy and multiple processes Using Connection Pools with Multiprocessing or os.fork()]]></content>
@@ -121,8 +129,8 @@
     <url>%2F2018%2F04%2F05%2FC-%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F%2F</url>
     <content type="text"><![CDATA[类(classes)如Windows,Form,Console,String 结构体(structures)如int32,int64,single,double 枚举(enumerations)如HorizontalAlignment,Visibility 接口(interfaces) 委托(delegates)]]></content>
       <tags>
-        <tag>编程</tag>
         <tag>C#</tag>
+        <tag>编程</tag>
       </tags>
   </entry>
   <entry>
@@ -385,8 +393,8 @@
     <url>%2F2017%2F09%2F20%2FASCII%E7%A0%81%E8%A1%A8%2F</url>
     <content type="text"><![CDATA[ASCII控制字符 二进制 十进制 十六进制 缩写 名称/意义 0000 0000 0 00 NUL 空字符（Null） 0000 0001 1 01 SOH 标题开始 0000 0010 2 02 STX 本文开始 0000 0011 3 03 ETX 本文结束 0000 0100 4 04 EOT 传输结束 0000 0101 5 05 ENQ 请求 0000 0110 6 06 ACK 确认回应 0000 0111 7 07 BEL 响铃 0000 1000 8 08 BS 退格 0000 1001 9 09 HT 水平定位符号 0000 1010 10 0A LF 换行键 0000 1011 11 0B VT 垂直定位符号 0000 1100 12 0C FF 换页键 0000 1101 13 0D CR 归位键 0000 1110 14 0E SO 取消变换（Shift out） 0000 1111 15 0F SI 启用变换（Shift in） 0001 0000 16 10 DLE 跳出数据通讯 0001 0001 17 11 DC1 设备控制一（XON 启用软件速度控制） 0001 0010 18 12 DC2 设备控制二 0001 0011 19 13 DC3 设备控制三（XOFF 停用软件速度控制） 0001 0100 20 14 DC4 设备控制四 0001 0101 21 15 NAK 确认失败回应 0001 0110 22 16 SYN 同步用暂停 0001 0111 23 17 ETB 区块传输结束 0001 1000 24 18 CAN 取消 0001 1001 25 19 EM 连接介质中断 0001 1010 26 1A SUB 替换 0001 1011 27 1B ESC 跳出 0001 1100 28 1C FS 文件分割符 0001 1101 29 1D GS 组群分隔符 0001 1110 30 1E RS 记录分隔符 0001 1111 31 1F US 单元分隔符 0111 1111 127 7F DEL 删除]]></content>
       <tags>
-        <tag>ASCII</tag>
         <tag>编程</tag>
+        <tag>ASCII</tag>
         <tag>汇编</tag>
       </tags>
   </entry>
