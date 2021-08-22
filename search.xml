@@ -1,9 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[Linux 信号处理]]></title>
+    <url>%2F2021%2F07%2F03%2FLinux-%E4%BF%A1%E5%8F%B7%E5%A4%84%E7%90%86%2F</url>
+    <content type="text"><![CDATA[之前在Linux C程序中对崩溃信号一直处理不好,偶然间发现libSegFault.so这个库,由于这个库是glibc提供的,基本常用的发行版都会自带这个库的,所以想之后程序中不在处理会导致程序崩溃的信号,统一交给libSegFault来处理 libSegFault使用方式1env SEGFAULT_SIGNALS="segv, ill, abrt, bus" LD_PRELOAD=/lib/libSegFault.so someapp SEGFAULT_SIGNALS不设置的话,默认只处理segv;设置为all,会处理segv, ill, abrt, fpe, bus, stkflt等信号。需要注意的是，想要使用libSegFault的话，程序里一定不要再通过signal/sigaction来捕获相关信号了，否则libSegFault是不会生效的。 参考资料stackoverflowlibSegFault源码]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Nginx学习笔记]]></title>
+    <url>%2F2021%2F07%2F03%2FNginx%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
+    <content type="text"><![CDATA[Nginx 源代码笔记 - 运维命令]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[How to structure your project (C++)]]></title>
+    <url>%2F2021%2F07%2F03%2FHow-to-structure-your-project-C%2F</url>
+    <content type="text"><![CDATA[怎么组织你的C++代码?之前工程目录结构一直比较混乱,查了一下C++的相关开源项目和一些资料,整理一下思路 123456789101112131415.├── bin├── cmake├── CMakeLists.txt├── doc├── extern├── include├── lib├── LICENSE├── README.md├── src│ └── CMakeLists.txt└── tests ├── catch.hpp └── CMakeLists.txt 各个目录和文件的作用: cmake放置.cmake文件 CMakeLists.txt顶层的CMakeLists.txt中设置全局配置,并通过add_subdirectory的方式添加各个子目录 bin编译后的可执行程序 lib编译后的动态库 doc文档 extern或者叫3rdparty/thirdparty,放置使用的第三方库,一般通过submodule的方式加入主工程工程中常用的几个第三方库,如boost、protobuf,单独编译一遍,放到子模块中,不用每个项目都重新编译 src工程源代码 include如果工程要对外提供头文件的话,将对外提供的头文件放到这里todo: 了解一下CMake的install命令 tests单元测试 参考资料github mmorse1217github kigstercmake-basisAn Introduction to Modern CMakeHow do you add Boost libraries in CMakeLists.txt]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[mtproxy配置]]></title>
+    <url>%2F2021%2F06%2F19%2Fmtproxy%E9%85%8D%E7%BD%AE%2F</url>
+    <content type="text"><![CDATA[获取 Telegram ipv4 服务器列表及配置 1curl -s https://core.telegram.org/getProxyConfig -o proxy-multi.conf 获取 Telegram ipv6 服务器列表及配置 1curl -s https://core.telegram.org/getProxyConfigV6 -o proxy-multi.conf MTProxy.service 123456789101112[Unit]Description=MTProxyAfter=network.target[Service]Type=simpleWorkingDirectory=/etc/mtproxyExecStart=/usr/local/bin/mtproto-proxy -u nobody -p 8888 -H 6443 -S &lt;secret&gt; -P &lt;proxy tag&gt; --aes-pwd proxy-secret proxy-multi.conf -M 1 --address 127.0.0.1Restart=on-failure[Install]WantedBy=multi-user.target 其他从网上现查吧]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[acme续期证书]]></title>
+    <url>%2F2021%2F06%2F19%2Facme%E7%BB%AD%E6%9C%9F%E8%AF%81%E4%B9%A6%2F</url>
+    <content type="text"><![CDATA[123acme.sh --issue -d example.cf -d "*.example.cf" --dns --yes-I-know-dns-manual-mode-enough-go-ahead-please --logacme.sh --renew -d example.cf -d "*.example.cf" --yes-I-know-dns-manual-mode-enough-go-ahead-please --log 第一次执行会失败,需要去cloudflare上修改txt记录再重新执行一次]]></content>
+  </entry>
+  <entry>
     <title><![CDATA[Python GUI 开发]]></title>
     <url>%2F2021%2F06%2F13%2FPython-GUI-%E5%BC%80%E5%8F%91%2F</url>
-    <content type="text"><![CDATA[之前尝试过使用tkinter写python界面,但是没用过可视化的界面设计工具,今天简单玩儿了一下PyQt和PAGE PAGE 是基于tkinter的,界面有点丑,但貌似比PyQt轻量一些,感觉不太好用 界面拖拽完成后点击Gen_Python-&gt;Generate Python GUI和Gen_Python-&gt;Generate Support Module,一共生产了三个文件page.tcl、page.py、page_support.py，通过page.py来启动 选定控价点击&quot;Set Command&quot;，弹出窗口中输入回调函数，回调函数会生成在page_support.py里 PyQt 安装PyQt5和pyqt5-tools两个模块，pyqt5-tools包里带了qt designer。 qt designer的界面就比较友好了，带中文界面，界面拖拽完成后保存，会生成一个.ui文件，执行pyuic5 - o xxx.py xxx.ui将ui文件转换为python代码 新建一个python文件，贴入以下代码，Ui_Dialog是designer设计好的对话框控件对象，信号和槽的连接可以在designer中设置也可以在MainDialog类中写，但是在designer里貌似不能自定义槽函数，这种就不得不自己写connect函数了 1234567891011121314import sysfrom PyQt5.QtWidgets import QApplication, QDialogfrom pyqt_demo import Ui_Dialogclass MainDialog(QDialog, Ui_Dialog): def __init__(self, parent=None): super(QDialog, self).__init__(parent) self.setupUi(self)if __name__ == '__main__': myapp = QApplication(sys.argv) myDlg = MainDialog() myDlg.show() sys.exit(myapp.exec_()) 资源 各种各样的PyQt测试和例子]]></content>
+    <content type="text"><![CDATA[之前尝试过使用tkinter写python界面,但是没用过可视化的界面设计工具,今天简单玩儿了一下PyQt和PAGE PAGE是基于tkinter的,界面有点丑,但貌似比PyQt轻量一些,感觉不太好用界面拖拽完成后点击Gen_Python-&gt;Generate Python GUI和Gen_Python-&gt;Generate Support Module,一共生产了三个文件page.tcl、page.py、page_support.py，通过page.py来启动 选定控价点击”Set Command”，弹出窗口中输入回调函数，回调函数会生成在page_support.py里 PyQt安装PyQt5和pyqt5-tools两个模块，pyqt5-tools包里带了qt designer。 qt designer的界面就比较友好了，带中文界面，界面拖拽完成后保存，会生成一个.ui文件，执行pyuic5 - o xxx.py xxx.ui将ui文件转换为python代码新建一个python文件，贴入以下代码，Ui_Dialog是designer设计好的对话框控件对象，信号和槽的连接可以在designer中设置也可以在MainDialog类中写，但是在designer里貌似不能自定义槽函数，这种就不得不自己写connect函数了 1234567891011121314import sysfrom PyQt5.QtWidgets import QApplication, QDialogfrom pyqt_demo import Ui_Dialogclass MainDialog(QDialog, Ui_Dialog): def __init__(self, parent=None): super(QDialog, self).__init__(parent) self.setupUi(self)if __name__ == '__main__': myapp = QApplication(sys.argv) myDlg = MainDialog() myDlg.show() sys.exit(myapp.exec_()) 资源各种各样的PyQt测试和例子]]></content>
       <tags>
         <tag>Python</tag>
       </tags>
@@ -129,8 +154,8 @@
     <url>%2F2018%2F04%2F05%2FC-%E8%AF%AD%E8%A8%80%E7%9A%84%E7%B1%BB%E5%9E%8B%E7%B3%BB%E7%BB%9F%2F</url>
     <content type="text"><![CDATA[类(classes)如Windows,Form,Console,String 结构体(structures)如int32,int64,single,double 枚举(enumerations)如HorizontalAlignment,Visibility 接口(interfaces) 委托(delegates)]]></content>
       <tags>
-        <tag>C#</tag>
         <tag>编程</tag>
+        <tag>C#</tag>
       </tags>
   </entry>
   <entry>
@@ -251,7 +276,7 @@
   <entry>
     <title><![CDATA[ssh防暴力破解]]></title>
     <url>%2F2018%2F01%2F14%2Fssh%E9%98%B2%E6%9A%B4%E5%8A%9B%E7%A0%B4%E8%A7%A3%2F</url>
-    <content type="text"><![CDATA[查看多次登录失败IPgrep &quot;Failed password for root&quot; /var/log/auth.log | awk &#39;{print $11}&#39; | sort | uniq -c | sort -nr | grep -v &quot;;&quot; 更改ssh端口设置强密码使用denyhosts]]></content>
+    <content type="text"><![CDATA[查看多次登录失败IP# grep &quot;Failed password for root&quot; /var/log/auth.log | awk &#39;{print $11}&#39; | sort | uniq -c | sort -nr | grep -v &quot;;&quot; lastb | awk &#39;{ print $3}&#39; | sort | uniq -c | sort -n 更改ssh端口设置强密码使用denyhosts]]></content>
       <tags>
         <tag>Linux</tag>
         <tag>VPS</tag>
@@ -393,8 +418,8 @@
     <url>%2F2017%2F09%2F20%2FASCII%E7%A0%81%E8%A1%A8%2F</url>
     <content type="text"><![CDATA[ASCII控制字符 二进制 十进制 十六进制 缩写 名称/意义 0000 0000 0 00 NUL 空字符（Null） 0000 0001 1 01 SOH 标题开始 0000 0010 2 02 STX 本文开始 0000 0011 3 03 ETX 本文结束 0000 0100 4 04 EOT 传输结束 0000 0101 5 05 ENQ 请求 0000 0110 6 06 ACK 确认回应 0000 0111 7 07 BEL 响铃 0000 1000 8 08 BS 退格 0000 1001 9 09 HT 水平定位符号 0000 1010 10 0A LF 换行键 0000 1011 11 0B VT 垂直定位符号 0000 1100 12 0C FF 换页键 0000 1101 13 0D CR 归位键 0000 1110 14 0E SO 取消变换（Shift out） 0000 1111 15 0F SI 启用变换（Shift in） 0001 0000 16 10 DLE 跳出数据通讯 0001 0001 17 11 DC1 设备控制一（XON 启用软件速度控制） 0001 0010 18 12 DC2 设备控制二 0001 0011 19 13 DC3 设备控制三（XOFF 停用软件速度控制） 0001 0100 20 14 DC4 设备控制四 0001 0101 21 15 NAK 确认失败回应 0001 0110 22 16 SYN 同步用暂停 0001 0111 23 17 ETB 区块传输结束 0001 1000 24 18 CAN 取消 0001 1001 25 19 EM 连接介质中断 0001 1010 26 1A SUB 替换 0001 1011 27 1B ESC 跳出 0001 1100 28 1C FS 文件分割符 0001 1101 29 1D GS 组群分隔符 0001 1110 30 1E RS 记录分隔符 0001 1111 31 1F US 单元分隔符 0111 1111 127 7F DEL 删除]]></content>
       <tags>
-        <tag>编程</tag>
         <tag>ASCII</tag>
+        <tag>编程</tag>
         <tag>汇编</tag>
       </tags>
   </entry>

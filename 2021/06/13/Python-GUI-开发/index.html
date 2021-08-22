@@ -99,18 +99,18 @@
 
 
 
-  <meta name="description" content="之前尝试过使用tkinter写python界面,但是没用过可视化的界面设计工具,今天简单玩儿了一下PyQt和PAGE PAGE 是基于tkinter的,界面有点丑,但貌似比PyQt轻量一些,感觉不太好用 界面拖拽完成后点击Gen_Python-&amp;gt;Generate Python GUI和Gen_Python-&amp;gt;Generate Support Module,一共生产了三个文件page.t">
+  <meta name="description" content="之前尝试过使用tkinter写python界面,但是没用过可视化的界面设计工具,今天简单玩儿了一下PyQt和PAGE PAGE是基于tkinter的,界面有点丑,但貌似比PyQt轻量一些,感觉不太好用界面拖拽完成后点击Gen_Python-&amp;gt;Generate Python GUI和Gen_Python-&amp;gt;Generate Support Module,一共生产了三个文件page.tcl">
 <meta name="keywords" content="Python">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Python GUI 开发">
 <meta property="og:url" content="https://avvount.github.io/2021/06/13/Python-GUI-开发/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="之前尝试过使用tkinter写python界面,但是没用过可视化的界面设计工具,今天简单玩儿了一下PyQt和PAGE PAGE 是基于tkinter的,界面有点丑,但貌似比PyQt轻量一些,感觉不太好用 界面拖拽完成后点击Gen_Python-&amp;gt;Generate Python GUI和Gen_Python-&amp;gt;Generate Support Module,一共生产了三个文件page.t">
+<meta property="og:description" content="之前尝试过使用tkinter写python界面,但是没用过可视化的界面设计工具,今天简单玩儿了一下PyQt和PAGE PAGE是基于tkinter的,界面有点丑,但貌似比PyQt轻量一些,感觉不太好用界面拖拽完成后点击Gen_Python-&amp;gt;Generate Python GUI和Gen_Python-&amp;gt;Generate Support Module,一共生产了三个文件page.tcl">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:updated_time" content="2021-06-13T13:51:50.566Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Python GUI 开发">
-<meta name="twitter:description" content="之前尝试过使用tkinter写python界面,但是没用过可视化的界面设计工具,今天简单玩儿了一下PyQt和PAGE PAGE 是基于tkinter的,界面有点丑,但貌似比PyQt轻量一些,感觉不太好用 界面拖拽完成后点击Gen_Python-&amp;gt;Generate Python GUI和Gen_Python-&amp;gt;Generate Support Module,一共生产了三个文件page.t">
+<meta name="twitter:description" content="之前尝试过使用tkinter写python界面,但是没用过可视化的界面设计工具,今天简单玩儿了一下PyQt和PAGE PAGE是基于tkinter的,界面有点丑,但貌似比PyQt轻量一些,感觉不太好用界面拖拽完成后点击Gen_Python-&amp;gt;Generate Python GUI和Gen_Python-&amp;gt;Generate Support Module,一共生产了三个文件page.tcl">
 
 
 
@@ -397,17 +397,13 @@
 
       
         <p>之前尝试过使用tkinter写python界面,但是没用过可视化的界面设计工具,今天简单玩儿了一下PyQt和PAGE</p>
-<h2>PAGE</h2>
-<p>是基于tkinter的,界面有点丑,但貌似比PyQt轻量一些,感觉不太好用
-界面拖拽完成后点击Gen_Python-&gt;Generate Python GUI和Gen_Python-&gt;Generate Support Module,一共生产了三个文件page.tcl、page.py、page_support.py，通过page.py来启动</p>
-<p>选定控价点击&quot;Set Command&quot;，弹出窗口中输入回调函数，回调函数会生成在page_support.py里</p>
-<h2>PyQt</h2>
-<p>安装PyQt5和pyqt5-tools两个模块，pyqt5-tools包里带了qt designer。</p>
-<p>qt designer的界面就比较友好了，带中文界面，界面拖拽完成后保存，会生成一个.ui文件，执行<code>pyuic5 - o xxx.py xxx.ui</code>将ui文件转换为python代码
-新建一个python文件，贴入以下代码，Ui_Dialog是designer设计好的对话框控件对象，信号和槽的连接可以在designer中设置也可以在MainDialog类中写，但是在designer里貌似不能自定义槽函数，这种就不得不自己写connect函数了</p>
-<p><figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QApplication, QDialog</span><br><span class="line"><span class="keyword">from</span> pyqt_demo <span class="keyword">import</span> Ui_Dialog</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainDialog</span><span class="params">(QDialog, Ui_Dialog)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, parent=None)</span>:</span></span><br><span class="line">        super(QDialog, self).__init__(parent)</span><br><span class="line">        self.setupUi(self)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    myapp = QApplication(sys.argv)</span><br><span class="line">    myDlg = MainDialog()</span><br><span class="line">    myDlg.show()</span><br><span class="line">    sys.exit(myapp.exec_())</span><br></pre></td></tr></table></figure></p>
-<h2>资源</h2>
-<p><a href="https://github.com/PyQt5/PyQt" target="_blank" rel="noopener">各种各样的PyQt测试和例子</a></p>
+<h2 id="PAGE"><a href="#PAGE" class="headerlink" title="PAGE"></a>PAGE</h2><p>是基于tkinter的,界面有点丑,但貌似比PyQt轻量一些,感觉不太好用<br>界面拖拽完成后点击Gen_Python-&gt;Generate Python GUI和Gen_Python-&gt;Generate Support Module,一共生产了三个文件page.tcl、page.py、page_support.py，通过page.py来启动</p>
+<p>选定控价点击”Set Command”，弹出窗口中输入回调函数，回调函数会生成在page_support.py里</p>
+<h2 id="PyQt"><a href="#PyQt" class="headerlink" title="PyQt"></a>PyQt</h2><p>安装PyQt5和pyqt5-tools两个模块，pyqt5-tools包里带了qt designer。</p>
+<p>qt designer的界面就比较友好了，带中文界面，界面拖拽完成后保存，会生成一个.ui文件，执行<code>pyuic5 - o xxx.py xxx.ui</code>将ui文件转换为python代码<br>新建一个python文件，贴入以下代码，Ui_Dialog是designer设计好的对话框控件对象，信号和槽的连接可以在designer中设置也可以在MainDialog类中写，但是在designer里貌似不能自定义槽函数，这种就不得不自己写connect函数了</p>
+<figure class="highlight py"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> sys</span><br><span class="line"><span class="keyword">from</span> PyQt5.QtWidgets <span class="keyword">import</span> QApplication, QDialog</span><br><span class="line"><span class="keyword">from</span> pyqt_demo <span class="keyword">import</span> Ui_Dialog</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">MainDialog</span><span class="params">(QDialog, Ui_Dialog)</span>:</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self, parent=None)</span>:</span></span><br><span class="line">        super(QDialog, self).__init__(parent)</span><br><span class="line">        self.setupUi(self)</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    myapp = QApplication(sys.argv)</span><br><span class="line">    myDlg = MainDialog()</span><br><span class="line">    myDlg.show()</span><br><span class="line">    sys.exit(myapp.exec_())</span><br></pre></td></tr></table></figure>
+
+<h2 id="资源"><a href="#资源" class="headerlink" title="资源"></a>资源</h2><p><a href="https://github.com/PyQt5/PyQt" target="_blank" rel="noopener">各种各样的PyQt测试和例子</a></p>
 
       
     </div>
@@ -450,6 +446,10 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/06/19/acme续期证书/" rel="prev" title="acme续期证书">
+                acme续期证书 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -525,7 +525,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
@@ -630,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">1.</span> <span class="nav-text">PAGE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">2.</span> <span class="nav-text">PyQt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#undefined"><span class="nav-number">3.</span> <span class="nav-text">资源</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#PAGE"><span class="nav-number">1.</span> <span class="nav-text">PAGE</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#PyQt"><span class="nav-number">2.</span> <span class="nav-text">PyQt</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#资源"><span class="nav-number">3.</span> <span class="nav-text">资源</span></a></li></ol></div>
             
 
           </div>

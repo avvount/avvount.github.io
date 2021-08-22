@@ -99,18 +99,18 @@
 
 
 
-  <meta name="description" content="查看多次登录失败IPgrep &amp;quot;Failed password for root&amp;quot; /var/log/auth.log | awk &amp;#39;{print $11}&amp;#39; | sort | uniq -c | sort -nr | grep -v &amp;quot;;&amp;quot; 更改ssh端口设置强密码使用denyhosts">
+  <meta name="description" content="查看多次登录失败IP# grep &amp;quot;Failed password for root&amp;quot; /var/log/auth.log | awk &amp;#39;{print $11}&amp;#39; | sort | uniq -c | sort -nr | grep -v &amp;quot;;&amp;quot;   lastb | awk &amp;#39;{ print $3}&amp;#39; | sort | uni">
 <meta name="keywords" content="Linux,VPS">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ssh防暴力破解">
 <meta property="og:url" content="https://avvount.github.io/2018/01/14/ssh防暴力破解/index.html">
 <meta property="og:site_name" content="Avvount&#39;s Blog">
-<meta property="og:description" content="查看多次登录失败IPgrep &amp;quot;Failed password for root&amp;quot; /var/log/auth.log | awk &amp;#39;{print $11}&amp;#39; | sort | uniq -c | sort -nr | grep -v &amp;quot;;&amp;quot; 更改ssh端口设置强密码使用denyhosts">
+<meta property="og:description" content="查看多次登录失败IP# grep &amp;quot;Failed password for root&amp;quot; /var/log/auth.log | awk &amp;#39;{print $11}&amp;#39; | sort | uniq -c | sort -nr | grep -v &amp;quot;;&amp;quot;   lastb | awk &amp;#39;{ print $3}&amp;#39; | sort | uni">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-11T06:18:49.768Z">
+<meta property="og:updated_time" content="2021-08-22T02:44:25.136Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh防暴力破解">
-<meta name="twitter:description" content="查看多次登录失败IPgrep &amp;quot;Failed password for root&amp;quot; /var/log/auth.log | awk &amp;#39;{print $11}&amp;#39; | sort | uniq -c | sort -nr | grep -v &amp;quot;;&amp;quot; 更改ssh端口设置强密码使用denyhosts">
+<meta name="twitter:description" content="查看多次登录失败IP# grep &amp;quot;Failed password for root&amp;quot; /var/log/auth.log | awk &amp;#39;{print $11}&amp;#39; | sort | uniq -c | sort -nr | grep -v &amp;quot;;&amp;quot;   lastb | awk &amp;#39;{ print $3}&amp;#39; | sort | uni">
 
 
 
@@ -396,7 +396,8 @@
       
 
       
-        <h2 id="查看多次登录失败IP"><a href="#查看多次登录失败IP" class="headerlink" title="查看多次登录失败IP"></a>查看多次登录失败IP</h2><pre><code>grep &quot;Failed password for root&quot; /var/log/auth.log | awk &#39;{print $11}&#39; | sort | uniq -c | sort -nr | grep -v &quot;;&quot;</code></pre>
+        <h2 id="查看多次登录失败IP"><a href="#查看多次登录失败IP" class="headerlink" title="查看多次登录失败IP"></a>查看多次登录失败IP</h2><pre><code># grep &quot;Failed password for root&quot; /var/log/auth.log | awk &#39;{print $11}&#39; | sort | uniq -c | sort -nr | grep -v &quot;;&quot;  
+lastb | awk &#39;{ print $3}&#39; | sort | uniq -c | sort -n</code></pre>
 <h2 id="更改ssh端口"><a href="#更改ssh端口" class="headerlink" title="更改ssh端口"></a>更改ssh端口</h2><h2 id="设置强密码"><a href="#设置强密码" class="headerlink" title="设置强密码"></a>设置强密码</h2><h2 id="使用denyhosts"><a href="#使用denyhosts" class="headerlink" title="使用denyhosts"></a>使用denyhosts</h2>
       
     </div>
@@ -520,7 +521,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">50</span>
+                    <span class="site-state-item-count">55</span>
                     <span class="site-state-item-name">日志</span>
                   </a>
                 </div>
