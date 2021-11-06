@@ -6,9 +6,9 @@
     <content type="text"><![CDATA[之前在Linux C程序中对崩溃信号一直处理不好,偶然间发现libSegFault.so这个库,由于这个库是glibc提供的,基本常用的发行版都会自带这个库的,所以想之后程序中不在处理会导致程序崩溃的信号,统一交给libSegFault来处理 libSegFault使用方式1env SEGFAULT_SIGNALS="segv, ill, abrt, bus" LD_PRELOAD=/lib/libSegFault.so someapp SEGFAULT_SIGNALS不设置的话,默认只处理segv;设置为all,会处理segv, ill, abrt, fpe, bus, stkflt等信号。需要注意的是，想要使用libSegFault的话，程序里一定不要再通过signal/sigaction来捕获相关信号了，否则libSegFault是不会生效的。 参考资料stackoverflowlibSegFault源码]]></content>
   </entry>
   <entry>
-    <title><![CDATA[Nginx学习笔记]]></title>
-    <url>%2F2021%2F07%2F03%2FNginx%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0%2F</url>
-    <content type="text"><![CDATA[Nginx 源代码笔记 - 运维命令]]></content>
+    <title><![CDATA[mark]]></title>
+    <url>%2F2021%2F07%2F03%2Fmark%2F</url>
+    <content type="text"><![CDATA[Nginx 源代码笔记 - 运维命令Cassandra命令]]></content>
   </entry>
   <entry>
     <title><![CDATA[How to structure your project (C++)]]></title>
