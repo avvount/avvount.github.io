@@ -107,7 +107,7 @@
 <meta property="og:site_name" content="Avvount&#39;s Blog">
 <meta property="og:description" content="有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi更新系统时间 timedatectl set-ntp true分区格式化根分区 mkfs.ext4 /dev/sda#挂载分区 mount /dev/sda7 /mntmkdir /mnt/bootmount /dev/sda2 /mnt/bootmkdir /mnt/homemount /dev/sd">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2020-10-11T06:18:49.769Z">
+<meta property="og:updated_time" content="2021-12-19T04:40:44.525Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Arch安装步骤">
 <meta name="twitter:description" content="有线网络执行systemctl start dhcpcd,无线执行wifi-menu链接wifi更新系统时间 timedatectl set-ntp true分区格式化根分区 mkfs.ext4 /dev/sda#挂载分区 mount /dev/sda7 /mntmkdir /mnt/bootmount /dev/sda2 /mnt/bootmkdir /mnt/homemount /dev/sd">
@@ -407,7 +407,7 @@
 </blockquote>
 <h2 id="设置语言"><a href="#设置语言" class="headerlink" title="设置语言"></a>设置语言</h2><p>编辑<code>/etc/locale.gen</code><br>执行<code>locale-gen</code></p>
 <h2 id="执行echo-LANG-en-US-UTF-8-gt-etc-locale-conf"><a href="#执行echo-LANG-en-US-UTF-8-gt-etc-locale-conf" class="headerlink" title="执行echo LANG=en_US.UTF-8 &gt; /etc/locale.conf"></a>执行<code>echo LANG=en_US.UTF-8 &gt; /etc/locale.conf</code></h2><h2 id="设置主机名"><a href="#设置主机名" class="headerlink" title="设置主机名"></a>设置主机名</h2><blockquote>
-<p>echo Archpc &gt;&gt; /etc/hostname<br>echo “127.0.1.1    Archpc.localdomain Archpc” &gt;&gt; /etc/hosts</p>
+<p>echo Archpc &gt;&gt; /etc/hostname<br>echo “127.0.0.1    Archpc.localdomain Archpc” &gt;&gt; /etc/hosts</p>
 </blockquote>
 <h2 id="安装必要软件"><a href="#安装必要软件" class="headerlink" title="安装必要软件"></a>安装必要软件</h2><p><code>pacman -S gvim net-tools wireless_tools wpa_supplicant dialog intel-ucode os-prober grub efibootmgr openssh linux-headers</code></p>
 <h2 id="编辑-etc-lvm-lvm-conf"><a href="#编辑-etc-lvm-lvm-conf" class="headerlink" title="编辑 /etc/lvm/lvm.conf"></a>编辑 <code>/etc/lvm/lvm.conf</code></h2><p>设置set use_lvmetad = 1 为 use_lvmetad = 0</p>
