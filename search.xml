@@ -41,7 +41,7 @@
   <entry>
     <title><![CDATA[Kubernetes]]></title>
     <url>%2F2020%2F04%2F18%2FKubernetes%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"><![CDATA[设置rsyslogd和systemd12345678910111213141516171819202122232425262728mkdir /var/log/journalmkdir /etc/systemd/journald.conf.dcat &gt; /etc/systemd/journald.conf.d/99-prophet.conf &lt;&lt;EOF[Journal]# 持久化保存到磁盘Storage=persistent#压缩历史日志Compress=yesSyncIntervalSec=5mRateLimitInterval=30sRatelimitBurst=1000#最大占用空间10GSystemMaxUse=10G#单日志文件最大200MSystemMaxFileSize=200M#日志保存时间2周MaxRetentionSec=2week#不将日志转发到syslogForwardToSyslog=noEOFsystemctl restart systemd-journald Docker配置1234567891011cat &gt; /etc/docker/daemon.json &lt;&lt;EOF&#123; "exec-opts":["native.cgroupdrive=systemd"], "log-driver":"json-file", "log-opts":&#123; "max-size":"100m" &#125;&#125;EOFmkdir -p /etc/systemd/system/docker.service.d/systemctl daemon-reload &amp;&amp; systemctl restart docker 安装Kubeadm12345678910cat &lt;&lt;EOF &gt; /etc/yum.repos.d/kubernetes.repo[kubernetes]name=Kubernetesbaseurl=http://mirrors.aliyun.com/kubernetes/yum/repos/kubernetes-el7-x86_64enabled=1gpgcheck=0repo_gpgcheck=0gpgkey=http://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg http://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpgEOF]]></content>
   </entry>
   <entry>
     <title><![CDATA[cmake&gcc笔记]]></title>
